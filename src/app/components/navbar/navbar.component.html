@@ -1,0 +1,112 @@
+<div class="banner-toolbar" *ngIf="banner" [ngClass]="bannerClass">
+  <div class="banner-mainpage">
+    <div class="banner-left">🔥 Hot Deals!</div>
+    <div class="banner-middle">
+      Libero voluptatum atque exercitationem praesentium provident odit.
+
+      <a href="#" class="learn-more">
+        <span class="underline font-bold">Learn More</span>
+      </a>
+    </div>
+    <div class="banner-right">
+      <button
+        pButton
+        class="p-button-text close-button"
+        icon="pi pi-times"
+        (click)="isBanner()"
+      ></button>
+    </div>
+  </div>
+</div>
+
+<div class="toolbar">
+  <div class="toolbar-mainpage">
+    <div class="left-toolbar">
+      <a [routerLink]="['']">
+        <i class="pi pi-slack"></i>
+        <h2>Cavers</h2>
+      </a>
+    </div>
+    <div class="middle-toolbar">
+      <button
+        class="p-button-text"
+        routerLinkActive="activebutton"
+        [routerLink]="['Blogs']"
+        label="Blogs"
+        pButton
+      ></button
+      ><button
+        class="p-button-text"
+        routerLinkActive="activebutton"
+        [routerLink]="['Pricing']"
+        label="Pricing"
+        pButton
+      ></button>
+      <button
+        class="p-button-text"
+        routerLinkActive="activebutton"
+        [routerLink]="['categorie']"
+        label="About"
+        pButton
+      ></button>
+      <button
+        class="p-button-text"
+        routerLinkActive="activebutton"
+        [routerLink]="['categorie']"
+        label="Contact"
+        pButton
+      ></button>
+      <button
+        class="p-button-text"
+        routerLinkActive="activebutton"
+        [routerLink]="['BlogPage/6544f0497b0a5e6707677147']"
+        label="Blog"
+        pButton
+      ></button
+      ><button
+        class="p-button-text"
+        routerLinkActive="activebutton"
+        [routerLink]="['AddBlog']"
+        label="Add Blog"
+        pButton
+      ></button
+      ><button
+        class="p-button-text"
+        routerLinkActive="activebutton"
+        [routerLink]="['Users']"
+        label="Users"
+        pButton
+      ></button>
+    </div>
+    <div class="right-toolbar">
+      <button
+        *ngIf="!isAuth"
+        pButton
+        class="p-button-text login-button"
+        routerLink="auth/login"
+      >
+        Login
+      </button>
+      <button
+        *ngIf="!isAuth"
+        pButton
+        class="signup-button"
+        routerLink="auth/signup"
+      >
+        Sign up
+      </button>
+      <div class="profile-section" *ngIf="isAuth">
+        <div class="padge-icon">
+          <i class="pi pi-verified"></i>
+        </div>
+        <div class="profile-section-name">{{ userName }}</div>
+      </div>
+      <button
+        (click)="change_theme()"
+        pButton
+        icon="pi pi-sun"
+        class="p-button-text theme-mode"
+      ></button>
+    </div>
+  </div>
+</div>

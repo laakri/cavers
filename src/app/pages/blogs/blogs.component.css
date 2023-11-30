@@ -1,0 +1,128 @@
+
+.mainpage {
+    max-width: 1300px;
+    margin: auto;
+}
+  
+  .split-section {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+
+}
+  
+  .left-section {
+    width: calc(100% - 320px);  
+}
+  
+  .filter-section {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .p-inputgroup {
+    /* Add your styles here */
+  }
+  .p-inputgroup button{
+    height: 47px ;
+  }
+  
+  
+  .blogs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+  
+  .blog {
+    padding: 10px;
+    height: 220px;
+    background-color: var(--soft-bgcolor);
+    border-radius: 10px;
+
+}
+  
+  .blog-right-section {
+    /* Add your styles here */
+  }
+  
+  .blog-title {
+    /* Add your styles here */
+  }
+  
+  .blog-category {
+    /* Add your styles here */
+  }
+  
+  .blog-tags {
+    /* Add your styles here */
+  }
+  
+  .blog-tag {
+    /* Add your styles here */
+  }
+  
+  .blog-date {
+    /* Add your styles here */
+  }
+  
+  .blog-img {
+    /* Add your styles here */
+  }
+  
+  .right-section {  
+    width: 300px; 
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+ }
+  
+  .recommended {
+    background-color: var(--soft-bgcolor);
+    border-radius: 10px;
+    padding: 10px;
+  }
+  
+  .recommended-topic {
+    /* Add your styles here */
+  }
+  
+  .recommended-topic-middle-button {
+
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+  
+  .recommended-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 5px;
+}
+  
+  .recommended-tag {
+    font-size: 14px;
+    background-color: var(--special-button-background);
+    color: var(--special-button-color);
+    padding: 2px 5px ;
+    border-radius: 5px;
+}
+
+  
+  .Newsletter {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+  
+  .SignUp-button {
+    display: flex;
+    justify-content: center;
+}
+  
+  .privacy-note {
+    /* Add your styles here */
+  }
+  
+  /* Add any additional styles as needed for responsiveness and layout */
+  

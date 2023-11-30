@@ -1,0 +1,195 @@
+<div class="mainpage">
+  <div class="split-section">
+    <div class="left-section">
+      <div class="filter-section">
+        <div class="p-inputgroup">
+          <input
+            type="text"
+            pInputText
+            placeholder="Search"
+            [(ngModel)]="searchTerm"
+          />
+          <button
+            type="button"
+            pButton
+            label="Search"
+            (click)="onSearch()"
+          ></button>
+        </div>
+
+        <p-dropdown
+          [options]="Categorys"
+          [(ngModel)]="selectedCategory"
+          optionLabel="name"
+          (ngModelChange)="onCategoryChange()"
+        ></p-dropdown>
+        <p-dropdown
+          [options]="SortByDate"
+          [(ngModel)]="selectedSortByDate"
+          optionLabel="name"
+          (ngModelChange)="onSortByDateChange()"
+        ></p-dropdown>
+      </div>
+
+      <h2>Blogs Section</h2>
+
+      <div *ngIf="isLoading; else content">
+        <div class="blogs">
+          <p-skeleton
+            width="100%"
+            height="220px"
+            styleClass="mb-2"
+          ></p-skeleton>
+          <p-skeleton
+            width="100%"
+            height="220px"
+            styleClass="mb-2"
+          ></p-skeleton>
+          <p-skeleton
+            width="100%"
+            height="220px"
+            styleClass="mb-2"
+          ></p-skeleton>
+        </div>
+      </div>
+
+      <ng-template #content>
+        <div class="blogs" *ngIf="blogs.length > 0; else noBlogsFound">
+          <!-- Iterate through the blogs and display specific fields -->
+          <div class="blog" *ngFor="let blog of blogs">
+            <div class="blog-right-section">
+              <a [routerLink]="['/BlogPage', blog._id]">
+                <div class="blog-title">{{ blog.title }}</div>
+              </a>
+              <div class="blog-category">
+                {{ blog.selectedCategorys.join(" , ") }}
+              </div>
+              <span>{{ blog.shortDescription }}</span>
+              <div class="blog-tags">
+                <div class="blog-tag" *ngFor="let tag of blog.tags">
+                  {{ tag }}
+                </div>
+              </div>
+              <div class="blog-date">
+                Released At : {{ blog.createdAt | date : "MMM d, y" }}
+              </div>
+            </div>
+
+            <div class="blog-img">
+              <img src="{{ blog.blogImage }}" alt="" />
+            </div>
+          </div>
+        </div>
+      </ng-template>
+
+      <ng-template #noBlogsFound>
+        <div class="no-blogs-found">
+          <i class="pi pi-chart-bar"></i>
+          <h3>No blogs found.</h3>
+          <span>Try changing your search criteria or check back later.</span>
+        </div>
+      </ng-template>
+      <div class="paginator">
+        <p-paginator
+          (onPageChange)="onPageChange($event)"
+          [first]="first"
+          [rows]="rows"
+          [totalRecords]="120"
+          [rowsPerPageOptions]="[2, 10, 20, 30]"
+        ></p-paginator>
+      </div>
+    </div>
+
+    <div class="right-section">
+      <div *ngIf="isLoading; else topBlogs"></div>
+      <div class="recommended">
+        <h3>Latest Blogs</h3>
+        <div class="blogs">
+          <p-skeleton width="100%" height="40px" styleClass="mb-2"></p-skeleton>
+          <p-skeleton width="100%" height="40px" styleClass="mb-2"></p-skeleton>
+          <p-skeleton width="100%" height="40px" styleClass="mb-2"></p-skeleton>
+        </div>
+        <ng-template #topBlogs>
+          <div
+            class="recommended-topic"
+            *ngFor="let topFreeBlog of topFreeBlogs"
+          >
+            <a [routerLink]="['/BlogPage', topFreeBlog._id]">
+              <div>
+                <i class="pi pi-bookmark-fill"></i>
+                {{ topFreeBlog.title }}
+              </div>
+            </a>
+            <span>
+              {{ topFreeBlog.shortDescription }}
+            </span>
+          </div>
+        </ng-template>
+        <!-- Conditionally render the button based on the showFourthBlog flag -->
+        <p-button
+          *ngIf="!showFourthBlog"
+          (click)="loadFourthBlog()"
+          class="recommended-topic-middle-button"
+          styleClass="p-button-text"
+        >
+          <i class="pi pi-ellipsis-h"></i>
+        </p-button>
+      </div>
+
+      <div class="recommended">
+        <h3>Recommended topics</h3>
+        <div *ngIf="isLoading; else TopCateg">
+          <div class="blogs">
+            <p-skeleton
+              width="100%"
+              height="40px"
+              styleClass="mb-2"
+            ></p-skeleton>
+            <p-skeleton
+              width="100%"
+              height="40px"
+              styleClass="mb-2"
+            ></p-skeleton>
+            <p-skeleton
+              width="100%"
+              height="40px"
+              styleClass="mb-2"
+            ></p-skeleton>
+          </div>
+        </div>
+        <ng-template #TopCateg>
+          <div class="recommended-tags">
+            <div
+              class="recommended-tag"
+              *ngFor="let cat of categoriesToShow"
+              (click)="navigateToCategory(cat.code)"
+            >
+              {{ cat.name }}
+            </div>
+          </div>
+          <p-button
+            *ngIf="!showAllCategories"
+            (click)="showMoreCategories()"
+            class="recommended-topic-middle-button"
+            styleClass="p-button-text"
+          >
+            <i class="pi pi-ellipsis-h"></i>
+          </p-button>
+        </ng-template>
+      </div>
+
+      <div class="recommended Newsletter">
+        <h3>Subscribe to Our Newsletter</h3>
+        <span>Stay up-to-date with the latest articles and news.</span>
+        <button
+          pButton
+          class="p-button-rounded p-button-help"
+          class="SignUp-button"
+        >
+          Sign Up
+        </button>
+        <p class="privacy-note">Your email is safe with us. We don't spam.</p>
+      </div>
+    </div>
+  </div>
+</div>

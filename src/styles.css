@@ -1,1 +1,320 @@
-/* You can add global styles to this file, and also import other style files */
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+@import "primeicons/primeicons.css";
+
+body{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: var(--whitecolor);
+    background: var(--bgcolor);
+    font-family: var(--font-family);
+    --bordercolor: #3a3a3a;
+    --bgcolor: #0a0d0b;
+    --bgtransparentcolor: #0a0d0bad;
+    --soft-bgcolor: #151417;
+    --blackcolor: #000;
+    --whitecolor: #fff;
+    --graycolor: #c2c0c0;
+    --maincolor: #08d9d6;
+    --hovermaincolor: #01a4a1;
+    --secendcolor: #ff3860;
+    --darktranscolor: #000000ce;
+    --soft-darktranscolor: #0f172169;
+    --buttonactive: #7eb075;
+
+    --special-button-color:#2ca57b;
+    --special-button-background:#1b2a27;
+    --special-button-border:#267a5c;
+}
+
+a,
+button {
+  cursor: pointer;
+  text-decoration: none;
+  height: 35px;
+  color: var(--whitecolor);
+}
+
+.fas {
+  font-size: 27px;
+}
+ul {
+  list-style-type: none;
+}
+input{
+  background-color: var(--soft-bgcolor) !important;
+  color: var(--whitecolor) !important;
+}
+input::placeholder{
+  background-color: var(--soft-bgcolor);
+  color: var(--graycolor);
+}
+
+/************ scroll bar ****************/
+::-webkit-scrollbar {
+    width: 8px;
+    background-color: var(--blackcolor);
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--whitecolor);
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: var(--soft-bgcolor);
+  }
+ 
+  /*********************-Active Button********************/
+  
+  .activebutton {
+    background-color: var(--buttonactive);
+  }
+  /*********************-divider********************/
+
+  .p-divider {
+    border-color: var(--bordercolor);
+    border-width: 1px;
+  }
+  
+  /*********************-Button********************/
+
+.p-button {
+    background: var(--special-button-background);
+    border: 1px solid var(--special-button-border);
+    color: var(--special-button-color);
+    height: 35px; 
+  }
+  
+  .p-button:not(.p-disabled):not(.p-highlight):hover {
+    background: var(--special-button-background);
+    border-color: var(--special-button-border);
+    color: var(--whitecolor);
+  }
+  
+   /*********************-multiselect********************/
+
+.p-multiselect {
+  background: var(--soft-bgcolor);
+  color: var(--whitecolor); 
+
+}
+
+.p-multiselect .p-multiselect-label {
+  border-radius:7px ;
+  background: var(--soft-bgcolor); 
+  color: var(--whitecolor); 
+
+}
+
+.p-multiselect .p-multiselect-trigger {
+  background: var(--soft-bgcolor); 
+  height: 40px;
+  color: var(--whitecolor); 
+}
+.p-multiselect-panel {
+  background: var(--soft-bgcolor); 
+  height: 40px;
+  color: var(--whitecolor); 
+}
+
+.p-multiselect-panel .p-multiselect-header {
+  background: var(--soft-bgcolor); 
+  color: var(--whitecolor); 
+}
+.p-multiselect-panel .p-multiselect-item {
+  color: var(--whitecolor); 
+  background: var(--soft-bgcolor); 
+}
+.p-multiselect-panel .p-multiselect-items .p-multiselect-item {
+  color: var(--whitecolor); 
+    }
+  /*********************-dropdown********************/
+
+.p-dropdown {
+      color: var(--whitecolor); 
+      background: var(--soft-bgcolor);  
+}
+  
+.p-dropdown .p-dropdown-label {
+  background: var(--soft-bgcolor); 
+  color: var(--whitecolor); 
+}  
+.p-dropdown-panel {
+    color: var(--whitecolor); 
+    background: var(--soft-bgcolor);  
+}
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item {
+   color: var(--whitecolor); 
+}
+  
+    /*********************-menu********************/
+
+.p-menu {
+  background: var(--soft-bgcolor);  
+  color: var(--whitecolor); 
+  width: 100%;
+  border: none;
+  border-radius: 0;
+}
+
+.p-menu .p-menuitem-text {
+  color: var(--whitecolor) !important; 
+}
+
+.p-menu .p-menuitem-icon {
+  color: var(--whitecolor) !important; /* Replace with your desired icon color */
+}
+.p-menu .p-menuitem-link:hover {
+  background-color: var(--blackcolor) !important; /* Replace with your desired hover background color */
+}
+.p-menu.p-contextmenu .p-submenu-list .p-submenu-header {
+  background-color: var(--soft-bgcolor) !important; /* Replace with your desired background color */
+}
+  /*********************-toolbar********************/
+
+.p-toolbar {
+  background-color: var(--soft-bgcolor); 
+  border: none;
+}
+  /*********************-dialog********************/
+
+.p-dialog.p-confirm-dialog .p-dialog-header {
+  background: var(--soft-bgcolor);
+  color: var(--whitecolor) !important; 
+}
+
+.p-dialog.p-confirm-dialog .p-dialog-content {
+  background: var(--soft-bgcolor);
+  color: var(--whitecolor) !important; 
+}
+
+/* Change the background and text color of the dialog footer */
+.p-dialog.p-confirm-dialog .p-dialog-footer {
+  background: var(--soft-bgcolor);
+  color: var(--whitecolor) !important; 
+}
+  /*********************-slider********************/
+
+.p-slider .p-slider-handle {
+  width: 15px;
+  height: 15px;
+  background: #f0d9bb;
+  border-color: var(--whitecolor);
+}
+
+.p-slider .p-slider-handle:hover {
+  background: #f2e3cf;
+  border-color: #f2e3cf;
+}
+
+.p-slider .p-slider-range {
+  background: #b0a291;
+}
+  /*********************-tabview********************/
+.p-tabview{
+  background-color: transparent !important;
+}
+
+.p-tabview .p-tabview-nav {
+  background: transparent;  
+  border-bottom: 1px solid var(--bordercolor); 
+}
+
+.p-tabview .p-tabview-nav li .p-tabview-nav-link {
+  background: var(--soft-darktranscolor); 
+  color: var(--whitecolor);
+}
+
+.p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
+  background: var(--soft-bgcolor); 
+  color: var(--whitecolor);
+}
+
+.p-tabview .p-tabview-panels {
+  background: transparent; 
+}
+
+ 
+  /*********************-timeline********************/
+  
+  .p-timeline-event-opposite{
+    display: none;
+  }
+
+  .p-timeline .p-timeline-event-connector{
+    margin: 10px;
+    background-color: #7d7d7d56;
+    
+  }
+  .p-fileUpload{
+    background-color: var(--blackcolor) !important;
+  }
+  /*********************-sidebar********************/
+  .p-sidebar {
+    background:var(--soft-bgcolor);
+  }
+  
+  .p-component-overlay{
+  position: relative;  
+}
+  /*********************-table********************/
+
+
+/* Change table header background and text color */
+.p-datatable .p-datatable-header {
+  background: var(--soft-bgcolor) !important;
+  color: var(--whitecolor) !important;
+}
+
+/* Change table footer background and text color */
+.p-datatable .p-datatable-footer {
+  background: var(--soft-bgcolor) !important;
+  color: var(--whitecolor) !important;
+}
+
+/* Change table row background and text color */
+.p-datatable .p-datatable-tbody>tr {
+  background: var(--soft-bgcolor) !important;
+  color: var(--whitecolor) !important;
+}
+
+/* Change table row hover background and text color */
+.p-datatable .p-datatable-tbody>tr:hover {
+  background: var(--blackcolor) !important;
+  color: var(--whitecolor) !important;
+}
+
+/* Change table cell border color */
+.p-datatable .p-datatable-tbody>tr>td {
+  border-color: var(--bordercolor) !important;
+}
+
+/* Change table header cell background and text color */
+.p-datatable .p-datatable-thead>tr>th {
+  background: var(--soft-bgcolor) !important;
+  color: var(--whitecolor) !important;
+}
+
+/* Change table striped row background */
+.p-datatable.p-datatable-striped .p-datatable-tbody>tr:nth-child(even) {
+  background: var(--soft-bgcolor) !important;
+}
+
+/* Change table striped row hover background */
+.p-datatable.p-datatable-striped .p-datatable-tbody>tr:nth-child(even):hover {
+  background: var(--blackcolor) !important;
+}
+  /*********************-paginator********************/
+
+
+.p-paginator {
+  background: transparent !important;
+  color: var(--whitecolor) !important;
+  border: transparent;
+}
+.p-skeleton{
+  background: var(--soft-bgcolor) !important;
+
+}
