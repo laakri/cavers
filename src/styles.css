@@ -1,7 +1,7 @@
 @import "primeng/resources/themes/lara-light-blue/theme.css";
 @import "primeng/resources/primeng.css";
 @import "primeicons/primeicons.css";
-
+@import "~quill/dist/quill.snow.css";
 body{
     height: 100%;
     width: 100%;
@@ -44,6 +44,7 @@ button {
 ul {
   list-style-type: none;
 }
+textarea,
 input{
   background-color: var(--soft-bgcolor) !important;
   color: var(--whitecolor) !important;
@@ -317,4 +318,64 @@ input::placeholder{
 .p-skeleton{
   background: var(--soft-bgcolor) !important;
 
+}
+  /*********************-image********************/
+
+.p-image-mask{
+  position: fixed;
+ } 
+  /*********************-pre editor Type********************/
+
+ pre{
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: var(--special-button-background);
+  color: var(--special-button-color);
+  border:  solid 1px var(--special-button-border);
+}
+  /*********************-p-editor********************/
+
+.p-editor-toolbar {
+  background: var(--bgcolor);
+  border-top-right-radius: 6px;
+  border-top-left-radius: 6px;
+}
+
+.p-editor-container .p-editor-toolbar.ql-snow {
+  border: 1px solid var(--blackcolor);
+}
+
+.p-editor-container .p-editor-toolbar.ql-snow .ql-stroke {
+  stroke: var(--soft-bgcolor);
+}
+
+.p-editor-container .p-editor-toolbar.ql-snow .ql-fill {
+  fill: var(--soft-bgcolor);
+}
+
+/* Update other styles similarly with the variables */
+
+.p-editor-container .p-editor-content {
+  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+.p-editor-container .p-editor-content.ql-snow {
+  border: 1px solid var(--blackcolor);
+}
+
+.p-editor-container .p-editor-content .ql-editor {
+  background: var(--whitecolor);
+  color: var(--blackcolor);
+  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+/* Update button styles, active styles, etc., with the variables */
+
+.p-inputgroup-addon {
+  background: var(--soft-bgcolor);
+  color: var(--blackcolor);
+  border-top: 1px solid var(--blackcolor);
 }

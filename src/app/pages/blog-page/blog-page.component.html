@@ -1,1 +1,20 @@
-<p>blog-page works!</p>
+<div class="mainpage">
+  <div>
+    <span class="categ" *ngFor="let cat of blog.selectedCategorys">{{
+      cat
+    }}</span>
+  </div>
+  <div class="createAt">{{ blog.createdAt | date : "MMM d, y" }}</div>
+
+  <h2>{{ blog.title }}</h2>
+  <div class="shortDescription">{{ blog.shortDescription }}</div>
+  <p-image
+    src="../../../assets/img/presale-table-tokens-page.jpg"
+    alt="Image"
+    height="400px"
+    [preview]="true"
+  ></p-image>
+  <div>
+    <div class="blog-content" [innerHTML]="trustedText"></div>
+  </div>
+</div>

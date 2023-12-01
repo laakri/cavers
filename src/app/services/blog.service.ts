@@ -12,14 +12,14 @@ export class BlogService {
   constructor(private http: HttpClient) {}
 
   // Create a new blog
-  createBlog(blogData: Blog): Observable<Blog> {
-    return this.http.post<Blog>(`${this.apiUrl}/add-blog`, blogData);
+  createBlog(blogData: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/add-blog`, blogData);
   }
   getBlogById(blogId: string) {
     return this.http.get(`${this.apiUrl}/GetBlog/${blogId}`);
   }
   incrementViews(blogId: string) {
-    const url = `/api/increment-views/${blogId}`;
+    const url = `${this.apiUrl}/increment-views/${blogId}`;
     return this.http.post(url, {});
   }
   getBlogs(

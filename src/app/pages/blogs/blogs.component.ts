@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Blog } from './../../models/blog.model';
+import { Blogs } from './../../models/blog.model';
 import { BlogService } from './../../services/blog.service';
 import { UsersService } from './../../services/users.service';
 import { Subscription } from 'rxjs';
@@ -34,7 +34,7 @@ export class BlogsComponent implements OnInit {
   selectedSortByDate: SortByDate = { name: 'Default Sort', code: 'newest' };
   searchTerm: string = '';
 
-  blogs: Blog[] = [];
+  blogs: Blogs[] = [];
   isLoading: boolean = true;
   userRole: string = 'free';
   topFreeBlogs: any[] = [];

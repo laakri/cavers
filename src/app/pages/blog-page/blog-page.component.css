@@ -1,0 +1,20 @@
+.mainpage{
+    max-width: 1000px;
+    margin: 20px auto;
+}
+.categ{
+    background-color: var(--special-button-background);
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-right: 10px;
+    max-width: max-content;
+}
+.createAt{
+    margin: 10px 0;
+    color: var(--graycolor);
+}
+.shortDescription{
+    color: var(--graycolor);
+    font-size: 18px;
+    margin-bottom: 30px;
+}

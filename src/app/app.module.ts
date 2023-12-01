@@ -53,6 +53,7 @@ import { AccordionModule } from 'primeng/accordion';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { DialogModule } from 'primeng/dialog';
 import { SkeletonModule } from 'primeng/skeleton';
+import { EditorModule } from 'primeng/editor';
 
 /**********  Component Imports *************** */
 
@@ -132,6 +133,7 @@ import { BlogPageComponent } from './pages/blog-page/blog-page.component';
     DynamicDialogModule,
     DialogModule,
     SkeletonModule,
+    EditorModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },

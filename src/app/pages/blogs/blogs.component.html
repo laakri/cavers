@@ -124,8 +124,8 @@
               {{ topFreeBlog.shortDescription }}
             </span>
           </div>
+          <!-- Conditionally render the button based on the showFourthBlog flag -->
         </ng-template>
-        <!-- Conditionally render the button based on the showFourthBlog flag -->
         <p-button
           *ngIf="!showFourthBlog"
           (click)="loadFourthBlog()"

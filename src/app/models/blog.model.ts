@@ -1,12 +1,19 @@
 export interface Blog {
+  title: string;
+  shortDescription: string;
+  text: string;
+  selectedCategorys: string[];
+  selectedMembershipLevels: string;
+  tags: string[];
+  blogImage: File; // File object for the blog image
+  chartImage: File; // File object for the chart image
+}
+export interface Blogs {
   _id: string;
   title: string;
   shortDescription: string;
   blogImage: File;
-  chartImage: File;
-  text: string;
-  selectedCategorys: string[]; // You can define the type based on your actual data structure.
-  selectedMembershipLevels: string[]; // You can define the type based on your actual data structure.
+  selectedCategorys: string[];
   tags: string[];
   createdAt: string;
 }
