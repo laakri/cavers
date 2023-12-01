@@ -15,6 +15,9 @@ interface Category {
   providers: [MessageService],
 })
 export class AddBlogComponent implements OnInit {
+  cities: Category[] = [];
+
+  selectedCities: Category[] = [];
   tags: string[] = [];
   tagForm: FormGroup;
   formGroup: FormGroup;
@@ -48,6 +51,13 @@ export class AddBlogComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.cities = [
+      { name: 'New York', code: 'NY' },
+      { name: 'Rome', code: 'RM' },
+      { name: 'London', code: 'LDN' },
+      { name: 'Istanbul', code: 'IST' },
+      { name: 'Paris', code: 'PRS' },
+    ];
     this.categorys = [
       { name: 'Cryptocurrency News', code: 'crypto-news' },
       { name: 'Blockchain Technology', code: 'blockchain-tech' },
