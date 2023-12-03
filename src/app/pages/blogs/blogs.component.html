@@ -1,110 +1,113 @@
 <div class="mainpage">
   <div class="split-section">
     <div class="left-section">
-      <div class="filter-section">
-        <div class="p-inputgroup">
-          <input
-            type="text"
-            pInputText
-            placeholder="Search"
-            [(ngModel)]="searchTerm"
-          />
-          <button
-            type="button"
-            pButton
-            label="Search"
-            (click)="onSearch()"
-          ></button>
+      <div class="content-min-height">
+        <div class="filter-section">
+          <div class="p-inputgroup">
+            <input
+              type="text"
+              pInputText
+              placeholder="Search"
+              [(ngModel)]="searchTerm"
+            />
+            <button
+              type="button"
+              pButton
+              label="Search"
+              (click)="onSearch()"
+            ></button>
+          </div>
+
+          <p-dropdown
+            [options]="Categorys"
+            [(ngModel)]="selectedCategory"
+            optionLabel="name"
+            (ngModelChange)="onCategoryChange()"
+          ></p-dropdown>
+          <p-dropdown
+            [options]="SortByDate"
+            [(ngModel)]="selectedSortByDate"
+            optionLabel="name"
+            (ngModelChange)="onSortByDateChange()"
+          ></p-dropdown>
         </div>
 
-        <p-dropdown
-          [options]="Categorys"
-          [(ngModel)]="selectedCategory"
-          optionLabel="name"
-          (ngModelChange)="onCategoryChange()"
-        ></p-dropdown>
-        <p-dropdown
-          [options]="SortByDate"
-          [(ngModel)]="selectedSortByDate"
-          optionLabel="name"
-          (ngModelChange)="onSortByDateChange()"
-        ></p-dropdown>
-      </div>
+        <h2>Blogs Section</h2>
 
-      <h2>Blogs Section</h2>
-
-      <div *ngIf="isLoading; else content">
-        <div class="blogs">
-          <p-skeleton
-            width="100%"
-            height="220px"
-            styleClass="mb-2"
-          ></p-skeleton>
-          <p-skeleton
-            width="100%"
-            height="220px"
-            styleClass="mb-2"
-          ></p-skeleton>
-          <p-skeleton
-            width="100%"
-            height="220px"
-            styleClass="mb-2"
-          ></p-skeleton>
-        </div>
-      </div>
-
-      <ng-template #content>
-        <div class="blogs" *ngIf="blogs.length > 0; else noBlogsFound">
-          <!-- Iterate through the blogs and display specific fields -->
-          <div class="blog" *ngFor="let blog of blogs">
-            <div class="blog-right-section">
-              <a [routerLink]="['/BlogPage', blog._id]">
-                <div class="blog-title">{{ blog.title }}</div>
-              </a>
-              <div class="blog-category">
-                {{ blog.selectedCategorys.join(" , ") }}
-              </div>
-              <span>{{ blog.shortDescription }}</span>
-              <div class="blog-tags">
-                <div class="blog-tag" *ngFor="let tag of blog.tags">
-                  {{ tag }}
-                </div>
-              </div>
-              <div class="blog-date">
-                Released At : {{ blog.createdAt | date : "MMM d, y" }}
-              </div>
-            </div>
-
-            <div class="blog-img">
-              <img src="{{ blog.blogImage }}" alt="" />
-            </div>
+        <div *ngIf="isLoading; else content">
+          <div class="blogs">
+            <p-skeleton
+              width="100%"
+              height="220px"
+              styleClass="mb-2"
+            ></p-skeleton>
+            <p-skeleton
+              width="100%"
+              height="220px"
+              styleClass="mb-2"
+            ></p-skeleton>
+            <p-skeleton
+              width="100%"
+              height="220px"
+              styleClass="mb-2"
+            ></p-skeleton>
           </div>
         </div>
-      </ng-template>
 
-      <ng-template #noBlogsFound>
-        <div class="no-blogs-found">
-          <i class="pi pi-chart-bar"></i>
-          <h3>No blogs found.</h3>
-          <span>Try changing your search criteria or check back later.</span>
-        </div>
-      </ng-template>
+        <ng-template #content>
+          <div class="blogs" *ngIf="blogs.length > 0; else noBlogsFound">
+            <!-- Iterate through the blogs and display specific fields -->
+            <div class="blog" *ngFor="let blog of blogs">
+              <div class="blog-left-section">
+                <a [routerLink]="['/BlogPage', blog._id]">
+                  <div class="blog-title">{{ blog.title }}</div>
+                </a>
+                <div class="blog-category">
+                  {{ blog.selectedCategorys.join(" , ") }}
+                </div>
+                <span class="blog-description">{{
+                  blog.shortDescription
+                }}</span>
+                <div class="blog-tags">
+                  <div class="blog-tag" *ngFor="let tag of blog.tags">
+                    {{ tag }}
+                  </div>
+                </div>
+                <div class="blog-date">
+                  Released At : {{ blog.createdAt | date : "MMM d, y" }}
+                </div>
+              </div>
+
+              <div class="blog-img">
+                <img src="{{ blog.blogImage }}" alt="" />
+              </div>
+            </div>
+          </div>
+        </ng-template>
+
+        <ng-template #noBlogsFound>
+          <div class="no-blogs-found">
+            <i class="pi pi-chart-bar"></i>
+            <h2>No blogs found.</h2>
+            <span>Try changing your search criteria or check back later.</span>
+          </div>
+        </ng-template>
+      </div>
       <div class="paginator">
         <p-paginator
           (onPageChange)="onPageChange($event)"
           [first]="first"
           [rows]="rows"
           [totalRecords]="120"
-          [rowsPerPageOptions]="[2, 10, 20, 30]"
+          [rowsPerPageOptions]="[10, 20, 30]"
         ></p-paginator>
       </div>
     </div>
 
     <div class="right-section">
-      <div *ngIf="isLoading; else topBlogs"></div>
       <div class="recommended">
         <h3>Latest Blogs</h3>
-        <div class="blogs">
+        <div class="blogs" *ngIf="isLoading; else topBlogs">
           <p-skeleton width="100%" height="40px" styleClass="mb-2"></p-skeleton>
           <p-skeleton width="100%" height="40px" styleClass="mb-2"></p-skeleton>
           <p-skeleton width="100%" height="40px" styleClass="mb-2"></p-skeleton>
@@ -115,25 +118,24 @@
             *ngFor="let topFreeBlog of topFreeBlogs"
           >
             <a [routerLink]="['/BlogPage', topFreeBlog._id]">
-              <div>
-                <i class="pi pi-bookmark-fill"></i>
+              <div class="topFreeBlog-title">
+                <i class="pi pi-bookmark-fill topFreeBlog-i"></i>
                 {{ topFreeBlog.title }}
               </div>
             </a>
-            <span>
+            <span class="topFreeBlog-shortDescription">
               {{ topFreeBlog.shortDescription }}
             </span>
           </div>
-          <!-- Conditionally render the button based on the showFourthBlog flag -->
+          <p-button
+            *ngIf="!showFourthBlog"
+            (click)="loadFourthBlog()"
+            class="recommended-topic-middle-button"
+            [text]="true"
+          >
+            <i class="pi pi-ellipsis-h"></i>
+          </p-button>
         </ng-template>
-        <p-button
-          *ngIf="!showFourthBlog"
-          (click)="loadFourthBlog()"
-          class="recommended-topic-middle-button"
-          styleClass="p-button-text"
-        >
-          <i class="pi pi-ellipsis-h"></i>
-        </p-button>
       </div>
 
       <div class="recommended">
@@ -171,7 +173,7 @@
             *ngIf="!showAllCategories"
             (click)="showMoreCategories()"
             class="recommended-topic-middle-button"
-            styleClass="p-button-text"
+            [text]="true"
           >
             <i class="pi pi-ellipsis-h"></i>
           </p-button>

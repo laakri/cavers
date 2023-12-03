@@ -36,6 +36,8 @@
     border-radius: 20px;
     padding: 10px;
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
   }
   
   .blog-img-text {
@@ -52,7 +54,6 @@
     margin-top: 10px;
   }
   .chips-container button {
-    height: 47px;
 }
   .tags-wrapper {
     display: flex;
@@ -60,7 +61,8 @@
   }
   
   .tag {
-    background-color: #007bff;
+    background-color: var(--special-button-background);
+    border: solid 1px var(--special-button-border);
     color: #fff;
     padding: 5px;
     margin: 5px;

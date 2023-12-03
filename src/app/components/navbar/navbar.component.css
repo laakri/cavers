@@ -44,6 +44,7 @@
   z-index: 1000;
   padding: 0 20px;
   overflow: hidden; 
+
 }
 
 .toolbar::after {
@@ -61,11 +62,11 @@
 
 .toolbar-mainpage {
   max-width: 1300px;
-  margin: 10px auto;
+  height: 60px;
+  margin: auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-
 }
 
 .left-toolbar a {
@@ -90,7 +91,6 @@
 
 }
 
-.activebutton {}
 
 .right-toolbar {
   display: flex;
@@ -105,16 +105,12 @@
 
 }
 
-.signup-button {}
-
-.profile-section {}
 
 .padge-icon {
   color: var(--whitecolor) !important;
 
 }
 
-.profile-section-name {}
 
 .theme-mode {
   color: var(--whitecolor) !important;

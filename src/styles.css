@@ -24,7 +24,6 @@ body{
     --darktranscolor: #000000ce;
     --soft-darktranscolor: #0f172169;
     --buttonactive: #7eb075;
-
     --special-button-color:#2ca57b;
     --special-button-background:#1b2a27;
     --special-button-border:#267a5c;
@@ -34,8 +33,8 @@ a,
 button {
   cursor: pointer;
   text-decoration: none;
-  height: 35px;
   color: var(--whitecolor);
+  font-size: 16px;
 }
 
 .fas {
@@ -44,8 +43,12 @@ button {
 ul {
   list-style-type: none;
 }
-textarea,
+textarea{
+  background-color: var(--soft-bgcolor) !important;
+  color: var(--whitecolor) !important;
+}
 input{
+  height: 35px;
   background-color: var(--soft-bgcolor) !important;
   color: var(--whitecolor) !important;
 }
@@ -95,42 +98,6 @@ input::placeholder{
   }
   
    /*********************-multiselect********************/
-
-.p-multiselect {
-  background: var(--soft-bgcolor);
-  color: var(--whitecolor); 
-
-}
-
-.p-multiselect .p-multiselect-label {
-  border-radius:7px ;
-  background: var(--soft-bgcolor); 
-  color: var(--whitecolor); 
-
-}
-
-.p-multiselect .p-multiselect-trigger {
-  background: var(--soft-bgcolor); 
-  height: 40px;
-  color: var(--whitecolor); 
-}
-.p-multiselect-panel {
-  background: var(--soft-bgcolor); 
-  height: 40px;
-  color: var(--whitecolor); 
-}
-
-.p-multiselect-panel .p-multiselect-header {
-  background: var(--soft-bgcolor); 
-  color: var(--whitecolor); 
-}
-.p-multiselect-panel .p-multiselect-item {
-  color: var(--whitecolor); 
-  background: var(--soft-bgcolor); 
-}
-.p-multiselect-panel .p-multiselect-items .p-multiselect-item {
-  color: var(--whitecolor); 
-    }
   /*********************-dropdown********************/
 
 .p-dropdown {
@@ -263,57 +230,48 @@ input::placeholder{
   /*********************-table********************/
 
 
-/* Change table header background and text color */
 .p-datatable .p-datatable-header {
   background: var(--soft-bgcolor) !important;
   color: var(--whitecolor) !important;
 }
 
-/* Change table footer background and text color */
 .p-datatable .p-datatable-footer {
   background: var(--soft-bgcolor) !important;
   color: var(--whitecolor) !important;
 }
 
-/* Change table row background and text color */
 .p-datatable .p-datatable-tbody>tr {
   background: var(--soft-bgcolor) !important;
   color: var(--whitecolor) !important;
 }
 
-/* Change table row hover background and text color */
 .p-datatable .p-datatable-tbody>tr:hover {
   background: var(--blackcolor) !important;
   color: var(--whitecolor) !important;
 }
 
-/* Change table cell border color */
 .p-datatable .p-datatable-tbody>tr>td {
   border-color: var(--bordercolor) !important;
 }
 
-/* Change table header cell background and text color */
 .p-datatable .p-datatable-thead>tr>th {
   background: var(--soft-bgcolor) !important;
   color: var(--whitecolor) !important;
 }
 
-/* Change table striped row background */
 .p-datatable.p-datatable-striped .p-datatable-tbody>tr:nth-child(even) {
   background: var(--soft-bgcolor) !important;
 }
 
-/* Change table striped row hover background */
 .p-datatable.p-datatable-striped .p-datatable-tbody>tr:nth-child(even):hover {
   background: var(--blackcolor) !important;
 }
   /*********************-paginator********************/
 
-
 .p-paginator {
-  background: transparent !important;
+  background-color: var(--soft-bgcolor) ;
+  border: none;
   color: var(--whitecolor) !important;
-  border: transparent;
 }
 .p-skeleton{
   background: var(--soft-bgcolor) !important;
@@ -335,45 +293,50 @@ input::placeholder{
   border:  solid 1px var(--special-button-border);
 }
   /*********************-p-editor********************/
-
-.p-editor-toolbar {
-  background: var(--bgcolor);
-  border-top-right-radius: 6px;
-  border-top-left-radius: 6px;
-}
-
-.p-editor-container .p-editor-toolbar.ql-snow {
-  border: 1px solid var(--blackcolor);
-}
-
-.p-editor-container .p-editor-toolbar.ql-snow .ql-stroke {
-  stroke: var(--soft-bgcolor);
-}
-
-.p-editor-container .p-editor-toolbar.ql-snow .ql-fill {
-  fill: var(--soft-bgcolor);
-}
-
-/* Update other styles similarly with the variables */
-
-.p-editor-container .p-editor-content {
-  border-bottom-right-radius: 6px;
-  border-bottom-left-radius: 6px;
-}
-
-.p-editor-container .p-editor-content.ql-snow {
-  border: 1px solid var(--blackcolor);
-}
-
-.p-editor-container .p-editor-content .ql-editor {
-  background: var(--whitecolor);
-  color: var(--blackcolor);
-  border-bottom-right-radius: 6px;
-  border-bottom-left-radius: 6px;
-}
-
-/* Update button styles, active styles, etc., with the variables */
-
+  .p-editor-toolbar {
+    background: var(--bgcolor);
+    border-top-right-radius: 6px;
+    border-top-left-radius: 6px;
+  }
+  
+  .p-editor-container .p-editor-toolbar.ql-snow {
+    border: 1px solid var(--blackcolor);
+  }
+  
+  .p-editor-container .p-editor-toolbar.ql-snow .ql-stroke {
+    stroke: var(--soft-bgcolor);
+  }
+  
+  .p-editor-container .p-editor-toolbar.ql-snow .ql-fill {
+    fill: var(--soft-bgcolor);
+  }
+  
+  /* Update other styles similarly with the variables */
+  
+  .p-editor-container .p-editor-content {
+    border-bottom-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+  }
+  
+  .p-editor-container .p-editor-content.ql-snow {
+    border: 1px solid var(--blackcolor);
+  }
+  
+  .p-editor-container .p-editor-content .ql-editor {
+    background: var(--whitecolor);
+    color: var(--blackcolor);
+    border-bottom-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+  }
+  
+  /* Update button styles, active styles, etc., with the variables */
+  
+  .p-inputgroup-addon {
+    background: var(--soft-bgcolor);
+    color: var(--blackcolor);
+    border-top: 1px solid var(--blackcolor);
+  }
+  
 .p-inputgroup-addon {
   background: var(--soft-bgcolor);
   color: var(--blackcolor);

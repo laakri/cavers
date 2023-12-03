@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'BlogPage/:id', component: BlogPageComponent },
 
   { path: 'AddBlog', component: AddBlogComponent },
-  { path: 'home', component: EditBlogComponent },
+  { path: 'EditBlog/:id', component: EditBlogComponent },
   { path: 'Users', component: UsersListComponent },
 ];
 

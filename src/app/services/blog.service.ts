@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Blog } from '../models/blog.model';
 
@@ -14,6 +14,14 @@ export class BlogService {
   // Create a new blog
   createBlog(blogData: any): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/add-blog`, blogData);
+  }
+  updateBlog(blogId: string, formData: FormData): Observable<Blog> {
+    const headers = new HttpHeaders();
+    return this.http.post<Blog>(
+      `${this.apiUrl}/update-blog/${blogId}`,
+      formData,
+      { headers }
+    );
   }
   getBlogById(blogId: string) {
     return this.http.get(`${this.apiUrl}/GetBlog/${blogId}`);

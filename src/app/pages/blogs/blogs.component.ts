@@ -5,12 +5,6 @@ import { UsersService } from './../../services/users.service';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 
-interface PageEvent {
-  first: number;
-  rows: number;
-  page: number;
-  pageCount: number;
-}
 interface Category {
   name: string;
   code: string;
@@ -87,6 +81,7 @@ export class BlogsComponent implements OnInit {
 
       // Load blogs with the retrieved options
       this.loadBlogs();
+      this.loadTopFreeThreeBlogs();
     });
     this.categoriesToShow = this.Categorys.slice(1, 5);
   }
@@ -129,7 +124,7 @@ export class BlogsComponent implements OnInit {
     this.loadBlogs();
   }
 
-  onPageChange(event: PageEvent) {
+  onPageChange(event: any) {
     this.first = event.first;
     this.rows = event.rows;
 
@@ -154,21 +149,19 @@ export class BlogsComponent implements OnInit {
       this.userRole
     ).subscribe((data: any) => {
       this.blogs = data.blogs;
-      console.log(this.blogs);
       this.isLoading = false;
     });
   }
   loadTopFreeThreeBlogs() {
     this.isLoading = true;
-
     this.BlogService.getTopFreeBlogs().subscribe(
       (data) => {
-        // Load only the first three blogs initially
         this.topFreeBlogs = data.slice(0, 3);
         this.isLoading = false;
       },
       (error) => {
         console.error('Error fetching top free blogs:', error);
+        this.isLoading = false;
       }
     );
   }
@@ -177,7 +170,7 @@ export class BlogsComponent implements OnInit {
     // Load the fourth blog and set showFourthBlog to true
     this.BlogService.getTopFreeBlogs().subscribe(
       (data) => {
-        this.topFreeBlogs.push(data[3]); // Assuming the fourth blog is at index 3
+        this.topFreeBlogs.push(data[3]);
         this.showFourthBlog = true;
       },
       (error) => {

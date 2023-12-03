@@ -1,0 +1,95 @@
+.mainpage {
+    max-width: 1300px;
+    margin: auto;
+    padding: 10px ;
+  }
+  
+  .form-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+  
+  .form-section {
+    max-width: 400px;
+  }
+  
+  h4 {
+    margin-bottom: 10px;
+  }
+  
+  input[type="text"],
+  textarea,
+  .p-inputtext,
+  .p-inputtextarea,
+  .p-multiselect {
+    width: 100%;
+  }
+
+  input[type="file"]{   
+    display: none;  
+}
+  .blog-img {
+    border: 1px solid var(--special-button-border);
+    background-color: var(--special-button-background);
+    color: var(--special-button-color);
+    border-radius: 20px;
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .blog-img-text {
+    display: inline-block;
+    margin-left: 10px;
+  }
+  
+  .blogPreview {
+    max-height: 150px;
+    margin-top: 10px;
+  }
+  
+  .chips-container {
+    margin-top: 10px;
+  }
+  .chips-container button {
+}
+  .tags-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .tag {
+    background-color: var(--special-button-background);
+    border: solid 1px var(--special-button-border);
+    color: #fff;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .tag span {
+    margin-right: 5px;
+  }
+  
+  .tag div {
+    cursor: pointer;
+  }
+  
+  .radio-flex {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .radio-flex input {
+    margin-right: 5px;
+  }
+  
+  .p-editor {
+    margin-top: 10px;
+  }
+  
