@@ -16,6 +16,7 @@ export class NavbarComponent implements OnInit {
   isAuth: boolean = false;
   userName: any;
   firstLetter!: string;
+  Search: string = '';
   private isAuthListenerSubs!: Subscription;
   private userNameListenerSubs!: Subscription;
 
@@ -44,7 +45,9 @@ export class NavbarComponent implements OnInit {
       this.bannerClass = 'slide-up';
     }, 0);
   }
-
+  Logout() {
+    this.UsersService.logout();
+  }
   change_theme(): void {
     this.isBrightTheme = !this.isBrightTheme;
     const body = document.body;

@@ -1,1 +1,94 @@
-<p>users-list works!</p>
+<!-- User list-->
+<div class="mainpage">
+  <div class="filter-section">
+    <div class="p-inputgroup">
+      <input type="text" pInputText placeholder="Search" [(ngModel)]="search" />
+      <button
+        type="button"
+        pButton
+        label="Search"
+        (click)="searchUsers()"
+      ></button>
+    </div>
+    <p-dropdown
+      [options]="SortByDate"
+      [(ngModel)]="selectedSortByDate"
+      optionLabel="name"
+      (ngModelChange)="sortUsers()"
+    ></p-dropdown>
+  </div>
+  <div class="table">
+    <p-table
+      [value]="users"
+      styleClass="p-datatable-striped"
+      [tableStyle]="{ 'min-width': '50rem' }"
+    >
+      <ng-template pTemplate="header">
+        <tr>
+          <th>created At</th>
+          <th>updted At</th>
+          <th>email</th>
+          <th>name</th>
+          <th>roles</th>
+          <th>Delete</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-user>
+        <tr>
+          <td>{{ user.createdAt | date : "MMM d, y" }}</td>
+          <td>{{ user.updatedAt | date : "MMM d, y" }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.name }}</td>
+
+          <td>
+            <p-button
+              [outlined]="true"
+              (click)="showDialog(user.roles[0], user.email, user._id)"
+              >{{ user.roles[0] }}</p-button
+            >
+          </td>
+          <td>
+            <p-button
+              (click)="confirmDelete($event, user._id)"
+              label="Delete"
+              [outlined]="true"
+              severity="danger"
+            ></p-button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+
+  <p-paginator
+    (onPageChange)="onPageChange($event)"
+    [first]="first"
+    [rows]="rows"
+    [totalRecords]="120"
+    [rowsPerPageOptions]="[3, 10, 20, 30]"
+  ></p-paginator>
+</div>
+
+<p-dialog
+  header="Change Role "
+  [(visible)]="visible"
+  [modal]="true"
+  [style]="{ width: '240px' }"
+  [draggable]="false"
+  [resizable]="false"
+>
+  <span>{{ UserEmail }}</span>
+  <div class="dialog">
+    <p-dropdown
+      [options]="roles"
+      [(ngModel)]="selectedRole"
+      optionLabel="name"
+      placeholder="Select a Role"
+      appendTo="body"
+    ></p-dropdown>
+
+    <p-button (click)="ChangeRole()">Confirm</p-button>
+  </div>
+</p-dialog>
+<p-toast position="bottom-center"></p-toast>
+<p-confirmPopup></p-confirmPopup>

@@ -21,6 +21,7 @@ interface SortByDate {
 export class BlogsComponent implements OnInit {
   list = [1, 2, 3];
   first: number = 0;
+  page: number = 0;
   rows: number = 10;
   Categorys!: Category[];
   SortByDate!: SortByDate[];
@@ -30,13 +31,13 @@ export class BlogsComponent implements OnInit {
 
   blogs: Blogs[] = [];
   isLoading: boolean = true;
-  userRole: string = 'free';
+  userId: string = 'free';
   topFreeBlogs: any[] = [];
   showFourthBlog: boolean = false;
   showAllCategories: boolean = false;
   categoriesToShow: any[] = [];
 
-  private userRoleListenerSubs!: Subscription;
+  private userIdListenerSubs!: Subscription;
 
   constructor(
     private BlogService: BlogService,
@@ -45,7 +46,7 @@ export class BlogsComponent implements OnInit {
     private router: Router
   ) {}
   ngOnInit() {
-    this.userRole = this.UsersService.getUserRole();
+    this.userId = this.UsersService.getUserId();
 
     this.SortByDate = [
       { name: 'Newest', code: 'newest' },
@@ -73,8 +74,9 @@ export class BlogsComponent implements OnInit {
         this.SortByDate.find((sort) => sort.code === sortCode) ||
         this.SortByDate[0]; // Set a default sort if not found
 
-      this.first = parseInt(params['page']) || 0;
-      this.rows = parseInt(params['limit']) || 10;
+      this.page = parseInt(params['page']) || 0;
+      this.first = parseInt(params['first']) || 0;
+      this.rows = parseInt(params['rows']) || 10;
 
       // Set the search term from the query parameter
       this.searchTerm = params['search'] || '';
@@ -93,9 +95,10 @@ export class BlogsComponent implements OnInit {
       queryParams: {
         category: this.selectedCategory.code,
         sort: this.selectedSortByDate.code,
-        page: this.first,
-        limit: this.rows,
-        search: this.searchTerm, // Add the search term to the URL
+        page: this.page,
+        first: this.first,
+        rows: this.rows,
+        search: this.searchTerm,
       },
       queryParamsHandling: 'merge',
     });
@@ -104,6 +107,7 @@ export class BlogsComponent implements OnInit {
   }
   onCategoryChange() {
     this.first = 0;
+    this.page = 0;
     this.router.navigate([], {
       relativeTo: this.route,
       queryParams: { category: this.selectedCategory.code },
@@ -126,12 +130,12 @@ export class BlogsComponent implements OnInit {
 
   onPageChange(event: any) {
     this.first = event.first;
+    this.page = event.page;
     this.rows = event.rows;
 
-    // Update the URL with the selected pagination options
     this.router.navigate([], {
       relativeTo: this.route,
-      queryParams: { page: this.first, limit: this.rows },
+      queryParams: { page: this.page, first: this.first, rows: this.rows },
       queryParamsHandling: 'merge',
     });
 
@@ -142,11 +146,12 @@ export class BlogsComponent implements OnInit {
     this.isLoading = true;
     this.BlogService.getBlogs(
       this.first,
+      this.page,
       this.rows,
       this.selectedCategory.code,
       this.selectedSortByDate.code,
       this.searchTerm,
-      this.userRole
+      this.userId
     ).subscribe((data: any) => {
       this.blogs = data.blogs;
       this.isLoading = false;
@@ -170,7 +175,7 @@ export class BlogsComponent implements OnInit {
     // Load the fourth blog and set showFourthBlog to true
     this.BlogService.getTopFreeBlogs().subscribe(
       (data) => {
-        this.topFreeBlogs.push(data[3]);
+        this.topFreeBlogs = data;
         this.showFourthBlog = true;
       },
       (error) => {

@@ -1,0 +1,128 @@
+<form (ngSubmit)="login(loginForm)" #loginForm="ngForm">
+  <div class="form-group">
+    <label for="gmailname">Gmail</label>
+    <input
+      id="gmailname"
+      type="email"
+      pInputText
+      placeholder="Enter your gmail"
+      name="gmailname"
+      ngModel
+      required
+    />
+  </div>
+  <div class="forget-password-div">
+    <i class="pi pi-spin pi-spinner" *ngIf="loadingSendingConfirm"></i>
+
+    <button
+      pButton
+      (click)="sendCodeVerification(loginForm)"
+      class="p-button-text forget-password-link"
+      type="button"
+    >
+      Forgot Password
+    </button>
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input
+      id="password"
+      type="password"
+      pInputText
+      placeholder="Enter your password"
+      name="password"
+      ngModel
+      required
+    />
+  </div>
+
+  <button
+    type="submit"
+    pButton
+    label="Login"
+    [disabled]="!loginForm.form.valid"
+  ></button>
+</form>
+
+<p-dialog
+  header="Verification Code"
+  [(visible)]="visible"
+  [modal]="true"
+  [style]="{ width: '320px', height: '360px' }"
+  [draggable]="false"
+  [resizable]="false"
+>
+  <form (ngSubmit)="ConfirmCode(confirmCodeForm)" #confirmCodeForm="ngForm">
+    <div class="verification-code-details">
+      We just sent your authentication code via email to :
+      {{ maskedEmail(UserEmail) }} .
+      <br />
+      The code will expire in 10 minutes
+    </div>
+    <div class="form-group">
+      <label for="code">Device Verification Code</label>
+      <input
+        id="code"
+        type="text"
+        pInputText
+        placeholder="Enter your code"
+        name="code"
+        ngModel
+        required
+      />
+    </div>
+    <button
+      pButton
+      [loading]="loadingConfirm"
+      type="submit"
+      class="p-button confirmation-button"
+      label="Confirm"
+      [disabled]="!confirmCodeForm.form.valid"
+    ></button>
+  </form>
+</p-dialog>
+<p-dialog
+  header="Update Password"
+  [(visible)]="UpdatePassvisible"
+  [modal]="true"
+  [style]="{ width: '320px', height: '340px' }"
+  [draggable]="false"
+  [resizable]="false"
+>
+  <form
+    (ngSubmit)="confirmAndUpdatePassword(confirmAndUpdatePasswordForm)"
+    #confirmAndUpdatePasswordForm="ngForm"
+  >
+    <div class="form-group">
+      <label for="code">New Password</label>
+      <input
+        id="Firtstpassword"
+        type="password"
+        pInputText
+        placeholder="Enter your New password"
+        name="Firtstpassword"
+        ngModel
+        required
+      />
+      <label for="code">Confirm Password</label>
+
+      <input
+        id="confirmPassword"
+        type="password"
+        pInputText
+        placeholder="Confirm your password"
+        name="confirmPassword"
+        ngModel
+        required
+      />
+    </div>
+    <button
+      pButton
+      [loading]="loadingUpdating"
+      type="submit"
+      class="p-button confirmation-button"
+      label="Confirm"
+      [disabled]="!confirmAndUpdatePasswordForm.form.valid"
+    ></button>
+  </form>
+</p-dialog>

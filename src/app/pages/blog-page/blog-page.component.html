@@ -1,4 +1,15 @@
 <div class="mainpage">
+  <div class="speedDial">
+    <p-speedDial
+      showIcon="pi pi-ellipsis-v"
+      [model]="items"
+      hideIcon="pi pi-times"
+      direction="down"
+      buttonClassName="p-button-text"
+      size="small"
+      className="speeddial-left"
+    ></p-speedDial>
+  </div>
   <div>
     <span class="categ" *ngFor="let cat of blog.selectedCategorys">
       {{ cat }}
@@ -8,6 +19,7 @@
 
   <h2>{{ blog.title }}</h2>
   <div class="shortDescription">{{ blog.shortDescription }}</div>
+  <p-divider></p-divider>
   <p-image
     [src]="blog.chartImage"
     alt="Image"

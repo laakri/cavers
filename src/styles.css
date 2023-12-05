@@ -8,25 +8,26 @@ body{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    overflow-x:hidden;
     color: var(--whitecolor);
     background: var(--bgcolor);
     font-family: var(--font-family);
-    --bordercolor: #3a3a3a;
-    --bgcolor: #0a0d0b;
-    --bgtransparentcolor: #0a0d0bad;
-    --soft-bgcolor: #151417;
+    --bordercolor: #262c32;
+    --bgcolor: #000408;
+    --bgtransparentcolor: #000509cb;
+    --soft-bgcolor: #0c1017;
     --blackcolor: #000;
     --whitecolor: #fff;
-    --graycolor: #c2c0c0;
+    --graycolor: #909ca8;
     --maincolor: #08d9d6;
     --hovermaincolor: #01a4a1;
     --secendcolor: #ff3860;
     --darktranscolor: #000000ce;
     --soft-darktranscolor: #0f172169;
-    --buttonactive: #7eb075;
-    --special-button-color:#2ca57b;
-    --special-button-background:#1b2a27;
-    --special-button-border:#267a5c;
+    --buttonactive: #1b1f2a;
+    --special-button-color:#08d9d6;
+    --special-button-background:#1b232a;
+    --special-button-border:#265b7a;
 }
 
 a,
@@ -48,7 +49,7 @@ textarea{
   color: var(--whitecolor) !important;
 }
 input{
-  height: 35px;
+  height: 37px;
   background-color: var(--soft-bgcolor) !important;
   color: var(--whitecolor) !important;
 }
@@ -73,13 +74,18 @@ input::placeholder{
   /*********************-Active Button********************/
   
   .activebutton {
-    background-color: var(--buttonactive);
+    background-color: var(--buttonactive) !important;
   }
+  .activetabPanel{
+    background-color: var(--special-button-background) !;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom: 2px solid var(--maincolor);
+}
   /*********************-divider********************/
 
   .p-divider {
-    border-color: var(--bordercolor);
-    border-width: 1px;
+    border: var(--bordercolor) solid 1px;
   }
   
   /*********************-Button********************/
@@ -224,9 +230,7 @@ input::placeholder{
     background:var(--soft-bgcolor);
   }
   
-  .p-component-overlay{
-  position: relative;  
-}
+
   /*********************-table********************/
 
 
@@ -294,51 +298,35 @@ input::placeholder{
 }
   /*********************-p-editor********************/
   .p-editor-toolbar {
-    background: var(--bgcolor);
-    border-top-right-radius: 6px;
-    border-top-left-radius: 6px;
+    background-color: var(--soft-bgcolor) !important;
+    color: var(--whitecolor) !important;
+    border: var(--special-button-color) solid 1px !important;
+    
   }
-  
-  .p-editor-container .p-editor-toolbar.ql-snow {
-    border: 1px solid var(--blackcolor);
-  }
-  
-  .p-editor-container .p-editor-toolbar.ql-snow .ql-stroke {
-    stroke: var(--soft-bgcolor);
-  }
-  
-  .p-editor-container .p-editor-toolbar.ql-snow .ql-fill {
-    fill: var(--soft-bgcolor);
-  }
-  
-  /* Update other styles similarly with the variables */
-  
-  .p-editor-container .p-editor-content {
-    border-bottom-right-radius: 6px;
-    border-bottom-left-radius: 6px;
-  }
-  
   .p-editor-container .p-editor-content.ql-snow {
-    border: 1px solid var(--blackcolor);
+    border: 1px solid var(--blackcolor);fill: var(--soft-bgcolor) !important;
+    background-color: var(--soft-bgcolor) !important;
   }
   
   .p-editor-container .p-editor-content .ql-editor {
-    background: var(--whitecolor);
-    color: var(--blackcolor);
-    border-bottom-right-radius: 6px;
-    border-bottom-left-radius: 6px;
+    color: var(--whitecolor);
+    border: var(--special-button-color) solid 1px !important;
+    background-color: var(--bgcolor) !important;
   }
   
-  /* Update button styles, active styles, etc., with the variables */
-  
-  .p-inputgroup-addon {
-    background: var(--soft-bgcolor);
-    color: var(--blackcolor);
-    border-top: 1px solid var(--blackcolor);
+  /*********************-p-speeddial********************/
+
+  .p-element .p-ripple 
+  .p-button-icon-only 
+  .p-speeddial-button .p-button-rounded 
+  .p-speeddial-rotate .p-button .p-component{
+    border: red solid 1px !important;
+    background-color: transparent;
   }
-  
-.p-inputgroup-addon {
-  background: var(--soft-bgcolor);
-  color: var(--blackcolor);
-  border-top: 1px solid var(--blackcolor);
+.p-speeddial-button.p-button.p-button-icon-only .p-icon {
+    width: 14px; /* Change icon width to 2px */
+    height: 14px; /* Change icon height to 2px */
 }
+
+
+

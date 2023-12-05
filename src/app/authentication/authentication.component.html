@@ -1,0 +1,29 @@
+<div class="login-container">
+  <div class="website-info">
+    <i class="pi pi-spin pi-slack"></i>
+    <h1>Cavers</h1>
+  </div>
+  <div class="form-all-section">
+    <div>
+      <div class="tabView">
+        <button
+          class="tabPanel"
+          routerLinkActive="activetabPanel"
+          [routerLink]="['/auth/login']"
+        >
+          Login
+        </button>
+        <button
+          class="tabPanel"
+          routerLinkActive="activetabPanel"
+          [routerLink]="['/auth/signup']"
+        >
+          Sign Up
+        </button>
+      </div>
+      <div class="routed-content">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>

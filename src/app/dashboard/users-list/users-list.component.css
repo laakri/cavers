@@ -1,0 +1,25 @@
+.mainpage {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 10px;
+}
+.filter-section {
+    display: flex;
+    gap: 10px;
+  }.filter-section button {
+    height: 37px;
+    border: transparent;
+  }
+   .content-min-height{
+    min-height: 650px;
+  
+   } 
+.table{
+    margin: 30px auto;
+}
+.dialog{
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

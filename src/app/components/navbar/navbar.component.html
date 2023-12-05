@@ -21,65 +21,78 @@
 
 <div class="toolbar">
   <div class="toolbar-mainpage">
-    <div class="left-toolbar">
-      <a [routerLink]="['']">
-        <i class="pi pi-slack"></i>
-        <h2>Cavers</h2>
-      </a>
-    </div>
-    <div class="middle-toolbar">
-      <button
-        class="p-button-text"
-        routerLinkActive="activebutton"
-        [routerLink]="['Blogs']"
-        label="Blogs"
-        pButton
-      ></button
-      ><button
-        class="p-button-text"
-        routerLinkActive="activebutton"
-        [routerLink]="['Pricing']"
-        label="Pricing"
-        pButton
-      ></button>
-      <button
-        class="p-button-text"
-        routerLinkActive="activebutton"
-        [routerLink]="['categorie']"
-        label="About"
-        pButton
-      ></button>
-      <button
-        class="p-button-text"
-        routerLinkActive="activebutton"
-        [routerLink]="['categorie']"
-        label="Contact"
-        pButton
-      ></button>
-      <button
-        class="p-button-text"
-        routerLinkActive="activebutton"
-        [routerLink]="['AddBlog']"
-        label="Add Blog"
-        pButton
-      ></button
-      ><button
-        class="p-button-text"
-        routerLinkActive="activebutton"
-        [routerLink]="['EditBlog/6569fe8b5fd9d920d37fef8f']"
-        label="Edit Blog"
-        pButton
-      ></button>
+    <div class="toolbar-hole-left">
+      <div class="left-toolbar">
+        <a [routerLink]="['']">
+          <i class="pi pi-slack"></i>
+          <h3>Cavers</h3>
+        </a>
+      </div>
+      <p-divider layout="vertical" class="divider-vertical"></p-divider>
 
-      <button
-        class="p-button-text"
-        routerLinkActive="activebutton"
-        [routerLink]="['Users']"
-        label="Users"
-        pButton
-      ></button>
+      <div class="middle-toolbar">
+        <button
+          class="p-button-text"
+          routerLinkActive="activebutton"
+          [routerLink]="['Blogs']"
+          label="Blogs"
+          pButton
+        ></button
+        ><button
+          class="p-button-text"
+          routerLinkActive="activebutton"
+          [routerLink]="['Pricing']"
+          label="Pricing"
+          pButton
+        ></button>
+        <button
+          class="p-button-text"
+          routerLinkActive="activebutton"
+          [routerLink]="['categorie']"
+          label="About"
+          pButton
+        ></button>
+        <button
+          class="p-button-text"
+          routerLinkActive="activebutton"
+          [routerLink]="['categorie']"
+          label="Contact"
+          pButton
+        ></button>
+        <button
+          class="p-button-text"
+          routerLinkActive="activebutton"
+          [routerLink]="['AddBlog']"
+          label="Add Blog"
+          pButton
+        ></button
+        ><button
+          class="p-button-text"
+          routerLinkActive="activebutton"
+          [routerLink]="['EditBlog/6569fe8b5fd9d920d37fef8f']"
+          label="Edit Blog"
+          pButton
+        ></button>
+
+        <button
+          class="p-button-text"
+          routerLinkActive="activebutton"
+          [routerLink]="['Users']"
+          label="Users"
+          pButton
+        ></button>
+      </div>
     </div>
     <div class="right-toolbar">
+      <span class="p-input-icon-left">
+        <i class="pi pi-search"></i>
+        <input
+          type="text"
+          pInputText
+          [(ngModel)]="Search"
+          placeholder="Search "
+        />
+      </span>
       <button
         *ngIf="!isAuth"
         pButton
@@ -101,6 +114,11 @@
           <i class="pi pi-verified"></i>
         </div>
         <div class="profile-section-name">{{ userName }}</div>
+        <p-button
+          (click)="Logout()"
+          [link]="true"
+          icon="pi pi-sign-out"
+        ></p-button>
       </div>
       <button
         (click)="change_theme()"

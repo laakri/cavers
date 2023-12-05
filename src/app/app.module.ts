@@ -54,6 +54,7 @@ import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { DialogModule } from 'primeng/dialog';
 import { SkeletonModule } from 'primeng/skeleton';
 import { EditorModule } from 'primeng/editor';
+import { ToggleButtonModule } from 'primeng/togglebutton';
 
 /**********  Component Imports *************** */
 
@@ -67,6 +68,10 @@ import { HomepageComponent } from './pages/homepage/homepage.component';
 import { PricingPageComponent } from './pages/pricing-page/pricing-page.component';
 import { BlogsComponent } from './pages/blogs/blogs.component';
 import { BlogPageComponent } from './pages/blog-page/blog-page.component';
+import { AuthenticationComponent } from './authentication/authentication.component';
+import { SignupComponent } from './authentication/signup/signup.component';
+import { LoginComponent } from './authentication/login/login.component';
+import { SpeedDialModule } from 'primeng/speeddial';
 
 @NgModule({
   declarations: [
@@ -80,6 +85,9 @@ import { BlogPageComponent } from './pages/blog-page/blog-page.component';
     PricingPageComponent,
     BlogsComponent,
     BlogPageComponent,
+    AuthenticationComponent,
+    SignupComponent,
+    LoginComponent,
   ],
   imports: [
     HttpClientModule,
@@ -134,6 +142,8 @@ import { BlogPageComponent } from './pages/blog-page/blog-page.component';
     DialogModule,
     SkeletonModule,
     EditorModule,
+    ToggleButtonModule,
+    SpeedDialModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },

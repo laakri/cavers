@@ -31,6 +31,7 @@ export class BlogService {
     return this.http.post(url, {});
   }
   getBlogs(
+    first: number,
     page: number,
     limit: number,
     category: string | null,
@@ -38,7 +39,7 @@ export class BlogService {
     search: string,
     userRole: string
   ): Observable<any> {
-    const url = `${this.apiUrl}/GetBlogs?page=${page}&limit=${limit}&category=${category}&sortByDate=${sortByDate}&search=${search}&userRole=${userRole}`;
+    const url = `${this.apiUrl}/GetBlogs?first=${first}&page=${page}&limit=${limit}&category=${category}&sortByDate=${sortByDate}&search=${search}&userRole=${userRole}`;
     return this.http.get(url);
   }
   getTopFreeBlogs(): Observable<any> {

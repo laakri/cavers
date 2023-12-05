@@ -1,8 +1,8 @@
 
  /* Banner Toolbar */
  .banner-toolbar {
-  background-color: var(--whitecolor);
-  color: var(--blackcolor);
+  background: linear-gradient(210deg, rgba(23,54,134,1) 0%, rgba(0,94,47,1) 51%, rgba(155,61,89,1) 100%);
+  color: var(--whitecolor);
   height: 40px;
  }
 
@@ -18,7 +18,7 @@
  
  .close-button {
   margin-top: 2px;
-  color: var(--blackcolor) !important;
+  color: var(--whitecolor) !important;
   height: 35px;
   width: 35px;
   border-radius: 5px;
@@ -44,6 +44,7 @@
   z-index: 1000;
   padding: 0 20px;
   overflow: hidden; 
+  border-bottom: solid 1px var(--bordercolor) ;
 
 }
 
@@ -55,20 +56,22 @@
   width: 100%;
   height: 100%;
   background-color: var(--bgtransparentcolor); 
+  filter: blur(10px);
   z-index: -1;
 }
 
-
-
 .toolbar-mainpage {
-  max-width: 1300px;
   height: 60px;
   margin: auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-
+.toolbar-hole-left{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 .left-toolbar a {
   display: flex;
   align-items: center;
@@ -76,10 +79,13 @@
 }
 .left-toolbar a i{
   font-size: 20px;
-  color: #35d398;
+  color: #35d0d3;
 }
 
-
+.divider-vertical{
+  height: 20px !important;
+  overflow: hidden;
+}
 .middle-toolbar {
   display: flex;
   justify-content: space-between;
@@ -88,6 +94,7 @@
 }
 .middle-toolbar button {
   color: var(--whitecolor) !important;
+  font-size: 15px;
 
 }
 
@@ -96,7 +103,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 5px;
+  gap: 10px;
   color: var(--whitecolor) !important;
 }
 
@@ -122,4 +129,9 @@
 .theme-mode:hover {
   color: var(--whitecolor) !important;
   border: transparent 1px solid !important;
+}
+.profile-section{
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }

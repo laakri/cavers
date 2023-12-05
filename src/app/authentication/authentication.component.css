@@ -1,0 +1,60 @@
+.website-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+  }
+  .website-info i{
+      font-size: 50px;
+  }
+  
+  .login-container {
+      max-width: 600px;
+      margin: 60px auto;
+      padding: 20px;
+      border-radius: 5px;
+      
+    }
+    .form-all-section{
+      background-color: var(--soft-bgcolor);
+      padding: 30px 20px;
+      border-radius: 10px;
+      border: solid 1px var(--bordercolor);
+      
+    }
+   .routed-content{
+    margin-top: 40px ;
+   }
+    .panel-button{
+        border: solid 1px red;
+        height: 100px;
+        width: 100px;
+
+    }
+    .tabView{
+        height: 50px;
+        border-bottom: var(--bordercolor) solid 1px ;
+        margin-bottom: 30px;
+    }
+    .tabPanel{
+        width: 80px;
+        height: 50px;
+        background-color: transparent;
+        border: none;
+        border-bottom: 2px solid transparent;
+    }
+    .tabPanel:hover{
+        background-color: var(--special-button-background);
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        border-bottom: 2px solid var(--maincolor);
+
+    }
+    .activetabPanel{
+        background-color: var(--special-button-background) !;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        border-bottom: 2px solid var(--maincolor);
+    }

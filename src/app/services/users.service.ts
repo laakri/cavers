@@ -1,6 +1,6 @@
 import { User } from '../models/users.model';
 import { HttpClient } from '@angular/common/http';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { MessageService } from 'primeng/api';
@@ -247,52 +247,16 @@ export class UsersService {
       userPicture: userPicture,
     };
   }
-  /****************************************************/
-  addUserAsAdmin(
-    name: string,
-    phonenum: string,
-    file: File,
-    password: string,
-    email: string,
-    category: string,
-    speciality: string,
-    location: string,
-    role: string
-  ) {
-    const userData = new FormData();
-    userData.append('name', name);
-    userData.append('phonenum', phonenum);
-    userData.append('file', file);
-    userData.append('password', password);
-    userData.append('email', email);
-    userData.append('category', category);
-    userData.append('speciality', speciality);
-    userData.append('location', location);
-    userData.append('role', role);
-
-    this.http
-      .post<{ message: string }>(
-        this.apiURL + '/api/users/AdminAddUser',
-        userData
-      )
-      .subscribe(
-        () => {
-          const successMessage = 'User Added Successfuly !';
-          this.messageService.add({
-            severity: 'success',
-            summary: 'Success Message',
-            detail: successMessage,
-          });
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
-  }
   /*************************************************/
 
-  getUsers(page: number, limit: number, search: string, sortBy: string) {
-    const url = `${this.apiURL}/api/users/users/?page=${page}&limit=${limit}&search=${search}&sortBy=${sortBy}`;
+  getUsers(
+    first: number,
+    page: number,
+    limit: number,
+    search: string,
+    sortBy: string
+  ) {
+    const url = `${this.apiURL}/api/users/users/?first=${first}&page=${page}&limit=${limit}&search=${search}&sortBy=${sortBy}`;
     return this.http.get(url);
   }
   /*************************************************/
@@ -300,6 +264,18 @@ export class UsersService {
     return this.http.put(`${this.apiURL}/api/users/changeUserRole/${userId}`, {
       role: newRole,
     });
+  }
+  /*************************************************/
+
+  changePassword(email: string, newPassword: string): Observable<any> {
+    const body = {
+      email,
+      newPassword,
+    };
+    return this.http.post<any>(
+      this.apiURL + '/api/users/change-password',
+      body
+    );
   }
   /*************************************************/
 
