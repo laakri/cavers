@@ -84,15 +84,16 @@
       </div>
     </div>
     <div class="right-toolbar">
-      <span class="p-input-icon-left">
+      <span class="p-input-icon-left" (click)="showDialog()">
         <i class="pi pi-search"></i>
         <input
           type="text"
           pInputText
           [(ngModel)]="Search"
-          placeholder="Search "
+          placeholder="Search"
         />
       </span>
+
       <button
         *ngIf="!isAuth"
         pButton

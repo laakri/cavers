@@ -2,16 +2,19 @@ import { UsersService } from '../../services/users.service';
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { Subscription } from 'rxjs';
+import { SearchSectionComponent } from '../search-section/search-section.component';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
+  providers: [DialogService],
 })
 export class NavbarComponent implements OnInit {
   items: MenuItem[] | undefined;
   isBrightTheme = false;
-  banner: boolean = true;
+  banner: boolean = false;
   bannerClass!: string;
   isAuth: boolean = false;
   userName: any;
@@ -19,8 +22,12 @@ export class NavbarComponent implements OnInit {
   Search: string = '';
   private isAuthListenerSubs!: Subscription;
   private userNameListenerSubs!: Subscription;
+  ref: DynamicDialogRef | undefined;
 
-  constructor(private UsersService: UsersService) {}
+  constructor(
+    private UsersService: UsersService,
+    private dialogService: DialogService
+  ) {}
 
   ngOnInit() {
     this.isAuth = this.UsersService.getIsAuth();
@@ -36,6 +43,20 @@ export class NavbarComponent implements OnInit {
       });
 
     this.isBrightTheme = localStorage.getItem('mode') === 'bright-theme';
+  }
+
+  showDialog() {
+    const ref = this.dialogService.open(SearchSectionComponent, {
+      header: 'Search Section',
+      showHeader: false,
+      modal: true,
+      draggable: false,
+      resizable: false,
+      position: 'top',
+      closable: true,
+      dismissableMask: true,
+      styleClass: 'dialogSearch',
+    });
   }
 
   isBanner(): void {

@@ -1,0 +1,38 @@
+
+.search-section{
+    margin-top: 20px;
+}
+.search-content{
+    width: 100%;
+}
+.search-content input{
+    width: 100%;
+}
+.Search-button{
+    border: none;
+}
+.Search-button:hover{
+    border: var(--special-button-border) solid 1px;
+}
+.blogs{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+.blog{
+    background-color: var(--soft-bgcolor);
+    border-radius: 10px;
+    padding: 10px 20px 20px 20px ;
+}
+
+.blog-title{
+    margin: 10px 0;
+    color: var(--maincolor);
+    font-weight: 600;
+    font-size: 18px;
+}
+.blog-title:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}

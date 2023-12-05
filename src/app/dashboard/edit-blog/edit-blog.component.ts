@@ -30,6 +30,9 @@ export class EditBlogComponent implements OnInit {
   chartImageFile: File | null = null;
   chartImageName!: string;
   chartImagePreview!: string;
+  isLoading: boolean = false;
+  isUpdatingLoading: boolean = false;
+  notFound: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -52,6 +55,8 @@ export class EditBlogComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.isLoading = true;
+
     this.categorys = [
       { name: 'Cryptocurrency News', code: 'crypto-news' },
       { name: 'Blockchain Technology', code: 'blockchain-tech' },
@@ -62,31 +67,43 @@ export class EditBlogComponent implements OnInit {
     this.route.params.subscribe((params) => {
       this.blogId = params['id'];
 
-      this.blogService.getBlogById(this.blogId).subscribe((blog: any) => {
-        this.formGroup.patchValue({
-          title: blog.title,
-          shortDescription: blog.shortDescription,
-          text: blog.text,
-          selectedCategorys: blog.selectedCategorys,
-          selectedMembershipLevels: blog.selectedMembershipLevels,
-        });
+      this.blogService.getBlogById(this.blogId).subscribe(
+        (blog: any) => {
+          this.formGroup.patchValue({
+            title: blog.title,
+            shortDescription: blog.shortDescription,
+            text: blog.text,
+            selectedCategorys: blog.selectedCategorys,
+            selectedMembershipLevels: blog.selectedMembershipLevels,
+          });
 
-        this.tags = blog.tags;
-        this.blogImagePreview = blog.blogImage;
-        this.chartImagePreview = blog.chartImage;
+          this.tags = blog.tags;
+          this.blogImagePreview = blog.blogImage;
+          this.chartImagePreview = blog.chartImage;
 
-        this.selectedCategorys = blog.selectedCategorys.map((code: string) => {
-          const category = this.categorys.find((c) => c.code === code.trim()); // Trim to remove extra spaces
+          this.selectedCategorys = blog.selectedCategorys.map(
+            (code: string) => {
+              const category = this.categorys.find(
+                (c) => c.code === code.trim()
+              ); // Trim to remove extra spaces
 
-          if (category) {
-            return { name: category.name, code: category.code };
-          } else {
-            console.error(`Category with code ${code} not found.`);
-            return { name: 'Unknown', code: 'unknown' }; // Default values or handle as needed
-          }
-        });
-        this.selectedMembershipLevels = blog.selectedMembershipLevels;
-      });
+              if (category) {
+                return { name: category.name, code: category.code };
+              } else {
+                console.error(`Category with code ${code} not found.`);
+                return { name: 'Unknown', code: 'unknown' }; // Default values or handle as needed
+              }
+            }
+          );
+          this.selectedMembershipLevels = blog.selectedMembershipLevels;
+          this.isLoading = false;
+        },
+        (error) => {
+          this.isLoading = false;
+          this.notFound = true;
+          console.log(error);
+        }
+      );
     });
   }
   /*************** Image Thumbnail  ******************/
@@ -144,6 +161,7 @@ export class EditBlogComponent implements OnInit {
   }
   /***********************************/
   updateBlog() {
+    this.isUpdatingLoading = true;
     if (this.formGroup.valid) {
       const selectedCategorys = this.selectedCategorys.map(
         (category: any) => category.code
@@ -202,6 +220,7 @@ export class EditBlogComponent implements OnInit {
           });
         }
       );
+      this.isUpdatingLoading = false;
     } else {
       this.messageService.add({
         severity: 'error',

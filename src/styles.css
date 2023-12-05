@@ -49,7 +49,7 @@ textarea{
   color: var(--whitecolor) !important;
 }
 input{
-  height: 37px;
+  height: 35px;
   background-color: var(--soft-bgcolor) !important;
   color: var(--whitecolor) !important;
 }
@@ -153,7 +153,13 @@ input::placeholder{
   border: none;
 }
   /*********************-dialog********************/
-
+  
+  .dialogSearch{
+    max-width: 1300px;
+    border-radius: 20px !important;
+    overflow: hidden;
+}
+  
 .p-dialog.p-confirm-dialog .p-dialog-header {
   background: var(--soft-bgcolor);
   color: var(--whitecolor) !important; 
@@ -327,6 +333,3 @@ input::placeholder{
     width: 14px; /* Change icon width to 2px */
     height: 14px; /* Change icon height to 2px */
 }
-
-
-

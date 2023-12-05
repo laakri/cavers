@@ -72,6 +72,7 @@ import { AuthenticationComponent } from './authentication/authentication.compone
 import { SignupComponent } from './authentication/signup/signup.component';
 import { LoginComponent } from './authentication/login/login.component';
 import { SpeedDialModule } from 'primeng/speeddial';
+import { SearchSectionComponent } from './components/search-section/search-section.component';
 
 @NgModule({
   declarations: [
@@ -88,6 +89,7 @@ import { SpeedDialModule } from 'primeng/speeddial';
     AuthenticationComponent,
     SignupComponent,
     LoginComponent,
+    SearchSectionComponent,
   ],
   imports: [
     HttpClientModule,

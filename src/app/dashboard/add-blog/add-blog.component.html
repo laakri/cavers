@@ -1,127 +1,145 @@
 <div class="mainpage">
+  <h2>Add Blog</h2>
   <form (ngSubmit)="addblog()" [formGroup]="formGroup" #addblogForm="ngForm">
     <div class="form-sections">
-      <div class="form-section">
-        <h4>Title</h4>
-        <input
-          type="text"
-          pInputText
-          formControlName="title"
-          placeholder="Title"
-        />
-      </div>
+      <div class="form-all-section">
+        <div class="form-section">
+          <h4>Title</h4>
+          <input
+            type="text"
+            pInputText
+            formControlName="title"
+            placeholder="Title"
+          />
+        </div>
 
-      <div class="form-section">
-        <h4>Short Description</h4>
-        <textarea
-          rows="2"
-          cols="30"
-          pInputTextarea
-          formControlName="shortDescription"
-          placeholder="Short Description"
-        ></textarea>
-      </div>
-      <div class="form-section">
-        <h4>Blog Thumbnail</h4>
-
-        <button type="button" class="blog-img" (click)="filepicker.click()">
-          <span class="blog-img-text">thumbnail_upload</span>
-        </button>
-        <input type="file" #filepicker (change)="onBlogImagePicked($event)" />
-        <img [src]="blogImagePreview" alt="" class="blogPreview" />
-      </div>
-    </div>
-
-    <div class="form-section">
-      <h4>Category</h4>
-      <p-multiSelect
-        [options]="categorys"
-        formControlName="selectedCategorys"
-        optionLabel="name"
-        [style]="{ width: '370px' }"
-        placeholder="Select Category"
-      ></p-multiSelect>
-    </div>
-
-    <div class="form-section">
-      <h4>Tags</h4>
-
-      <div class="chips-container">
-        <div [formGroup]="tagForm">
-          <div class="p-inputgroup">
-            <input
-              [style]="{ width: '320px' }"
-              formControlName="tagInput"
-              pInputText
-              placeholder="Type a tag"
-            />
-            <button
-              type="button"
-              pButton
-              icon="pi pi-plus"
-              class="add-button"
-              (click)="addTag()"
-            ></button>
-          </div>
+        <div class="form-section">
+          <h4>Short Description</h4>
+          <textarea
+            rows="2"
+            cols="30"
+            pInputTextarea
+            formControlName="shortDescription"
+            placeholder="Short Description"
+          ></textarea>
         </div>
       </div>
-      <div *ngIf="tags.length > 0">
-        <div class="tags-wrapper">
-          <div *ngFor="let tag of tags" class="tag">
-            <span>
-              {{ tag }}
-            </span>
-            <div (click)="removeTag(tag)">
-              <i class="pi pi-times"></i>
+      <div class="form-all-section">
+        <div class="form-section">
+          <h4>Category</h4>
+          <p-multiSelect
+            [options]="categorys"
+            formControlName="selectedCategorys"
+            optionLabel="name"
+            [style]="{ width: '370px' }"
+            placeholder="Select Category"
+          ></p-multiSelect>
+        </div>
+
+        <div class="form-section">
+          <h4>Tags</h4>
+
+          <div class="chips-container">
+            <div [formGroup]="tagForm">
+              <div class="p-inputgroup">
+                <input
+                  [style]="{ width: '320px' }"
+                  formControlName="tagInput"
+                  pInputText
+                  placeholder="Type a tag"
+                />
+                <button
+                  type="button"
+                  pButton
+                  icon="pi pi-plus"
+                  class="add-button"
+                  (click)="addTag()"
+                ></button>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="tags.length > 0">
+            <div class="tags-wrapper">
+              <div *ngFor="let tag of tags" class="tag">
+                <span>
+                  {{ tag }}
+                </span>
+                <div (click)="removeTag(tag)">
+                  <i class="pi pi-times"></i>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="form-section">
-      <h4>Select Payment Type</h4>
-      <div class="radio-flex">
-        <input
-          type="radio"
-          value="free"
-          formControlName="selectedMembershipLevels"
-        />
-        <span>free</span>
-      </div>
-      <div class="radio-flex">
-        <input
-          type="radio"
-          value="silver"
-          formControlName="selectedMembershipLevels"
-        />
-        <span>silver</span>
-      </div>
-      <div class="radio-flex">
-        <input
-          type="radio"
-          value="plat"
-          formControlName="selectedMembershipLevels"
-        />
-        <span>plat</span>
-      </div>
-    </div>
-    <div class="form-section">
-      <h4>Blog Chart Image</h4>
+      <div class="form-all-section">
+        <div class="form-section">
+          <h4>Blog Thumbnail</h4>
 
-      <button type="button" class="blog-img" (click)="filepickerChart.click()">
-        <span class="blog-img-text">chart_upload</span>
-      </button>
-      <input
-        type="file"
-        #filepickerChart
-        (change)="onBlogChartPicked($event)"
-      />
-      <img [src]="chartImagePreview" alt="" class="blogPreview" />
+          <button type="button" class="blog-img" (click)="filepicker.click()">
+            <span class="blog-img-text">thumbnail_upload</span>
+          </button>
+          <input type="file" #filepicker (change)="onBlogImagePicked($event)" />
+          <img [src]="blogImagePreview" alt="" class="blogPreview" />
+        </div>
+      </div>
+      <div class="form-all-section">
+        <div class="form-section">
+          <h4>Blog Chart Image</h4>
+
+          <button
+            type="button"
+            class="blog-img"
+            (click)="filepickerChart.click()"
+          >
+            <span class="blog-img-text">chart_upload</span>
+          </button>
+          <input
+            type="file"
+            #filepickerChart
+            (change)="onBlogChartPicked($event)"
+          />
+          <img [src]="chartImagePreview" alt="" class="blogPreview" />
+        </div>
+      </div>
+      <div class="form-section form-fullcontent">
+        <h4>Select Payment Type</h4>
+        <div class="radio-flex">
+          <p-radioButton
+            type="radio"
+            value="free"
+            formControlName="selectedMembershipLevels"
+          ></p-radioButton>
+          <span>free</span>
+        </div>
+        <div class="radio-flex">
+          <p-radioButton
+            type="radio"
+            value="silver"
+            formControlName="selectedMembershipLevels"
+          ></p-radioButton>
+          <span>silver</span>
+        </div>
+        <div class="radio-flex">
+          <p-radioButton
+            type="radio"
+            value="plat"
+            formControlName="selectedMembershipLevels"
+          ></p-radioButton>
+          <span>plat</span>
+        </div>
+      </div>
     </div>
-    <div>
-      <h4>Editor</h4>
-      <p-editor formControlName="text" [style]="{ height: '80vh' }"></p-editor>
-    </div>
-    <button pButton type="submit" [disabled]="!formGroup.valid">Submit</button>
+
+    <h4>Editor</h4>
+    <p-editor formControlName="text" [style]="{ height: '80vh' }"></p-editor>
+    <button
+      pButton
+      type="submit"
+      [disabled]="!formGroup.valid"
+      class="submit-button"
+    >
+      Submit
+    </button>
   </form>
 </div>

@@ -31,7 +31,7 @@ export class BlogsComponent implements OnInit {
 
   blogs: Blogs[] = [];
   isLoading: boolean = true;
-  userId: string = 'free';
+  userId: any = '';
   topFreeBlogs: any[] = [];
   showFourthBlog: boolean = false;
   showAllCategories: boolean = false;
@@ -47,6 +47,10 @@ export class BlogsComponent implements OnInit {
   ) {}
   ngOnInit() {
     this.userId = this.UsersService.getUserId();
+    this.userIdListenerSubs =
+      this.UsersService.getAuthStatusListener().subscribe((userId) => {
+        this.userId = userId;
+      });
 
     this.SortByDate = [
       { name: 'Newest', code: 'newest' },
@@ -144,6 +148,7 @@ export class BlogsComponent implements OnInit {
 
   loadBlogs() {
     this.isLoading = true;
+
     this.BlogService.getBlogs(
       this.first,
       this.page,

@@ -15,6 +15,7 @@ export class UsersService {
   private token: any;
   private tokenTimer: any;
   private users: User[] = [];
+  private useridListener = new Subject<any>();
   private usernameListener = new Subject<any>();
   private authStatusListener = new Subject<boolean>();
   private authAdminStatusListener = new Subject<boolean>();
@@ -78,6 +79,9 @@ export class UsersService {
     return this.isAdminAuthenticated;
   }
 
+  getUserIdListener() {
+    return this.useridListener.asObservable();
+  }
   getUserNameListener() {
     return this.usernameListener.asObservable();
   }
@@ -125,7 +129,7 @@ export class UsersService {
             }
             this.authStatusListener.next(true);
             this.usernameListener.next(this.userName);
-
+            this.useridListener.next(this.userId);
             const now = new Date();
             const expirationDate = new Date(
               now.getTime() + expiresInDuration * 1000
@@ -151,7 +155,7 @@ export class UsersService {
         (error) => {
           this.authStatusListener.next(false);
           this.usernameListener.next('');
-
+          this.useridListener.next('');
           this.authAdminStatusListener.next(false);
         }
       );
@@ -174,7 +178,7 @@ export class UsersService {
       this.setAuthTimer(expiresIn / 1000);
       this.authStatusListener.next(true);
       this.usernameListener.next(this.userName);
-
+      this.useridListener.next(this.userId);
       if (this.userRole == 'admin') {
         this.isAdminAuthenticated = true;
         this.authAdminStatusListener.next(true);
@@ -186,7 +190,7 @@ export class UsersService {
     this.isAuthenticated = false;
     this.isAdminAuthenticated = false;
     this.usernameListener.next('');
-
+    this.useridListener.next('');
     this.authStatusListener.next(false);
     this.authAdminStatusListener.next(false);
     this.userId = null;
