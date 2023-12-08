@@ -31,13 +31,13 @@ export class BlogsComponent implements OnInit {
 
   blogs: Blogs[] = [];
   isLoading: boolean = true;
-  userId: any = '';
+  userRole: any = 'free';
   topFreeBlogs: any[] = [];
   showFourthBlog: boolean = false;
   showAllCategories: boolean = false;
   categoriesToShow: any[] = [];
 
-  private userIdListenerSubs!: Subscription;
+  private userRoleListenerSubs!: Subscription;
 
   constructor(
     private BlogService: BlogService,
@@ -46,10 +46,12 @@ export class BlogsComponent implements OnInit {
     private router: Router
   ) {}
   ngOnInit() {
-    this.userId = this.UsersService.getUserId();
-    this.userIdListenerSubs =
-      this.UsersService.getAuthStatusListener().subscribe((userId) => {
-        this.userId = userId;
+    this.userRole = this.UsersService.getUserRole();
+    console.log(this.userRole);
+    this.userRoleListenerSubs =
+      this.UsersService.getAuthStatusListener().subscribe((userRole) => {
+        this.userRole = userRole;
+        this.loadBlogs();
       });
 
     this.SortByDate = [
@@ -91,6 +93,74 @@ export class BlogsComponent implements OnInit {
     });
     this.categoriesToShow = this.Categorys.slice(1, 5);
   }
+  getButtonLabel(blog: any): string {
+    const isUserSilver = this.userRole === 'silver';
+    const isUserPlat = this.userRole === 'plat';
+    if (isUserPlat) {
+      return 'Access Now';
+    } else if (isUserSilver && blog.selectedMembershipLevels !== 'plat') {
+      return 'Access Now';
+    } else if (
+      !this.userRole ||
+      (this.userRole === 'free' && blog.selectedMembershipLevels == 'free')
+    ) {
+      return 'Access Now';
+    } else {
+      return 'Join to Unlock';
+    }
+  }
+  getButtonIcon(blog: any): string {
+    const isUserSilver = this.userRole === 'silver';
+    const isUserPlat = this.userRole === 'plat';
+
+    if (isUserPlat) {
+      return '';
+    } else if (isUserSilver && blog.selectedMembershipLevels !== 'plat') {
+      return '';
+    } else if (
+      !this.userRole ||
+      (this.userRole === 'free' && blog.selectedMembershipLevels == 'free')
+    ) {
+      return '';
+    } else {
+      return 'pi pi-lock';
+    }
+  }
+
+  getButtonStyle(blog: any): object {
+    const isUserSilver = this.userRole === 'silver';
+    const isUserPlat = this.userRole === 'plat';
+    if (isUserPlat) {
+      return { background: '#cfe7de', color: '#116042', border: 'none' };
+    } else if (isUserSilver && blog.selectedMembershipLevels !== 'plat') {
+      return { background: '#cfe7de', color: '#116042', border: 'none' };
+    } else if (
+      !this.userRole ||
+      (this.userRole === 'free' && blog.selectedMembershipLevels == 'free')
+    ) {
+      return { background: '#cfe7de', color: '#116042', border: 'none' };
+    } else {
+      return { background: 'gray', color: 'white', border: 'none' };
+    }
+  }
+
+  onButtonClick(blog: any): void {
+    const isUserSilver = this.userRole === 'silver';
+    const isUserPlat = this.userRole === 'plat';
+    if (isUserPlat) {
+      this.router.navigate(['/BlogPage/', blog._id]);
+    } else if (isUserSilver && blog.selectedMembershipLevels !== 'plat') {
+      this.router.navigate(['/BlogPage/', blog._id]);
+    } else if (
+      !this.userRole ||
+      (this.userRole === 'free' && blog.selectedMembershipLevels == 'free')
+    ) {
+      this.router.navigate(['/BlogPage/', blog._id]);
+    } else {
+      this.router.navigate(['/Pricing']);
+    }
+  }
+
   onSearch() {
     this.first = 0;
 
@@ -155,8 +225,7 @@ export class BlogsComponent implements OnInit {
       this.rows,
       this.selectedCategory.code,
       this.selectedSortByDate.code,
-      this.searchTerm,
-      this.userId
+      this.searchTerm
     ).subscribe((data: any) => {
       this.blogs = data.blogs;
       this.isLoading = false;

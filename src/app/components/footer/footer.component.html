@@ -1,10 +1,14 @@
 <div class="footer">
   <div class="footer-links">
-    <button class="p-button-text" label="About" pButton></button>
-    <button class="p-button-text" label="Blog" pButton></button>
-    <button class="p-button-text" label="Press" pButton></button>
-    <button class="p-button-text" label="Accessiblity" pButton></button>
-    <button class="p-button-text" label="Partenrs" pButton></button>
+    <p-button (click)="openPrivacyPolicyDialog()" [link]="true">
+      Privacy Policy
+    </p-button>
+    <p-button (click)="openDisclaimerDialog()" [link]="true">
+      Disclaimer
+    </p-button>
+    <p-button (click)="openTermsConditionsDialog()" [link]="true">
+      Terms & Conditions
+    </p-button>
   </div>
   <div class="footer-social">
     <i class="pi pi-facebook" style="font-size: 2rem"></i>

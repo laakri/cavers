@@ -73,6 +73,10 @@ import { SignupComponent } from './authentication/signup/signup.component';
 import { LoginComponent } from './authentication/login/login.component';
 import { SpeedDialModule } from 'primeng/speeddial';
 import { SearchSectionComponent } from './components/search-section/search-section.component';
+import { PricingComponent } from './components/pricing/pricing.component';
+import { TermsConditionComponent } from './components/terms-condition/terms-condition.component';
+import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
+import { DisclaimerComponent } from './components/disclaimer/disclaimer.component';
 
 @NgModule({
   declarations: [
@@ -90,6 +94,10 @@ import { SearchSectionComponent } from './components/search-section/search-secti
     SignupComponent,
     LoginComponent,
     SearchSectionComponent,
+    PricingComponent,
+    TermsConditionComponent,
+    PrivacyPolicyComponent,
+    DisclaimerComponent,
   ],
   imports: [
     HttpClientModule,

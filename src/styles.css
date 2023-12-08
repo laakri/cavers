@@ -18,11 +18,10 @@ body{
     --soft-bgcolor: #0c1017;
     --blackcolor: #000;
     --whitecolor: #fff;
-    --graycolor: #909ca8;
+    --graycolor: #acb2b9;
     --maincolor: #08d9d6;
     --hovermaincolor: #01a4a1;
     --secendcolor: #ff3860;
-    --darktranscolor: #000000ce;
     --soft-darktranscolor: #0f172169;
     --buttonactive: #1b1f2a;
     --special-button-color:#08d9d6;
@@ -38,6 +37,12 @@ button {
   font-size: 16px;
 }
 
+.join-button{
+  color: #116042 !important ;
+  border: transparent !important;
+  background-color: #cfe7de !important ;
+  font-size: 17px;
+}
 .fas {
   font-size: 27px;
 }

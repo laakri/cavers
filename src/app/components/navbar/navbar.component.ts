@@ -14,13 +14,13 @@ import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 export class NavbarComponent implements OnInit {
   items: MenuItem[] | undefined;
   isBrightTheme = false;
-  banner: boolean = false;
+  banner: boolean = true;
   bannerClass!: string;
   isAuth: boolean = false;
+  private isAuthListenerSubs!: Subscription;
   userName: any;
   firstLetter!: string;
   Search: string = '';
-  private isAuthListenerSubs!: Subscription;
   private userNameListenerSubs!: Subscription;
   ref: DynamicDialogRef | undefined;
 
@@ -46,17 +46,20 @@ export class NavbarComponent implements OnInit {
   }
 
   showDialog() {
-    const ref = this.dialogService.open(SearchSectionComponent, {
-      header: 'Search Section',
+    this.ref = this.dialogService.open(SearchSectionComponent, {
       showHeader: false,
+      closable: true,
+      dismissableMask: true,
       modal: true,
       draggable: false,
       resizable: false,
       position: 'top',
-      closable: true,
-      dismissableMask: true,
       styleClass: 'dialogSearch',
+      width: '1300px',
+      contentStyle: { overflow: 'auto' },
     });
+    console.log(this.ref);
+    this.ref.onClose.subscribe(() => {});
   }
 
   isBanner(): void {

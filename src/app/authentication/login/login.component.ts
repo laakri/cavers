@@ -17,7 +17,6 @@ export class LoginComponent {
   UpdatePassvisible: boolean = false;
   UserEmail: string = '';
   confirmedEmail: string = '';
-
   loadingLogin: boolean = false;
   loadingSendingConfirm: boolean = false;
   loadingConfirm: boolean = false;

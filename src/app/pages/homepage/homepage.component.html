@@ -50,4 +50,93 @@
       </div>
     </div>
   </div>
+  <div class="blogs-section">
+    <div class="blogs-section-header">
+      <h2>From the Blogs</h2>
+      <span>Learn how to grow your business with our expert advice. </span>
+    </div>
+    <p-carousel
+      [value]="blogs"
+      [numVisible]="3"
+      [numScroll]="3"
+      [circular]="false"
+      [responsiveOptions]="responsiveOptions"
+    >
+      <ng-template let-blog pTemplate="item">
+        <div class="blog">
+          <img src="{{ blog.blogImage }}" alt="BlogImg" />
+          <span>
+            {{ blog.createdAt | date : "MMM d, y" }}
+          </span>
+
+          <a [routerLink]="['/BlogPage', blog._id]">
+            <div class="blog-title">{{ blog.title }}</div>
+          </a>
+          <div class="blog-description">{{ blog.shortDescription }}</div>
+          <div class="blog-categorys">
+            <div
+              class="blog-category"
+              *ngFor="let categ of blog.selectedCategorys"
+            >
+              {{ categ }}
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </p-carousel>
+  </div>
+
+  <div class="details-content">
+    <div class="details-content-header">
+      <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h2>
+      <span>Lorem ipsum dolor sit amet consectetur adipisicing elit.</span>
+    </div>
+    <div class="details-content-content-split">
+      <div class="details-content-content-left"></div>
+      <div class="details-content-content-right">
+        <div class="details-content-content-right-item">
+          <div class="details-content-content-right-item-header">
+            Crypto Blogs
+          </div>
+          <span
+            >Explore more content about anything i don't know wa wa wa mech
+            normal normal normal normal</span
+          >
+          <p>Explore more content about anything i don't know</p>
+        </div>
+        <div class="details-content-content-right-item">
+          <div class="details-content-content-right-item-header">
+            Crypto Blogs
+          </div>
+          <span
+            >Explore more content about anything i don't know wa wa wa mech
+            normal normal normal normal</span
+          >
+          <p>Explore more content about anything i don't know</p>
+        </div>
+        <div class="details-content-content-right-item">
+          <div class="details-content-content-right-item-header">
+            Crypto Blogs
+          </div>
+          <span
+            >Explore more content about anything i don't know wa wa wa mech
+            normal normal normal normal</span
+          >
+          <p>Explore more content about anything i don't know</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="banner">
+    <div class="banner-right">
+      <div>You are welcome to our Platform</div>
+      <span>You are welcome to our Platform </span>
+    </div>
+    <div class="banner-left">
+      <p-button label="Join The Gang "></p-button>
+    </div>
+  </div>
+  <div class="pricing-content">
+    <app-pricing></app-pricing>
+  </div>
 </div>

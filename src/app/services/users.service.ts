@@ -11,7 +11,7 @@ export class UsersService {
   private isAdminAuthenticated = false;
   private userId: any;
   private userName: any;
-  private userRole: any;
+  private userRole: any = 'free';
   private token: any;
   private tokenTimer: any;
   private users: User[] = [];
@@ -195,7 +195,7 @@ export class UsersService {
     this.authAdminStatusListener.next(false);
     this.userId = null;
     this.userName = null;
-    this.userRole = null;
+    this.userRole = 'free';
     clearTimeout(this.tokenTimer);
     this.clearAuthData();
     console.log('Logout runs seccesfully!');

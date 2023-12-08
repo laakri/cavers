@@ -9,6 +9,7 @@
               pInputText
               placeholder="Search"
               [(ngModel)]="searchTerm"
+              (keyup.enter)="onSearch()"
             />
             <button
               type="button"
@@ -59,19 +60,20 @@
             <!-- Iterate through the blogs and display specific fields -->
             <div class="blog" *ngFor="let blog of blogs">
               <div class="blog-left-section">
-                <a [routerLink]="['/BlogPage', blog._id]">
-                  <div class="blog-title">{{ blog.title }}</div>
-                </a>
+                <div class="blog-title">{{ blog.title }}</div>
                 <div class="blog-category">
                   {{ blog.selectedCategorys.join(" , ") }}
                 </div>
                 <span class="blog-description">{{
                   blog.shortDescription
                 }}</span>
-                <div class="blog-tags">
-                  <div class="blog-tag" *ngFor="let tag of blog.tags">
-                    {{ tag }}
-                  </div>
+                <div class="button-div">
+                  <p-button
+                    [label]="getButtonLabel(blog)"
+                    [style]="getButtonStyle(blog)"
+                    [icon]="getButtonIcon(blog)"
+                    (click)="onButtonClick(blog)"
+                  ></p-button>
                 </div>
                 <div class="blog-date">
                   Released At : {{ blog.createdAt | date : "MMM d, y" }}
@@ -80,6 +82,9 @@
 
               <div class="blog-img">
                 <img src="{{ blog.blogImage }}" alt="" />
+                <div class="blog-level">
+                  {{ blog.selectedMembershipLevels }}
+                </div>
               </div>
             </div>
           </div>

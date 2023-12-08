@@ -7,6 +7,7 @@
       pInputText
       [(ngModel)]="Search"
       placeholder="Search"
+      (keyup.enter)="getSearchBlogs()"
     />
     <button
       type="submit"
@@ -17,20 +18,20 @@
     ></button>
   </span>
 </div>
-<h5 *ngIf="isDefault">Top free blogs</h5>
 <div *ngIf="isLoading; else content">
   <div class="blogs">
-    <p-skeleton width="100%" height="30px" styleClass="mb-2"></p-skeleton>
-    <p-skeleton width="100%" height="30px" styleClass="mb-2"></p-skeleton>
-    <p-skeleton width="100%" height="30px" styleClass="mb-2"></p-skeleton>
+    <p-skeleton width="100%" height="90px" styleClass="mb-2"></p-skeleton>
+    <p-skeleton width="100%" height="90px" styleClass="mb-2"></p-skeleton>
   </div>
 </div>
 
 <ng-template #content>
+  <h5 *ngIf="isDefault">Top free blogs</h5>
+
   <div class="search-content">
     <div class="blogs">
       <div class="blog" *ngFor="let blog of defaultBlog">
-        <a [routerLink]="['/BlogPage', blog._id]">
+        <a (click)="onRowSelect(blog._id)">
           <div class="blog-title">{{ blog.title }}</div>
         </a>
         <span>{{ blog.shortDescription }} </span>

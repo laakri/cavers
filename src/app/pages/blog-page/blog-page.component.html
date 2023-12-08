@@ -1,32 +1,49 @@
 <div class="mainpage">
-  <div class="speedDial">
-    <p-speedDial
-      showIcon="pi pi-ellipsis-v"
-      [model]="items"
-      hideIcon="pi pi-times"
-      direction="down"
-      buttonClassName="p-button-text"
-      size="small"
-      className="speeddial-left"
-    ></p-speedDial>
-  </div>
-  <div>
-    <span class="categ" *ngFor="let cat of blog.selectedCategorys">
-      {{ cat }}
-    </span>
-  </div>
-  <div class="createAt">{{ blog.createdAt | date : "MMM d, y" }}</div>
+  <div *ngIf="isLoading; else content">
+    <div class="skeleton-spacing">
+      <p-skeleton width="100%" height="20px" styleClass="mb-2"></p-skeleton>
+      <p-skeleton width="100%" height="150px" styleClass="mb-2"></p-skeleton>
+      <p-divider></p-divider>
 
-  <h2>{{ blog.title }}</h2>
-  <div class="shortDescription">{{ blog.shortDescription }}</div>
-  <p-divider></p-divider>
-  <p-image
-    [src]="blog.chartImage"
-    alt="Image"
-    height="400px"
-    [preview]="true"
-  ></p-image>
-  <div>
-    <div class="blog-content" [innerHTML]="trustedText"></div>
+      <p-skeleton width="400px" height="250px" styleClass="mb-2"></p-skeleton>
+      <p-skeleton width="100%" height="40px" styleClass="mb-2"></p-skeleton>
+      <p-skeleton width="100%" height="40px" styleClass="mb-2"></p-skeleton>
+      <p-skeleton width="100%" height="40px" styleClass="mb-2"></p-skeleton>
+      <p-skeleton width="100%" height="40px" styleClass="mb-2"></p-skeleton>
+      <p-skeleton width="100%" height="40px" styleClass="mb-2"></p-skeleton>
+    </div>
   </div>
+
+  <ng-template #content>
+    <div class="speedDial">
+      <p-speedDial
+        showIcon="pi pi-ellipsis-v"
+        [model]="items"
+        hideIcon="pi pi-times"
+        direction="down"
+        buttonClassName="p-button-text"
+        size="small"
+        className="speeddial-left"
+      ></p-speedDial>
+    </div>
+    <div>
+      <span class="categ" *ngFor="let cat of blog.selectedCategorys">
+        {{ cat }}
+      </span>
+    </div>
+    <div class="createAt">{{ blog.createdAt | date : "MMM d, y" }}</div>
+
+    <h2>{{ blog.title }}</h2>
+    <div class="shortDescription">{{ blog.shortDescription }}</div>
+    <p-divider></p-divider>
+    <p-image
+      [src]="blog.chartImage"
+      alt="Image"
+      height="400px"
+      [preview]="true"
+    ></p-image>
+    <div>
+      <div class="blog-content" [innerHTML]="trustedText"></div>
+    </div>
+  </ng-template>
 </div>

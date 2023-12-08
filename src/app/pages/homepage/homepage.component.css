@@ -1,5 +1,4 @@
 .mainpage{
-  min-height: 1600px;
     max-width: 1300px;
     margin: auto;
 }
@@ -25,7 +24,7 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    margin: 100px auto;
+    margin: 150px auto;
     align-items: center;
   }
   .header-content-blop{
@@ -101,9 +100,163 @@
   }
   
   .cloud-logo i {
-    font-size: 40px;  
+    font-size: 35px;  
   }
   
   .cloud-logo span{
-    font-size: 32px;  
+    font-size: 28px;  
   }
+
+  /************** Blogs Section  *************/
+.blogs-section {
+  margin: 50px auto;
+}
+
+.blogs-section-header {
+    max-width: 600px;
+    margin: 20px;
+  
+}
+
+
+.blog {
+  width: 380px;
+  height: 510px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: transparent solid 1px ;
+  padding: 10px;
+  position: relative;
+}
+.blog:hover {
+  border: solid 1px var(--bordercolor);
+  background-color: var(--soft-bgcolor);
+  border-radius: 10px;
+}
+.blog img {
+  border-radius: 10px;
+  width: 100%;
+  height: 230px;
+  margin-bottom: 20px;
+}
+
+
+.blog .blog-categorys {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient:  vertical;
+  overflow:  hidden;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  position: absolute;
+  bottom: 10px;
+}
+.blog .blog-category {
+  background-color: var(--special-button-background);
+  color: var(--special-button-color);
+  border: var(--special-button-border) solid 1px ;
+  width: max-content;
+  padding: 2px 4px ;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.blog .blog-title {
+  font-size: 20px;  
+  color: var(--maincolor);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient:  vertical;
+  overflow:  hidden;
+}
+.blog .blog-title:hover {
+  text-decoration: underline;
+}
+.blog .blog-description {
+  line-height: 1.8;
+  color: var(--graycolor);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient:  vertical;
+  overflow:  hidden;
+}
+/**************details Content Component **************/
+.details-content {
+  margin: 30px auto;
+}
+
+.details-content-header {
+  max-width: 600px;
+  margin: 20px;
+
+}
+
+
+.details-content-content-split {
+  margin: 20px;
+  display: flex;
+  justify-content: space-around;
+  height: 500px;
+}
+
+.details-content-content-left {
+  border: var(--bordercolor) solid 1px;
+  background-image: url(../../../assets/img/Crypto_Cave_1629429854922.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 40%;
+  border-radius: 20px;
+}
+
+.details-content-content-right {
+  width: 55%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.details-content-content-right-item {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+.details-content-content-right-item-header{
+  
+  font-size: 20px;
+}
+.details-content-content-right-item span {
+  color: var(--graycolor) ;
+}
+
+.details-content-content-right-item p {
+  color: var(--maincolor) ;
+}
+/********************************/
+
+
+.banner{
+  margin: 30px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: var(--soft-bgcolor);
+  border: var(--special-button-border) solid 1px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.banner-right span{
+  color: var(--graycolor);
+}
+.banner-right div {
+  font-size: 25px;
+}
+
+.pricing-content{
+  margin-bottom: 100px;
+}

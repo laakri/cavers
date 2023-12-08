@@ -2,7 +2,13 @@
 <div class="mainpage">
   <div class="filter-section">
     <div class="p-inputgroup">
-      <input type="text" pInputText placeholder="Search" [(ngModel)]="search" />
+      <input
+        type="text"
+        pInputText
+        placeholder="Search"
+        [(ngModel)]="search"
+        (keyup.enter)="searchUsers()"
+      />
       <button
         type="button"
         pButton

@@ -1,0 +1,127 @@
+<div class="container">
+  <div class="pricing-content-text">Get just one or get ’em all.</div>
+  <div class="pricing-content-text-span">
+    Every template includes free updates, and can be used on unlimited projects
+    — both personal and commercial.
+  </div>
+
+  <div class="pricing-content">
+    <div class="pricing-side">
+      <div class="pricing-middle-header">
+        <div class="pricing-middle-header-text">Header Content</div>
+      </div>
+      <div class="pricing-middle-price">Free <span>!</span></div>
+
+      <div class="pricing-side-items">
+        <div class="pricing-side-item">
+          <i class="pi pi-check"></i>
+          <span>More content to be added to the content </span>
+        </div>
+        <div class="pricing-side-item">
+          <i class="pi pi-check"></i>
+          <span>More content to be added to the content </span>
+        </div>
+        <div class="pricing-side-item">
+          <i class="pi pi-check"></i>
+          <span>More content to be added to the content </span>
+        </div>
+        <div class="pricing-side-item">
+          <i class="pi pi-check"></i>
+          <span>More content to be added to the content </span>
+        </div>
+      </div>
+      <div class="pricing-content-button">
+        <button pButton *ngIf="!isAuth" routerLink="/auth/signup">
+          Sign Up
+        </button>
+        <button pButton *ngIf="isAuth" routerLink="/Blogs">Blogs</button>
+      </div>
+    </div>
+    <div class="pricing-middle">
+      <div class="pricing-middle-header">
+        <div class="pricing-middle-header-text">Header Content</div>
+        <div class="pricing-middle-header-info">Click Here info</div>
+      </div>
+      <div class="pricing-middle-descrption">
+        A plan that scales with your rapidly growing business growing business.
+      </div>
+      <div class="pricing-middle-price">$20 <span>/month</span></div>
+
+      <div class="pricing-side-items">
+        <div class="pricing-side-item">
+          <i class="pi pi-check"></i>
+          <span>More content to be added to the content </span>
+        </div>
+        <div class="pricing-side-item">
+          <i class="pi pi-check"></i>
+          <span>More content to be added to the content </span>
+        </div>
+        <div class="pricing-side-item">
+          <i class="pi pi-check"></i>
+          <span>More content to be added to the content </span>
+        </div>
+        <div class="pricing-side-item">
+          <i class="pi pi-check"></i>
+          <span>More content to be added to the content </span>
+        </div>
+        <div class="pricing-side-item">
+          <i class="pi pi-check"></i>
+          <span>More content to be added to the content </span>
+        </div>
+      </div>
+      <div class="pricing-content-button">
+        <button pButton (click)="handleButtonClick(20)">Buy $20 Plan</button>
+      </div>
+    </div>
+    <div class="pricing-side">
+      <div class="pricing-middle-header">
+        <div class="pricing-middle-header-text">Header Content</div>
+      </div>
+      <div class="pricing-middle-price">$40 <span>/month</span></div>
+
+      <div class="pricing-side-items">
+        <div class="pricing-side-item">
+          <i class="pi pi-check"></i>
+          <span>More content to be added to the content </span>
+        </div>
+
+        <div class="pricing-side-item">
+          <i class="pi pi-check"></i>
+          <span>More content to be added to the content </span>
+        </div>
+        <div class="pricing-side-item">
+          <i class="pi pi-check"></i>
+          <span>More content to be added to the content </span>
+        </div>
+        <div class="pricing-side-item">
+          <i class="pi pi-check"></i>
+          <span>More content to be added to the content </span>
+        </div>
+      </div>
+      <div class="pricing-content-button">
+        <button pButton (click)="handleButtonClick(40)">Buy $40 Plan</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p-dialog
+  [showHeader]="false"
+  [closable]="true"
+  [dismissableMask]="true"
+  [(visible)]="showPaymentDialog"
+  [modal]="true"
+  [style]="{ width: '400px' }"
+  [draggable]="false"
+  [resizable]="false"
+>
+  <p class="dialog-p">
+    To complete your purchase, you will be redirected to a secure payment link.
+    Are you sure you want to proceed?
+  </p>
+  <ng-template pTemplate="footer">
+    <p-button (click)="confirmPayment(false)">No, Cancel</p-button>
+
+    <button pButton (click)="confirmPayment(true)">Yes, Proceed</button>
+  </ng-template>
+</p-dialog>

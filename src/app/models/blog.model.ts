@@ -16,6 +16,7 @@ export interface Blogs {
   selectedCategorys: string[];
   tags: string[];
   createdAt: string;
+  selectedMembershipLevels: string;
 }
 export interface TopBlogs {
   title: string;

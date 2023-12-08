@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UsersService } from './../../services/users.service';
 import { Subscription } from 'rxjs';
 import { BlogService } from './../../services/blog.service';
+import { DynamicDialogRef } from 'primeng/dynamicdialog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-section',
@@ -11,7 +13,9 @@ import { BlogService } from './../../services/blog.service';
 export class SearchSectionComponent implements OnInit {
   constructor(
     private blogService: BlogService,
-    private usersService: UsersService
+    private usersService: UsersService,
+    private router: Router,
+    private ref: DynamicDialogRef
   ) {}
 
   visible: boolean = false;
@@ -27,32 +31,38 @@ export class SearchSectionComponent implements OnInit {
 
   ngOnInit() {
     this.isLoading = true;
+
     this.userId = this.usersService.getUserId();
     this.userIdListenerSubs = this.usersService
       .getAuthStatusListener()
       .subscribe((userId) => {
         this.userId = userId;
       });
+
     this.getDefault();
     this.isLoading = false;
   }
 
   getDefault() {
+    this.isLoading = true;
     this.isDefault = true;
     this.blogService.getTopFreeBlogs().subscribe(
       (data) => {
+        this.isLoading = false;
         this.defaultBlog = data;
         this.checkForNoBlogs();
       },
       (error) => {
+        this.isLoading = false;
         console.log(error);
       }
     );
   }
 
   getSearchBlogs() {
-    this.isDefault = false;
     this.isLoading = true;
+    this.isDefault = false;
+
     if (this.Search.trim() === '') {
       this.getDefault();
       this.isLoading = false;
@@ -69,6 +79,10 @@ export class SearchSectionComponent implements OnInit {
         }
       );
     }
+  }
+  onRowSelect(id: string) {
+    this.ref.close();
+    this.router.navigate(['BlogPage/', id]);
   }
 
   private checkForNoBlogs() {
