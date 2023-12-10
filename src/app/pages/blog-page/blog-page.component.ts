@@ -31,11 +31,12 @@ export class BlogPageComponent implements OnInit {
       this.blogId = params['id'];
       this.blogService.getBlogById(this.blogId).subscribe((data: any) => {
         this.blog = data;
-        console.log(this.blog);
         this.trustedText = this.sanitizer.bypassSecurityTrustHtml(
           this.blog.text
         );
         this.incrementViews();
+        console.log(this.blog.text);
+
         this.isLoading = false;
       });
     });

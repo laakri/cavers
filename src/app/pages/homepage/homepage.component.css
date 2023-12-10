@@ -3,7 +3,7 @@
     margin: auto;
 }
 .header {
-    color: #fff;
+    color: var(--whitecolor);
     padding: 30px;
     text-align: center;
     position: relative;
@@ -18,13 +18,12 @@
     top: -100px;
   }
 
-  /* Center the content within the header */
   .header-content {
     max-width: 800px;
     display: flex;
     flex-direction: column;
     gap: 20px;
-    margin: 150px auto;
+    margin: 100px auto;
     align-items: center;
   }
   .header-content-blop{
@@ -33,22 +32,22 @@
     width: max-content;
     border :var(--special-button-border) solid 1px;
   }
-  /* Style the first set of spans in the content */
   .header-content-first span:first-child  {
     font-size: 55px;
+    font-weight: 700;
     margin-bottom: 10px;
   }
   .header-content span:last-child {
     font-size: 40px;
+    font-weight: 700;
     margin-bottom: 10px;
     display: block;
   }
-  /* Style the main content span */
   .header-content-span  {
     max-width: 600px;
     margin: auto;
     display: block;
-    font-size: 18px;
+    font-size: 20px;
     margin-bottom: 20px;
     color: var(--graycolor);
   }
@@ -75,13 +74,13 @@
     margin-right: 10px;
   }
   
-  /* Additional styling for the buttons */
   .p-button {
     margin-right: 10px;
   }
   /************** Logo Cloud  *************/
 
   .cloud-logo-section{
+    margin-bottom: 80px;
     display: flex;
     flex-direction: column;
     gap: 20px;

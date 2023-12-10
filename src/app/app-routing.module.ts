@@ -6,6 +6,7 @@ import { BlogsComponent } from './pages/blogs/blogs.component';
 import { BlogPageComponent } from './pages/blog-page/blog-page.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { PricingPageComponent } from './pages/pricing-page/pricing-page.component';
+import { AboutPageComponent } from './pages/about-page/about-page.component';
 
 /**********  Authentication Dashboard *************** */
 import { AuthenticationComponent } from './authentication/authentication.component';
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'Pricing', component: PricingPageComponent },
   { path: 'Blogs', component: BlogsComponent },
   { path: 'BlogPage/:id', component: BlogPageComponent },
+  { path: 'AboutUs', component: AboutPageComponent },
   {
     path: 'auth',
     component: AuthenticationComponent,

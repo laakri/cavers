@@ -1,0 +1,67 @@
+.mainpage {
+    max-width: 900px;
+    margin: auto;
+    padding: 10px;
+}
+  .about-line{
+    width: 300px;
+    height: 7px;
+    border-radius: 7px;
+    background: var(--linnear-gardient);
+
+    margin:40px auto 20px 10px ;
+
+  }
+  .about-header-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;  }
+  
+  
+   span {
+    font-size: 20px;
+}
+  
+   p {
+    color: var(--graycolor);
+}
+  
+  .about-headline {
+    display: flex;
+    align-items: start;
+    gap: 10px;
+    padding: 10px;
+}
+  
+  .about-headline i {
+    color: var(--maincolor);
+}
+  
+  .about-headline div {
+    vertical-align: 1.6;
+    }
+  
+  .about-headline-text {
+    font-size: 18px;
+    vertical-align: 1.6;
+    margin-right: 5px;
+
+}
+  
+  
+  .about-quote {
+    border-left: var(--maincolor) solid 1px;
+    padding: 20px;
+    background-color: var(--special-button-background);
+}
+.about-img{
+    width: 95%;
+    height: 360px;
+    margin: auto;
+    background-image: url(../../../assets/img/collage-finance-banner-concept.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border: var(--bordercolor) solid 1px ;
+    border-radius: 20px;
+}

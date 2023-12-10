@@ -72,6 +72,7 @@ export class NavbarComponent implements OnInit {
   Logout() {
     this.UsersService.logout();
   }
+  /*************** change_theme ************** */
   change_theme(): void {
     this.isBrightTheme = !this.isBrightTheme;
     const body = document.body;

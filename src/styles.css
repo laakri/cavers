@@ -27,6 +27,36 @@ body{
     --special-button-color:#08d9d6;
     --special-button-background:#1b232a;
     --special-button-border:#265b7a;
+    --linnear-gardient: linear-gradient(to right, #ff80b5 ,#fff, #9089fc ,#fff,#ff80b5 , #9089fc,#fff );
+
+}
+body.light-theme {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x:hidden;
+    color: var(--whitecolor);
+    background: var(--bgcolor);
+    font-family: var(--font-family);
+  --bordercolor: #e1e4e8;
+  --bgcolor: #fff;
+  --bgtransparentcolor: #f9f9f9cb;
+  --soft-bgcolor: #f6f8fa;
+  --blackcolor: #000;
+  --whitecolor: #000;
+  --graycolor: #586069;
+  --maincolor: #0366d6;
+  --hovermaincolor: #4184b3;
+  --secendcolor: #d73a49;
+  --soft-darktranscolor: #eaecef;
+  --buttonactive: #f3f4f6;
+  --special-button-color: #000000;
+  --special-button-background: #f6f8fa;
+  --special-button-border: #000000;
+  --linnear-gardient: linear-gradient(to right, #ff80b5 , #9089fc ,#ff80b5 , #9089fc);
+
 }
 
 a,
@@ -51,12 +81,14 @@ ul {
 }
 textarea{
   background-color: var(--soft-bgcolor) !important;
+  border: var(--bordercolor) solid 1px !important;
   color: var(--whitecolor) !important;
 }
 input{
-  height: 35px;
+  height: 36px;
   background-color: var(--soft-bgcolor) !important;
   color: var(--whitecolor) !important;
+  border: var(--bordercolor) solid 1px !important;
 }
 input::placeholder{
   background-color: var(--soft-bgcolor);
@@ -114,6 +146,8 @@ input::placeholder{
 .p-dropdown {
       color: var(--whitecolor); 
       background: var(--soft-bgcolor);  
+  border: var(--bordercolor) solid 1px !important;
+
 }
   
 .p-dropdown .p-dropdown-label {
@@ -261,7 +295,7 @@ input::placeholder{
 }
 
 .p-datatable .p-datatable-tbody>tr:hover {
-  background: var(--blackcolor) !important;
+  background: var(--soft-color) !important;
   color: var(--whitecolor) !important;
 }
 
@@ -279,7 +313,7 @@ input::placeholder{
 }
 
 .p-datatable.p-datatable-striped .p-datatable-tbody>tr:nth-child(even):hover {
-  background: var(--blackcolor) !important;
+  background: var(--soft-color) !important;
 }
   /*********************-paginator********************/
 
@@ -288,6 +322,8 @@ input::placeholder{
   border: none;
   color: var(--whitecolor) !important;
 }
+  /*********************-skeleton********************/
+
 .p-skeleton{
   background: var(--soft-bgcolor) !important;
 
@@ -311,17 +347,18 @@ input::placeholder{
   .p-editor-toolbar {
     background-color: var(--soft-bgcolor) !important;
     color: var(--whitecolor) !important;
-    border: var(--special-button-color) solid 1px !important;
+    border: var(--bordercolor) solid 1px !important;
     
   }
   .p-editor-container .p-editor-content.ql-snow {
-    border: 1px solid var(--blackcolor);fill: var(--soft-bgcolor) !important;
+    border: var(--bordercolor) solid 1px !important;
+    fill: var(--soft-bgcolor) !important;
     background-color: var(--soft-bgcolor) !important;
   }
   
   .p-editor-container .p-editor-content .ql-editor {
     color: var(--whitecolor);
-    border: var(--special-button-color) solid 1px !important;
+    border: var(--bordercolor) solid 1px !important;
     background-color: var(--bgcolor) !important;
   }
   

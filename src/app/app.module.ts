@@ -77,6 +77,7 @@ import { PricingComponent } from './components/pricing/pricing.component';
 import { TermsConditionComponent } from './components/terms-condition/terms-condition.component';
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 import { DisclaimerComponent } from './components/disclaimer/disclaimer.component';
+import { AboutPageComponent } from './pages/about-page/about-page.component';
 
 @NgModule({
   declarations: [
@@ -98,6 +99,7 @@ import { DisclaimerComponent } from './components/disclaimer/disclaimer.componen
     TermsConditionComponent,
     PrivacyPolicyComponent,
     DisclaimerComponent,
+    AboutPageComponent,
   ],
   imports: [
     HttpClientModule,

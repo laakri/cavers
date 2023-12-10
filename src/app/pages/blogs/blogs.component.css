@@ -54,10 +54,6 @@
     justify-content: space-between;
     gap: 20px;
     border: solid 1px transparent ;
-    
-    border: solid 1px var(--bordercolor) ;
-    background-color: var(--soft-bgcolor);
-    
   }
   
   .blog:hover {
@@ -133,12 +129,12 @@
   }
   .blog-level{
     position: absolute;
-    background-color: var(--special-button-background);
-    color: var(--special-button-color);
+    background:linear-gradient(to right, #a0ecf6 , #aafcc5 );
+    color: black;
     font-size: 18px;
     width: max-content;
     bottom: 10px;
-    padding: 10px 20px;
+    padding: 5px 10px;
     border-top-right-radius: 10px;
   }
   .right-section {  

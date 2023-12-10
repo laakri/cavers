@@ -1,21 +1,17 @@
 <div class="banner-toolbar" *ngIf="banner" [ngClass]="bannerClass">
-  <div class="banner-mainpage">
-    <div class="banner-left">🔥 Hot Deals!</div>
-    <div class="banner-middle">
-      Libero voluptatum atque exercitationem praesentium provident odit.
-
-      <a href="#" class="learn-more">
-        <span class="underline font-bold">Learn More</span>
-      </a>
-    </div>
-    <div class="banner-right">
-      <button
-        pButton
-        class="p-button-text close-button"
-        icon="pi pi-times"
-        (click)="isBanner()"
-      ></button>
-    </div>
+  <div>
+    Cavers 2024 Join us in Denver from June 1 – 30 to
+    <a href="#" class="learn-more">
+      <span class="underline font-bold">see what’s coming next →</span>
+    </a>
+  </div>
+  <div class="banner-right">
+    <button
+      pButton
+      class="p-button-text close-button"
+      icon="pi pi-times"
+      (click)="isBanner()"
+    ></button>
   </div>
 </div>
 
@@ -48,7 +44,7 @@
         <button
           class="p-button-text"
           routerLinkActive="activebutton"
-          [routerLink]="['categorie']"
+          [routerLink]="['AboutUs']"
           label="About"
           pButton
         ></button>

@@ -1,24 +1,28 @@
 
  /* Banner Toolbar */
  .banner-toolbar {
-  background: linear-gradient(210deg, rgba(23,54,134,1) 0%, rgba(0,94,47,1) 51%, rgba(155,61,89,1) 100%);
-  color: var(--whitecolor);
+  background: var(--linnear-gardient);
+  
+  color: var(--blackcolor);
   height: 40px;
- }
-
- .banner-mainpage {
-  max-width: 1300px;
   margin:  auto;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: center;
+  position: relative;
  }
- 
 
- 
+
+
+ .learn-more{
+  color: var(--blackcolor);
+  font-weight: bold;
+ }
  .close-button {
-  margin-top: 2px;
-  color: var(--whitecolor) !important;
+  position: absolute;
+  right: 10px;
+  top: 2px;
+  color: var(--blackcolor)  !important;
   height: 35px;
   width: 35px;
   border-radius: 5px;
