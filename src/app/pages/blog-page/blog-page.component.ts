@@ -26,16 +26,17 @@ export class BlogPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.isLoading = true;
-
     this.route.params.subscribe((params) => {
       this.blogId = params['id'];
       this.blogService.getBlogById(this.blogId).subscribe((data: any) => {
         this.blog = data;
+
         this.trustedText = this.sanitizer.bypassSecurityTrustHtml(
           this.blog.text
         );
+
+        console.log(this.trustedText);
         this.incrementViews();
-        console.log(this.blog.text);
 
         this.isLoading = false;
       });

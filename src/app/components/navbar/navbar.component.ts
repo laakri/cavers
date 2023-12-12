@@ -14,7 +14,7 @@ import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 export class NavbarComponent implements OnInit {
   items: MenuItem[] | undefined;
   isBrightTheme = false;
-  banner: boolean = true;
+  banner: boolean = false;
   bannerClass!: string;
   isAuth: boolean = false;
   private isAuthListenerSubs!: Subscription;
@@ -42,7 +42,7 @@ export class NavbarComponent implements OnInit {
         this.userName = userNames;
       });
 
-    this.isBrightTheme = localStorage.getItem('mode') === 'bright-theme';
+    this.isBrightTheme = localStorage.getItem('mode') === 'light-theme';
   }
 
   showDialog() {

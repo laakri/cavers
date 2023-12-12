@@ -2,7 +2,7 @@
 @import "primeng/resources/primeng.css";
 @import "primeicons/primeicons.css";
 @import "~quill/dist/quill.snow.css";
-body{
+body {
     height: 100%;
     width: 100%;
     margin: 0;
@@ -30,7 +30,7 @@ body{
     --linnear-gardient: linear-gradient(to right, #ff80b5 ,#fff, #9089fc ,#fff,#ff80b5 , #9089fc,#fff );
 
 }
-body.light-theme {
+body.light-theme{
     height: 100%;
     width: 100%;
     margin: 0;
@@ -51,10 +51,10 @@ body.light-theme {
   --hovermaincolor: #4184b3;
   --secendcolor: #d73a49;
   --soft-darktranscolor: #eaecef;
-  --buttonactive: #f3f4f6;
-  --special-button-color: #000000;
-  --special-button-background: #f6f8fa;
-  --special-button-border: #000000;
+  --buttonactive: #e8e8e8;
+  --special-button-color:#0d7573;
+    --special-button-background:#fafafa;
+    --special-button-border:#76b7b6;
   --linnear-gardient: linear-gradient(to right, #ff80b5 , #9089fc ,#ff80b5 , #9089fc);
 
 }
@@ -374,4 +374,83 @@ input::placeholder{
 .p-speeddial-button.p-button.p-button-icon-only .p-icon {
     width: 14px; /* Change icon width to 2px */
     height: 14px; /* Change icon height to 2px */
+}
+
+  /*********************-p-accordion********************/
+
+.p-accordion .p-accordion-header .p-accordion-header-link {
+  border: 2px solid var(--bordercolor);
+  color: var(--whitecolor);
+  background: var(--soft-bgcolor);
+}
+
+.p-accordion .p-accordion-header .p-accordion-header-link:focus {
+  outline: 0 none;
+  outline-offset: 0;
+  box-shadow: 0 0 0 1px var(--maincolor);
+}
+
+.p-accordion .p-accordion-header:not(.p-highlight):not(.p-disabled):hover .p-accordion-header-link {
+  background: rgba(158, 173, 230, 0.08);
+  border-color: var(--bordercolor);
+  color: var(--whitecolor);
+}
+
+.p-accordion .p-accordion-header:not(.p-disabled).p-highlight .p-accordion-header-link {
+  background: var(--soft-bgcolor);
+  border-color: var(--bordercolor);
+  color: var(--whitecolor);
+}
+
+.p-accordion .p-accordion-header:not(.p-disabled).p-highlight:hover .p-accordion-header-link {
+  border-color: var(--bordercolor);
+  background: rgba(158, 173, 230, 0.08);
+  color: var(--whitecolor);
+}
+
+.p-accordion .p-accordion-content {
+  border: 2px solid var(--bordercolor);
+  background: var(--soft-bgcolor);
+  color: var(--whitecolor);
+  border-top: 0;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+  /*********************-p-dialog********************/
+
+.p-dialog {
+  border: 1px solid var(--bordercolor);
+}
+
+.p-dialog .p-dialog-header {
+  background: var(--soft-bgcolor);
+  color: var(--whitecolor);
+}
+
+
+.p-dialog .p-dialog-content {
+  background: var(--soft-bgcolor);
+  color: var(--whitecolor);
+}
+
+
+.p-dialog .p-dialog-footer {
+  background: var(--soft-bgcolor);
+  color: var(--whitecolor);
+}
+
+.p-dialog .p-dialog-footer button {
+  margin: 0 0.5rem 0 0;
+  width: auto;
+}
+
+.p-dialog.p-confirm-dialog .p-confirm-dialog-icon {
+  font-size: 2rem;
+}
+
+.p-dialog.p-confirm-dialog .p-confirm-dialog-icon.p-icon {
+  width: 2rem;
+  height: 2rem;
 }

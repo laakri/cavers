@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { MessageService } from 'primeng/api';
-import { Blog } from '../../models/blog.model';
 import { BlogService } from '../../services/blog.service';
+import { DomSanitizer } from '@angular/platform-browser';
 interface Category {
   name: string;
   code: string;
 }
+
 @Component({
   selector: 'app-edit-blog',
   templateUrl: './edit-blog.component.html',
@@ -19,7 +20,7 @@ export class EditBlogComponent implements OnInit {
   tagForm: FormGroup;
   blogId: string = '';
   selectedMembershipLevels = '';
-
+  text: string = 'faz';
   selectedCategorys: Category[] = [];
   categorys: Category[] = [];
 
@@ -33,11 +34,13 @@ export class EditBlogComponent implements OnInit {
   isLoading: boolean = false;
   isUpdatingLoading: boolean = false;
   notFound: boolean = false;
+  trustedText: any;
 
   constructor(
     private fb: FormBuilder,
     private messageService: MessageService,
     private blogService: BlogService,
+    private sanitizer: DomSanitizer,
     private route: ActivatedRoute
   ) {
     this.formGroup = this.fb.group({
@@ -76,7 +79,7 @@ export class EditBlogComponent implements OnInit {
             selectedCategorys: blog.selectedCategorys,
             selectedMembershipLevels: blog.selectedMembershipLevels,
           });
-
+          this.trustedText = this.sanitizer.bypassSecurityTrustHtml(blog.text);
           this.tags = blog.tags;
           this.blogImagePreview = blog.blogImage;
           this.chartImagePreview = blog.chartImage;
@@ -106,6 +109,16 @@ export class EditBlogComponent implements OnInit {
       );
     });
   }
+  /*************** initializeQuill  ******************/
+
+  handleCustomIframeButton() {
+    const iframeLink = prompt('Enter the iframe link:');
+    if (iframeLink && this.text) {
+      this.text += `
+      <iframe width="560" height="350" src="${iframeLink}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
+    }
+  }
+
   /*************** Image Thumbnail  ******************/
 
   onBlogImagePicked(event: Event) {
@@ -122,6 +135,7 @@ export class EditBlogComponent implements OnInit {
     this.blogImageFile = file;
     this.blogImageName = file.name;
   }
+
   /*************** Image Chart Image  ******************/
 
   onBlogChartPicked(event: Event) {
@@ -204,7 +218,6 @@ export class EditBlogComponent implements OnInit {
 
       this.blogService.updateBlog(this.blogId, formData).subscribe(
         (updateBlog) => {
-          console.log('Blog update:', updateBlog);
           this.messageService.add({
             severity: 'success',
             summary: 'Success',
