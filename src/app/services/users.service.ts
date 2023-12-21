@@ -9,6 +9,7 @@ import { MessageService } from 'primeng/api';
 export class UsersService {
   private isAuthenticated = false;
   private isAdminAuthenticated = false;
+  private isAdmin: any = false;
   private userId: any;
   private userName: any;
   private userRole: any = 'free';
@@ -19,7 +20,9 @@ export class UsersService {
   private usernameListener = new Subject<any>();
   private authStatusListener = new Subject<boolean>();
   private authAdminStatusListener = new Subject<boolean>();
-
+  isAdminUser(): boolean {
+    return this.isAdminAuthenticated;
+  }
   apiURL = 'http://localhost:4401';
 
   constructor(
@@ -111,6 +114,7 @@ export class UsersService {
         userId: string;
         userName: string;
         userRole: string;
+        isAdmin: boolean;
       }>(this.apiURL + '/api/users/login', user)
       .subscribe(
         (response) => {
@@ -123,7 +127,8 @@ export class UsersService {
             this.userId = response.userId;
             this.userName = response.userName;
             this.userRole = response.userRole;
-            if (this.userRole == 'admin') {
+            this.isAdmin = response.isAdmin;
+            if (this.isAdmin) {
               this.isAdminAuthenticated = true;
               this.authAdminStatusListener.next(true);
             }
@@ -140,7 +145,8 @@ export class UsersService {
               expirationDate,
               this.userId,
               this.userName,
-              this.userRole
+              this.userRole,
+              this.isAdmin
             );
             const successMessage = 'Login Successfuly !';
             this.messageService.add({
@@ -174,12 +180,13 @@ export class UsersService {
       this.userId = authInformation.userId;
       this.userName = authInformation.userName;
       this.userRole = authInformation.userRole;
+      this.isAdmin = authInformation.isAdmin;
 
       this.setAuthTimer(expiresIn / 1000);
       this.authStatusListener.next(true);
       this.usernameListener.next(this.userName);
       this.useridListener.next(this.userId);
-      if (this.userRole == 'admin') {
+      if (this.isAdmin) {
         this.isAdminAuthenticated = true;
         this.authAdminStatusListener.next(true);
       }
@@ -213,13 +220,15 @@ export class UsersService {
     expirationDate: Date,
     userId: string,
     userName: string,
-    userRole: string
+    userRole: string,
+    isAdmin: any
   ) {
     localStorage.setItem('token', token);
     localStorage.setItem('expiration', expirationDate.toISOString());
     localStorage.setItem('userId', userId);
     localStorage.setItem('userName', userName);
     localStorage.setItem('userRole', userRole);
+    localStorage.setItem('isAdmin', isAdmin);
   }
 
   private clearAuthData() {
@@ -228,7 +237,7 @@ export class UsersService {
     localStorage.removeItem('userId');
     localStorage.removeItem('userName');
     localStorage.removeItem('userRole');
-    localStorage.removeItem('userPicture');
+    localStorage.removeItem('isAdmin');
   }
 
   private getAuthData() {
@@ -237,7 +246,7 @@ export class UsersService {
     const userId = localStorage.getItem('userId');
     const userName = localStorage.getItem('userName');
     const userRole = localStorage.getItem('userRole');
-    const userPicture = localStorage.getItem('userPicture');
+    const isAdmin = localStorage.getItem('isAdmin');
 
     if (!token || !expirationDate) {
       return;
@@ -248,7 +257,7 @@ export class UsersService {
       userId: userId,
       userName: userName,
       userRole: userRole,
-      userPicture: userPicture,
+      isAdmin: isAdmin,
     };
   }
   /*************************************************/

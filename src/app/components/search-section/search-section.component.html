@@ -31,11 +31,15 @@
   <div class="search-content">
     <div class="blogs">
       <div class="blog" *ngFor="let blog of defaultBlog">
-        <a (click)="onRowSelect(blog._id)">
-          <div class="blog-title">{{ blog.title }}</div>
+        <a (click)="onRowSelect(blog)">
+          <div class="blog-title">
+            <i [ngClass]="getBlogColor(blog)" class="pi pi-bitcoin"></i>
+            {{ blog.title }}
+          </div>
         </a>
         <span>{{ blog.shortDescription }} </span>
       </div>
+
       <div *ngIf="noBlogsFound" class="no-blogs-message">No blogs found.</div>
     </div>
   </div>

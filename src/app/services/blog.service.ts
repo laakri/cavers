@@ -51,4 +51,8 @@ export class BlogService {
   getBlogsHomePage(): Observable<any> {
     return this.http.get(`${this.apiUrl}/blogs-for-homepage`);
   }
+  deleteBlog(blogId: string): Observable<{ message: string }> {
+    const url = `${this.apiUrl}/delete-blog/${blogId}`;
+    return this.http.delete<{ message: string }>(url);
+  }
 }

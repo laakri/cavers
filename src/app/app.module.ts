@@ -78,6 +78,7 @@ import { TermsConditionComponent } from './components/terms-condition/terms-cond
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 import { DisclaimerComponent } from './components/disclaimer/disclaimer.component';
 import { AboutPageComponent } from './pages/about-page/about-page.component';
+import { UnauthorizedErrorComponent } from './components/unauthorized-error/unauthorized-error.component';
 
 @NgModule({
   declarations: [
@@ -100,6 +101,7 @@ import { AboutPageComponent } from './pages/about-page/about-page.component';
     PrivacyPolicyComponent,
     DisclaimerComponent,
     AboutPageComponent,
+    UnauthorizedErrorComponent,
   ],
   imports: [
     HttpClientModule,
@@ -110,7 +112,6 @@ import { AboutPageComponent } from './pages/about-page/about-page.component';
     ButtonModule,
     InputTextModule,
     ToolbarModule,
-    DropdownModule,
     PanelModule,
     MenuModule,
     TieredMenuModule,

@@ -7,6 +7,7 @@ import { BlogPageComponent } from './pages/blog-page/blog-page.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { PricingPageComponent } from './pages/pricing-page/pricing-page.component';
 import { AboutPageComponent } from './pages/about-page/about-page.component';
+import { UnauthorizedErrorComponent } from './components/unauthorized-error/unauthorized-error.component';
 
 /**********  Authentication Dashboard *************** */
 import { AuthenticationComponent } from './authentication/authentication.component';
@@ -17,6 +18,9 @@ import { LoginComponent } from './authentication/login/login.component';
 import { AddBlogComponent } from './dashboard/add-blog/add-blog.component';
 import { EditBlogComponent } from './dashboard/edit-blog/edit-blog.component';
 import { UsersListComponent } from './dashboard/users-list/users-list.component';
+/**********  Component Dashboard *************** */
+
+import { AdminAuthGuard } from './admin-auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -34,9 +38,22 @@ const routes: Routes = [
       { path: 'signup', component: SignupComponent },
     ],
   },
-  { path: 'AddBlog', component: AddBlogComponent },
-  { path: 'EditBlog/:id', component: EditBlogComponent },
-  { path: 'Users', component: UsersListComponent },
+  {
+    path: 'AddBlog',
+    component: AddBlogComponent,
+    canActivate: [AdminAuthGuard],
+  },
+  {
+    path: 'EditBlog/:id',
+    component: EditBlogComponent,
+    canActivate: [AdminAuthGuard],
+  },
+  {
+    path: 'Users',
+    component: UsersListComponent,
+    canActivate: [AdminAuthGuard],
+  },
+  { path: 'unauthorized', component: UnauthorizedErrorComponent },
 ];
 
 @NgModule({

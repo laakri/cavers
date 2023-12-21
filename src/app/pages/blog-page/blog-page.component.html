@@ -15,7 +15,7 @@
   </div>
 
   <ng-template #content>
-    <div class="speedDial">
+    <div class="speedDial" *ngIf="isAuthAdmin">
       <p-speedDial
         showIcon="pi pi-ellipsis-v"
         [model]="items"
@@ -47,3 +47,4 @@
     </div>
   </ng-template>
 </div>
+<p-confirmDialog></p-confirmDialog>

@@ -17,7 +17,9 @@ export class NavbarComponent implements OnInit {
   banner: boolean = false;
   bannerClass!: string;
   isAuth: boolean = false;
+  isAuthAdmin: boolean = false;
   private isAuthListenerSubs!: Subscription;
+  private isAuthAdminListenerSubs!: Subscription;
   userName: any;
   firstLetter!: string;
   Search: string = '';
@@ -30,6 +32,11 @@ export class NavbarComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.isAuthAdmin = this.UsersService.isAdminUser();
+    this.isAuthAdminListenerSubs =
+      this.UsersService.getAuthStatusListener().subscribe((isAuthenticated) => {
+        this.isAuthAdmin = isAuthenticated;
+      });
     this.isAuth = this.UsersService.getIsAuth();
     this.isAuthListenerSubs =
       this.UsersService.getAuthStatusListener().subscribe((isAuthenticated) => {

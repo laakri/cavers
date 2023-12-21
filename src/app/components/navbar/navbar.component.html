@@ -56,6 +56,7 @@
           pButton
         ></button>
         <button
+          *ngIf="isAuthAdmin"
           class="p-button-text"
           routerLinkActive="activebutton"
           [routerLink]="['AddBlog']"
@@ -63,6 +64,7 @@
           pButton
         ></button
         ><button
+          *ngIf="isAuthAdmin"
           class="p-button-text"
           routerLinkActive="activebutton"
           [routerLink]="['EditBlog/6569fe8b5fd9d920d37fef8f']"
@@ -71,6 +73,7 @@
         ></button>
 
         <button
+          *ngIf="isAuthAdmin"
           class="p-button-text"
           routerLinkActive="activebutton"
           [routerLink]="['Users']"

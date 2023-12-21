@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { BlogService } from './../../services/blog.service';
 import { DynamicDialogRef } from 'primeng/dynamicdialog';
 import { Router } from '@angular/router';
+import { PrimeIcons } from 'primeng/api';
 
 @Component({
   selector: 'app-search-section',
@@ -18,7 +19,7 @@ export class SearchSectionComponent implements OnInit {
     private ref: DynamicDialogRef
   ) {}
 
-  visible: boolean = false;
+  visible: boolean = true;
   Search: string = '';
   position: any = 'top';
   defaultBlog: any[] = [];
@@ -28,10 +29,19 @@ export class SearchSectionComponent implements OnInit {
   noBlogsFound: boolean = false;
   isLoading: boolean = false;
   isDefault: boolean = false;
+  userRole: any = 'free';
+  private userRoleListenerSubs!: Subscription;
 
   ngOnInit() {
     this.isLoading = true;
-
+    this.userRole = this.usersService.getUserRole();
+    console.log(this.userRole);
+    this.userRoleListenerSubs = this.usersService
+      .getAuthStatusListener()
+      .subscribe((userRole) => {
+        this.userRole = userRole;
+        this.getDefault();
+      });
     this.userId = this.usersService.getUserId();
     this.userIdListenerSubs = this.usersService
       .getAuthStatusListener()
@@ -48,6 +58,7 @@ export class SearchSectionComponent implements OnInit {
     this.isDefault = true;
     this.blogService.getTopFreeBlogs().subscribe(
       (data) => {
+        console.log(data);
         this.isLoading = false;
         this.defaultBlog = data;
         this.checkForNoBlogs();
@@ -69,6 +80,7 @@ export class SearchSectionComponent implements OnInit {
     } else {
       this.blogService.getSearchBlogs(this.Search, this.userId).subscribe(
         (data) => {
+          console.log(data);
           this.defaultBlog = data.blogs;
           this.checkForNoBlogs();
           this.isLoading = false;
@@ -80,9 +92,51 @@ export class SearchSectionComponent implements OnInit {
       );
     }
   }
-  onRowSelect(id: string) {
+  getBlogColor(blog: any): string {
+    const membershipLevel = blog.selectedMembershipLevels || 'free';
+    switch (membershipLevel) {
+      case 'silver':
+        return 'silver-color';
+      case 'plat':
+        return 'gold-color';
+      default:
+        return '';
+    }
+  }
+
+  onRowSelect(blog: any) {
+    console.log(this.userRole);
+    const isUserSilver = this.userRole === 'silver';
+    const isUserPlat = this.userRole === 'plat';
+    if (
+      blog.selectedMembershipLevels == undefined ||
+      blog.selectedMembershipLevels == ''
+    ) {
+      blog.selectedMembershipLevels = 'free';
+    }
+
+    if (isUserPlat) {
+      this.navigateToBlog(blog._id);
+    } else if (isUserSilver && blog.selectedMembershipLevels !== 'plat') {
+      this.navigateToBlog(blog._id);
+    } else if (
+      !this.userRole ||
+      (this.userRole === 'free' && blog.selectedMembershipLevels === 'free')
+    ) {
+      this.navigateToBlog(blog._id);
+    } else {
+      this.navigateToPricingPage();
+    }
+  }
+
+  private navigateToBlog(id: string) {
     this.ref.close();
     this.router.navigate(['BlogPage/', id]);
+  }
+
+  private navigateToPricingPage() {
+    this.ref.close();
+    this.router.navigate(['Pricing']);
   }
 
   private checkForNoBlogs() {
