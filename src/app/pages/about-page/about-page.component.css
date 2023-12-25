@@ -8,14 +8,13 @@
     height: 7px;
     border-radius: 7px;
     background: var(--linnear-gardient);
-
     margin:40px auto 20px 10px ;
-
   }
   .about-header-content {
     display: flex;
     flex-direction: column;
-    gap: 10px;  }
+    gap: 10px;  
+  }
   
   
    span {

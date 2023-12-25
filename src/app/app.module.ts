@@ -79,6 +79,7 @@ import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-poli
 import { DisclaimerComponent } from './components/disclaimer/disclaimer.component';
 import { AboutPageComponent } from './pages/about-page/about-page.component';
 import { UnauthorizedErrorComponent } from './components/unauthorized-error/unauthorized-error.component';
+import { ContactPageComponent } from './pages/contact-page/contact-page.component';
 
 @NgModule({
   declarations: [
@@ -102,6 +103,7 @@ import { UnauthorizedErrorComponent } from './components/unauthorized-error/unau
     DisclaimerComponent,
     AboutPageComponent,
     UnauthorizedErrorComponent,
+    ContactPageComponent,
   ],
   imports: [
     HttpClientModule,

@@ -26,7 +26,7 @@
       </div>
       <p-divider layout="vertical" class="divider-vertical"></p-divider>
 
-      <div class="middle-toolbar">
+      <div class="middle-toolbar" *ngIf="!isSmallScreen">
         <button
           class="p-button-text"
           routerLinkActive="activebutton"
@@ -51,7 +51,7 @@
         <button
           class="p-button-text"
           routerLinkActive="activebutton"
-          [routerLink]="['categorie']"
+          [routerLink]="['ContactUs']"
           label="Contact"
           pButton
         ></button>
@@ -83,7 +83,11 @@
       </div>
     </div>
     <div class="right-toolbar">
-      <span class="p-input-icon-left" (click)="showDialog()">
+      <span
+        class="p-input-icon-left"
+        (click)="showDialog()"
+        *ngIf="!isSmallScreen"
+      >
         <i class="pi pi-search"></i>
         <input
           type="text"
@@ -92,7 +96,13 @@
           placeholder="Search"
         />
       </span>
-
+      <button
+        *ngIf="isSmallScreen"
+        (click)="showDialog()"
+        pButton
+        icon="pi pi-search"
+        class="p-button-text theme-mode"
+      ></button>
       <button
         *ngIf="!isAuth"
         pButton
@@ -126,6 +136,22 @@
         icon="pi pi-sun"
         class="p-button-text theme-mode"
       ></button>
+      <button
+        *ngIf="isSmallScreen"
+        class="p-button-text menu-button"
+        pButton
+        type="button"
+        [ngClass]="{ 'menu-open': isMenuOpen }"
+        [icon]="isMenuOpen ? 'pi pi-times' : 'pi pi-bars'"
+        (click)="toggleMenu()"
+      ></button>
     </div>
   </div>
 </div>
+<p-menu
+  class="menu"
+  *ngIf="isSmallScreen && isMenuOpen"
+  [model]="menuItems"
+  [styleClass]="'p-d-lg-none'"
+  [style]="{ display: isMenuOpen ? 'block' : 'none' }"
+></p-menu>

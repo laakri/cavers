@@ -1,0 +1,64 @@
+.container {
+    max-width: 1200px;
+    margin: auto;
+  }
+.additional-content {
+    margin: 40px auto;
+  }
+  
+  .additional-content h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: var(--special-button-color);
+  }
+  
+  .additional-content ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .additional-content li {
+    margin-bottom: 15px;
+  }
+  
+  .additional-content li strong {
+    font-weight: bold;
+  }
+  
+  .additional-content .testimonial {
+    margin-bottom: 30px;
+  }
+  
+  .additional-content blockquote {
+    font-style: italic;
+    margin-bottom: 10px;
+  }
+  
+  .additional-content cite {
+    font-weight: bold;
+  }
+  
+  .blog-plan {
+    margin-bottom: 40px;
+  }
+  
+  .blog-plan h3 {
+    font-size: 24px;
+    color: var(--special-button-color);
+    margin-bottom: 10px;
+  }
+  
+  .blog-plan p {
+    margin-bottom: 15px;
+  }
+  
+  .blog-plan ul {
+    list-style-type: disc;
+    margin-left: 20px;
+  }
+  
+  .blog-plan li {
+    margin-bottom: 10px;
+  }
+  

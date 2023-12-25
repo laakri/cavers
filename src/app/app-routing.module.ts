@@ -8,6 +8,7 @@ import { HomepageComponent } from './pages/homepage/homepage.component';
 import { PricingPageComponent } from './pages/pricing-page/pricing-page.component';
 import { AboutPageComponent } from './pages/about-page/about-page.component';
 import { UnauthorizedErrorComponent } from './components/unauthorized-error/unauthorized-error.component';
+import { ContactPageComponent } from './pages/contact-page/contact-page.component';
 
 /**********  Authentication Dashboard *************** */
 import { AuthenticationComponent } from './authentication/authentication.component';
@@ -18,8 +19,8 @@ import { LoginComponent } from './authentication/login/login.component';
 import { AddBlogComponent } from './dashboard/add-blog/add-blog.component';
 import { EditBlogComponent } from './dashboard/edit-blog/edit-blog.component';
 import { UsersListComponent } from './dashboard/users-list/users-list.component';
-/**********  Component Dashboard *************** */
 
+/**********  AdminAuthGuard *************** */
 import { AdminAuthGuard } from './admin-auth.guard';
 
 const routes: Routes = [
@@ -29,6 +30,7 @@ const routes: Routes = [
   { path: 'Blogs', component: BlogsComponent },
   { path: 'BlogPage/:id', component: BlogPageComponent },
   { path: 'AboutUs', component: AboutPageComponent },
+  { path: 'ContactUs', component: ContactPageComponent },
   {
     path: 'auth',
     component: AuthenticationComponent,

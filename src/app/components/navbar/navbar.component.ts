@@ -1,9 +1,9 @@
-import { UsersService } from '../../services/users.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { Subscription } from 'rxjs';
 import { SearchSectionComponent } from '../search-section/search-section.component';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { UsersService } from '../../services/users.service';
 
 @Component({
   selector: 'app-navbar',
@@ -25,6 +25,10 @@ export class NavbarComponent implements OnInit {
   Search: string = '';
   private userNameListenerSubs!: Subscription;
   ref: DynamicDialogRef | undefined;
+  menuItems: MenuItem[] = [];
+  isNavbarTransparent = true;
+  isSmallScreen = false;
+  isMenuOpen = false;
 
   constructor(
     private UsersService: UsersService,
@@ -50,8 +54,50 @@ export class NavbarComponent implements OnInit {
       });
 
     this.isBrightTheme = localStorage.getItem('mode') === 'light-theme';
+    this.checkScreenSize();
+    window.addEventListener('resize', () => {
+      this.checkScreenSize();
+    });
+
+    this.menuItems = [
+      {
+        label: 'Blogs',
+        routerLink: ['Blogs'],
+      },
+      {
+        label: 'Pricing',
+        routerLink: ['Pricing'],
+      },
+      {
+        label: 'About',
+        routerLink: ['AboutUs'],
+      },
+      {
+        label: 'Contact',
+        routerLink: ['ContactUs'],
+      },
+    ];
+  }
+  /*************** Global ************** */
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    if (window.pageYOffset > 0) {
+      this.isNavbarTransparent = false;
+    } else {
+      this.isNavbarTransparent = true;
+    }
+  }
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.isSmallScreen = window.innerWidth < 1100;
+  }
+  checkScreenSize(): void {
+    this.isSmallScreen = window.innerWidth < 1100;
   }
 
+  toggleMenu(): void {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
   showDialog() {
     this.ref = this.dialogService.open(SearchSectionComponent, {
       showHeader: false,

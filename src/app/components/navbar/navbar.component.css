@@ -1,5 +1,6 @@
-
- /* Banner Toolbar */
+.navbar-transparent {
+  background-color: transparent;
+}
  .banner-toolbar {
   background: var(--linnear-gardient);
   
@@ -11,8 +12,6 @@
   justify-content: center;
   position: relative;
  }
-
-
 
  .learn-more{
   color: var(--blackcolor);
@@ -119,9 +118,7 @@
 
 .padge-icon {
   color: var(--whitecolor) !important;
-
 }
-
 
 .theme-mode {
   color: var(--whitecolor) !important;

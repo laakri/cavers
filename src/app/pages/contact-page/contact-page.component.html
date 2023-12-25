@@ -1,0 +1,95 @@
+<!-- contact-page.component.html -->
+<div class="mainpage">
+  <div class="contact-line"></div>
+  <div class="contact-header-content">
+    <h1>Get in Touch with Cavers</h1>
+    <span>
+      Select a category below to address your query or explore our Help Center
+      for additional assistance.
+    </span>
+    <p>
+      Join us on an exploration of the fascinating world of decentralized
+      finance, NFTs, and smart contracts. At Crypto Blogs, our mission is to
+      demystify the crypto space, providing valuable insights to enthusiasts at
+      every level of expertise.
+    </p>
+    <span>Choose a topic:</span>
+    <div class="contact-quotes">
+      <div class="contact-quote" (click)="selectTopic('My Account')">
+        <i
+          class="pi pi-circle"
+          [ngClass]="{
+            'pi-circle-fill': selectedTopic === 'My Account'
+          }"
+        ></i>
+        My Account
+      </div>
+      <div class="contact-quote" (click)="selectTopic('Payment')">
+        <i
+          class="pi pi-circle"
+          [ngClass]="{
+            'pi-circle-fill': selectedTopic === 'Payment'
+          }"
+        ></i>
+        Payment
+      </div>
+      <div class="contact-quote" (click)="selectTopic('Other')">
+        <i
+          class="pi pi-circle"
+          [ngClass]="{
+            'pi-circle-fill': selectedTopic === 'Other'
+          }"
+        ></i>
+        Other
+      </div>
+    </div>
+
+    <div class="form-section" *ngIf="selectedTopic">
+      <input
+        type="email"
+        pInputText
+        placeholder="Your Email Address"
+        [(ngModel)]="userEmail"
+      />
+      <textarea
+        id="float-input"
+        rows="5"
+        cols="30"
+        placeholder="Describe Your Inquiry"
+        pInputTextarea
+        [(ngModel)]="userProblem"
+      ></textarea>
+      <p-button
+        label="Submit"
+        (click)="submitForm()"
+        [disabled]="loading"
+        [loading]="loading"
+      ></p-button>
+    </div>
+
+    <div class="contact-resources">
+      <h2>Explore Our Resources</h2>
+      <p>
+        Visit our <a href="/AboutUs">Help Center</a> to find answers to common
+        questions and discover valuable resources to enhance your crypto
+        journey.
+      </p>
+    </div>
+
+    <div class="contact-social">
+      <h2>Connect on Social Media</h2>
+      <p>
+        Stay updated on the latest crypto trends and interact with our
+        community. Follow us on
+        <a href="https://twitter.com/cryptoblogs" target="_blank">Twitter</a>,
+        <a href="https://www.facebook.com/cryptoblogs" target="_blank"
+          >Facebook</a
+        >, and
+        <a href="https://www.instagram.com/cryptoblogs/" target="_blank"
+          >Instagram</a
+        >.
+      </p>
+    </div>
+  </div>
+</div>
+<p-toast position="bottom-center"></p-toast>
