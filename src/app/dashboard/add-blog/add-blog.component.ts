@@ -29,7 +29,7 @@ export class AddBlogComponent implements OnInit {
   chartImageFile: File | null = null;
   chartImageName!: string;
   chartImagePreview!: string;
-
+  text!: string;
   constructor(
     private fb: FormBuilder,
     private messageService: MessageService,
@@ -56,7 +56,16 @@ export class AddBlogComponent implements OnInit {
       { name: 'Crypto Regulation', code: 'crypto-regulation' },
     ];
   }
+  /*************** initializeQuill  ******************/
 
+  imageHandler() {
+    // Custom logic to get the image URL and merge it into the editor
+    const url = prompt('Enter the image URL:');
+    if (url) {
+      this.text += `
+    <img src="${url}" alt="jhon" width="560" height="350" >`;
+    }
+  }
   /*************** Image Thumbnail  ******************/
 
   onBlogImagePicked(event: Event) {

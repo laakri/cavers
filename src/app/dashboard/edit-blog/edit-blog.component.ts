@@ -20,7 +20,7 @@ export class EditBlogComponent implements OnInit {
   tagForm: FormGroup;
   blogId: string = '';
   selectedMembershipLevels = '';
-  text: string = 'faz';
+  importImgUrl: string = '';
   selectedCategorys: Category[] = [];
   categorys: Category[] = [];
 
@@ -79,7 +79,9 @@ export class EditBlogComponent implements OnInit {
             selectedCategorys: blog.selectedCategorys,
             selectedMembershipLevels: blog.selectedMembershipLevels,
           });
-          this.trustedText = this.sanitizer.bypassSecurityTrustHtml(blog.text);
+          this.trustedText = blog.text;
+
+          console.log(this.trustedText);
           this.tags = blog.tags;
           this.blogImagePreview = blog.blogImage;
           this.chartImagePreview = blog.chartImage;
@@ -111,14 +113,14 @@ export class EditBlogComponent implements OnInit {
   }
   /*************** initializeQuill  ******************/
 
-  handleCustomIframeButton() {
-    const iframeLink = prompt('Enter the iframe link:');
-    if (iframeLink && this.text) {
-      this.text += `
-      <iframe width="560" height="350" src="${iframeLink}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
+  imageHandler() {
+    // Custom logic to get the image URL and merge it into the editor
+    const url = prompt('Enter the image URL:');
+    if (url) {
+      this.trustedText += `
+      <img src="${url}" alt="jhon" width="560" height="350" >`;
     }
   }
-
   /*************** Image Thumbnail  ******************/
 
   onBlogImagePicked(event: Event) {

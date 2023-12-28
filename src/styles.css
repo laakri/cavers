@@ -76,9 +76,7 @@ button {
 .fas {
   font-size: 27px;
 }
-ul {
-  list-style-type: none;
-}
+
 textarea{
   background-color: var(--soft-bgcolor) !important;
   border: var(--bordercolor) solid 1px !important;
@@ -140,7 +138,6 @@ input::placeholder{
     color: var(--whitecolor);
   }
   
-   /*********************-multiselect********************/
   /*********************-dropdown********************/
 
 .p-dropdown {
@@ -339,9 +336,38 @@ input::placeholder{
   padding: 10px 20px;
   border-radius: 5px;
   font-size: 16px;
-  background-color: var(--special-button-background);
+  background-color: var(--soft-bgcolor);
   color: var(--special-button-color);
-  border:  solid 1px var(--special-button-border);
+  border: solid 1px var(--special-button-border);
+  max-width: 100% !important;
+  word-break: break-all !important;
+  overflow-wrap: break-word !important;
+  overflow: hidden;
+}
+
+ /*********************-pre editor Size********************/
+
+ .ql-size-huge{
+  font-size: 24px;
+}
+.ql-size-large{
+  font-size: 20px;
+}
+.ql-align-center{
+  text-align: center;
+}
+.ql-align-right{
+  text-align: end;
+}
+blockquote{
+  margin: 5px 0;
+  padding: 10px 20px;
+  border-left: var(--maincolor) solid 3px;
+  background-color: var(--special-button-background);
+  max-width: 100%;
+  word-break: break-all !important;
+  overflow-wrap: break-word;
+
 }
   /*********************-p-editor********************/
   .p-editor-toolbar {

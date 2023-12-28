@@ -146,7 +146,7 @@
     <h4>Editor</h4>
     <p-editor
       formControlName="text"
-      [(ngModel)]="text"
+      [(ngModel)]="trustedText"
       [style]="{ height: '80vh' }"
     >
       <ng-template pTemplate="header">
@@ -187,8 +187,11 @@
             <button type="button" class="ql-indent" value="+1"></button>
 
             <button type="button" class="ql-code-block"></button>
-            <button type="button" (click)="handleCustomIframeButton()">
-              S
+            <button type="button" class="ql-blockquote"></button>
+            <button type="button" class="ql-image"></button>
+            <button type="button" class="ql-video"></button>
+            <button type="button" (click)="imageHandler()">
+              <i class="pi pi-image"></i>
             </button>
           </span>
         </div>

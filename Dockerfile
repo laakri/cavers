@@ -23,13 +23,10 @@ RUN npm run build --prod
 FROM nginx:alpine
 
 # Remove the default nginx website
-RUN rm -rf /usr/share/nginx/html/*
-
-# Set the working directory to /usr/share/nginx/html
-WORKDIR /usr/share/nginx/html
+COPY nginx/* /etc/nginx/conf.d/
 
 # Copy the built Angular app from the build stage
-COPY --from=build /frontend/dist /usr/share/nginx/html
+COPY --from=build /frontend/dist/cavers /usr/share/nginx/html
 
 # Expose the port the app runs on
 EXPOSE 80

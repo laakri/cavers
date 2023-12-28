@@ -132,7 +132,59 @@
     </div>
 
     <h4>Editor</h4>
-    <p-editor formControlName="text" [style]="{ height: '80vh' }"></p-editor>
+    <p-editor
+      formControlName="text"
+      [(ngModel)]="text"
+      [style]="{ height: '80vh' }"
+    >
+      <ng-template pTemplate="header">
+        <div class="ql-toolbar">
+          <span class="ql-formats">
+            <select class="ql-size">
+              <option value="small"></option>
+              <option selected></option>
+              <option value="large"></option>
+              <option value="huge"></option>
+            </select>
+            <select class="ql-font"></select>
+
+            <button type="button" class="ql-bold" aria-label="Bold"></button>
+            <button
+              type="button"
+              class="ql-italic"
+              aria-label="Italic"
+            ></button>
+            <button
+              type="button"
+              class="ql-underline"
+              aria-label="Underline"
+            ></button>
+
+            <select class="ql-color"></select>
+            <select class="ql-background"></select>
+
+            <button type="button" class="ql-align" value=""></button>
+            <button type="button" class="ql-align" value="center"></button>
+            <button type="button" class="ql-align" value="right"></button>
+            <button type="button" class="ql-align" value="justify"></button>
+
+            <button type="button" class="ql-list" value="ordered"></button>
+            <button type="button" class="ql-list" value="bullet"></button>
+
+            <button type="button" class="ql-indent" value="-1"></button>
+            <button type="button" class="ql-indent" value="+1"></button>
+
+            <button type="button" class="ql-code-block"></button>
+            <button type="button" class="ql-blockquote"></button>
+            <button type="button" class="ql-image"></button>
+            <button type="button" class="ql-video"></button>
+            <button type="button" (click)="imageHandler()">
+              <i class="pi pi-image"></i>
+            </button>
+          </span>
+        </div>
+      </ng-template>
+    </p-editor>
     <button
       pButton
       type="submit"
@@ -143,3 +195,4 @@
     </button>
   </form>
 </div>
+<p-toast position="bottom-center"></p-toast>
