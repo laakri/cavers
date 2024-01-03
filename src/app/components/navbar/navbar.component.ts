@@ -76,6 +76,16 @@ export class NavbarComponent implements OnInit {
         label: 'Contact',
         routerLink: ['ContactUs'],
       },
+      {
+        label: 'Add Blog',
+        routerLink: ['AddBlog'],
+        visible: this.isAuthAdmin,
+      },
+      {
+        label: 'Users',
+        routerLink: ['Users'],
+        visible: this.isAuthAdmin,
+      },
     ];
   }
   /*************** Global ************** */

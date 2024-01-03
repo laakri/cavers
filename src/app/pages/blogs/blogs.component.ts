@@ -32,6 +32,7 @@ export class BlogsComponent implements OnInit {
   blogs: Blogs[] = [];
   isLoading: boolean = true;
   userRole: any = 'free';
+  isAuth: boolean = false;
   topFreeBlogs: any[] = [];
   showFourthBlog: boolean = false;
   showAllCategories: boolean = false;
@@ -47,13 +48,17 @@ export class BlogsComponent implements OnInit {
   ) {}
   ngOnInit() {
     this.userRole = this.UsersService.getUserRole();
-    console.log(this.userRole);
     this.userRoleListenerSubs =
       this.UsersService.getAuthStatusListener().subscribe((userRole) => {
         this.userRole = userRole;
         this.loadBlogs();
       });
-
+    this.isAuth = this.UsersService.getIsAuth();
+    this.userRoleListenerSubs =
+      this.UsersService.getAuthStatusListener().subscribe((isAuth) => {
+        this.isAuth = isAuth;
+        this.loadBlogs();
+      });
     this.SortByDate = [
       { name: 'Newest', code: 'newest' },
       { name: 'Oldest', code: 'oldest' },

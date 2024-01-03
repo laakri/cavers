@@ -188,11 +188,20 @@
         <h3>Subscribe to Our Newsletter</h3>
         <span>Stay up-to-date with the latest articles and news.</span>
         <button
+          *ngIf="!isAuth"
           pButton
-          class="p-button-rounded p-button-help"
           class="SignUp-button"
+          routerLink="/auth/signup"
         >
           Sign Up
+        </button>
+        <button
+          *ngIf="isAuth"
+          pButton
+          class="SignUp-button"
+          routerLink="/Pricing"
+        >
+          Pricing
         </button>
         <p class="privacy-note">Your email is safe with us. We don't spam.</p>
       </div>
