@@ -18,3 +18,4 @@ jobs:
       with:
         context: .
         tags: cavers-fe:lastest
+        output: type=docker
