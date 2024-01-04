@@ -22,6 +22,7 @@ jobs:
 
   deploy:
     runs-on: self-hosted
+    needs: build
     steps:
     - name: Run docker compose 
       run: |
