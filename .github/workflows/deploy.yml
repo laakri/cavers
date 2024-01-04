@@ -25,6 +25,6 @@ jobs:
     steps:
     - name: Run docker compose 
       run: |
-        cd https://github.com/laakri/cavers/settings/actions/runners
+        cd /home/laakri/apps/cavers-backend
         docker compose up -d
         
