@@ -19,3 +19,12 @@ jobs:
         context: .
         tags: cavers-fe:lastest
         outputs: type=docker
+
+  deploy:
+    runs-on: self-hosted
+    steps:
+    - name: Run docker compose 
+      run: |
+        cd https://github.com/laakri/cavers/settings/actions/runners
+        docker compose up -d
+        
