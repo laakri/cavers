@@ -1,6 +1,7 @@
 .mainpage{
     max-width: 1300px;
     margin: auto;
+    padding: 5px;
 }
 .header {
     color: var(--whitecolor);
@@ -30,15 +31,16 @@
     padding: 10px 20px;
     border-radius: 20px;
     width: max-content;
+    font-size: var(--larger-font-size);
     border :var(--special-button-border) solid 1px;
   }
   .header-content-first span:first-child  {
-    font-size: 55px;
+    font-size: var(--xx-largest-font-size);
     font-weight: 700;
     margin-bottom: 10px;
   }
   .header-content span:last-child {
-    font-size: 40px;
+    font-size: var(--x-largest-font-size);
     font-weight: 700;
     margin-bottom: 10px;
     display: block;
@@ -47,7 +49,7 @@
     max-width: 600px;
     margin: auto;
     display: block;
-    font-size: 20px;
+    font-size:  var(--largest-font-size);
     margin-bottom: 20px;
     color: var(--graycolor);
   }
@@ -70,7 +72,7 @@
   color: var(--whitecolor);
 }
   .header-content i {
-    font-size: 24px;
+    font-size: var(--largest-font-size);
     margin-right: 10px;
   }
   
@@ -90,7 +92,9 @@
 }  
   .cloud-logos{
     display: flex;
-    justify-content: space-evenly;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
   }  
   .cloud-logo{
     display: flex;
@@ -159,11 +163,12 @@
   width: max-content;
   padding: 2px 4px ;
   border-radius: 5px;
-  font-size: 14px;
+  font-size: var(--smaller-font-size);
+
 }
 
 .blog .blog-title {
-  font-size: 20px;  
+  font-size: var(--large-font-size);
   color: var(--maincolor);
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -197,7 +202,7 @@
   margin: 20px;
   display: flex;
   justify-content: space-around;
-  height: 500px;
+  min-height: 500px;
 }
 
 .details-content-content-left {
@@ -226,8 +231,8 @@
 }
 
 .details-content-content-right-item-header{
-  
-  font-size: 20px;
+  font-size: var(--large-font-size);
+
 }
 .details-content-content-right-item span {
   color: var(--graycolor) ;
@@ -253,9 +258,38 @@
   color: var(--graycolor);
 }
 .banner-right div {
-  font-size: 25px;
+  font-size: var(--largest-font-size);
+
 }
 
 .pricing-content{
   margin-bottom: 100px;
+}
+@media screen and (max-width: 768px) {
+  .cloud-logo span,
+  .cloud-logo i{
+    font-size: 25px;
+  }
+  .details-content-content-split{
+    flex-direction: column;
+  }
+  .details-content-content-left{
+    width: 95%; 
+    min-height: 200px ;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+
+  .details-content-content-right {
+    width: 95%;
+  }
+  .banner{
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+/* Media query for even smaller screens */
+@media screen and (max-width: 576px) {
+
 }

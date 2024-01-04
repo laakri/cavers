@@ -4,6 +4,7 @@ import { Observable, Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { MessageService } from 'primeng/api';
+import { environment } from './../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class UsersService {
@@ -23,7 +24,7 @@ export class UsersService {
   isAdminUser(): boolean {
     return this.isAdminAuthenticated;
   }
-  apiURL = 'http://localhost:4401';
+  private apiURL = environment.apiUrl;
 
   constructor(
     private http: HttpClient,

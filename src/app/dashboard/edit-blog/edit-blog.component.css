@@ -117,4 +117,13 @@ input[type="file"]{
 .submit-button{
   margin-top: 20px;
   margin-bottom: 40px;
+} 
+@media screen and (max-width: 768px) {
+  .form-sections{
+    display: flex;
+    flex-direction: column;
+  }
+.form-all-section{
+  width: 100%;
+}
 }

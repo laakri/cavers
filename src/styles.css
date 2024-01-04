@@ -1,3 +1,4 @@
+
 @import "primeng/resources/themes/lara-light-blue/theme.css";
 @import "primeng/resources/primeng.css";
 @import "primeicons/primeicons.css";
@@ -28,7 +29,15 @@ body {
     --special-button-background:#1b232a;
     --special-button-border:#265b7a;
     --linnear-gardient: linear-gradient(to right, #ff80b5 ,#fff, #9089fc ,#fff,#ff80b5 , #9089fc,#fff );
-
+    --xx-largest-font-size: 55px;
+    --x-largest-font-size: 40px;
+    --largest-font-size: 24px;
+    --larger-font-size: 22px;
+    --large-font-size: 20px;
+    --main-font-size: 18px;
+    --small-font-size: 16px;
+    --smaller-font-size: 14px;
+    --smallest-font-size: 12px;
 }
 body.light-theme{
     height: 100%;
@@ -56,7 +65,15 @@ body.light-theme{
     --special-button-background:#fafafa;
     --special-button-border:#76b7b6;
   --linnear-gardient: linear-gradient(to right, #ff80b5 , #9089fc ,#ff80b5 , #9089fc);
-
+  --xx-largest-font-size: 55px;
+  --x-largest-font-size: 40px;
+  --largest-font-size: 24px;
+  --larger-font-size: 22px;
+  --large-font-size: 20px;
+  --main-font-size: 18px;
+  --small-font-size: 16px;
+  --smaller-font-size: 14px;
+  --smallest-font-size: 12px;
 }
 
 a,
@@ -92,7 +109,54 @@ input::placeholder{
   background-color: var(--soft-bgcolor);
   color: var(--graycolor);
 }
-
+@media screen and (max-width: 768px) {
+  body {
+    --xx-largest-font-size: 40px;
+    --x-largest-font-size: 30px;
+    --largest-font-size: 18px;
+    --larger-font-size: 16px;
+    --large-font-size: 14px;
+    --main-font-size: 13px;
+    --small-font-size: 12px;
+    --smaller-font-size: 11px;
+    --smallest-font-size: 10px;
+  }
+  body.light-theme {
+    --xx-largest-font-size: 40px;
+    --x-largest-font-size: 30px;
+    --largest-font-size: 18px;
+    --larger-font-size: 16px;
+    --large-font-size: 14px;
+    --main-font-size: 13px;
+    --small-font-size: 12px;
+    --smaller-font-size: 11px;
+    --smallest-font-size: 10px;
+  }
+}
+@media screen and (max-width: 576px) {
+  body {
+    --xx-largest-font-size: 30px;
+    --x-largest-font-size: 24px;
+    --largest-font-size: 16px;
+    --larger-font-size: 14px;
+    --large-font-size: 12px;
+    --main-font-size: 11px;
+    --small-font-size: 10px;
+    --smaller-font-size: 9px;
+    --smallest-font-size: 8px;
+  }
+  body.light-theme {
+    --xx-largest-font-size: 30px;
+    --x-largest-font-size: 24px;
+    --largest-font-size: 16px;
+    --larger-font-size: 14px;
+    --large-font-size: 12px;
+    --main-font-size: 11px;
+    --small-font-size: 10px;
+    --smaller-font-size: 9px;
+    --smallest-font-size: 8px;
+  }
+}
 /************ scroll bar ****************/
 ::-webkit-scrollbar {
     width: 8px;
@@ -162,25 +226,33 @@ input::placeholder{
     /*********************-menu********************/
 
 .p-menu {
-  background: var(--soft-bgcolor);  
+  background: var(--bgcolor) !important;  
   color: var(--whitecolor); 
-  width: 100%;
-  border: none;
-  border-radius: 0;
+  border: var(--bordercolor) solid 1px !important ;
+}
+.p-menu .p-menuitem:hover {
+  background: var(--soft-bgcolor) !important;  
+  overflow: hidden;
+  border-radius: 5px;
 }
 
+.p-menu .p-menuitem-link{
+  background: var(--soft-bgcolor);
+  overflow: hidden;
+}
 .p-menu .p-menuitem-text {
   color: var(--whitecolor) !important; 
 }
 
 .p-menu .p-menuitem-icon {
-  color: var(--whitecolor) !important; /* Replace with your desired icon color */
+  color: var(--whitecolor) !important; 
 }
+
 .p-menu .p-menuitem-link:hover {
-  background-color: var(--blackcolor) !important; /* Replace with your desired hover background color */
+  background-color: var(--maincolor) !important; 
 }
 .p-menu.p-contextmenu .p-submenu-list .p-submenu-header {
-  background-color: var(--soft-bgcolor) !important; /* Replace with your desired background color */
+  background-color: var(--soft-bgcolor) !important; 
 }
   /*********************-toolbar********************/
 

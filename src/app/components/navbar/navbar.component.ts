@@ -86,8 +86,19 @@ export class NavbarComponent implements OnInit {
         routerLink: ['Users'],
         visible: this.isAuthAdmin,
       },
+      {
+        label: 'Login',
+        routerLink: ['auth/login'],
+        visible: !this.isAuth,
+      },
+      {
+        label: 'Sign up',
+        routerLink: ['auth/signup'],
+        visible: !this.isAuth,
+      },
     ];
   }
+
   /*************** Global ************** */
   @HostListener('window:scroll', [])
   onWindowScroll() {
@@ -134,6 +145,13 @@ export class NavbarComponent implements OnInit {
   }
   Logout() {
     this.UsersService.logout();
+  }
+  /*************** LOGO SWITCHER ************** */
+  getImgSrc(): string {
+    const isBrightTheme = document.body.classList.contains('light-theme');
+    return isBrightTheme
+      ? '../../../assets/img/logo-dark.png'
+      : '../../../assets/img/logo.png';
   }
   /*************** change_theme ************** */
   change_theme(): void {

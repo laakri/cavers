@@ -4,13 +4,13 @@
   }
 .pricing-content-text {
     margin: 80px auto 0 auto;
-    font-size: 40px;
+    font-size: var(--x-largest-font-size);
     text-align: center;
   }
   .pricing-content-text-span {
     text-align: center;
     margin: 40px auto;
-    font-size: 20px;
+    font-size: var(--large-font-size);
     color: var(--graycolor);
     max-width: 580px;
     line-height: 1.8;
@@ -35,7 +35,7 @@
     gap: 10px;
   }     
   .pricing-side-item i {
-    font-size: 14px;
+    font-size: var(--smaller-font-size);
     color: var(--special-button-color);
   } 
   .pricing-side-item span {
@@ -48,10 +48,6 @@
     width: 35%;
   }
 
-    .pricing-middle-header-text{    
-
-    }
-
   .pricing-middle-header{
     margin: 20px 30px ;
     display: flex;
@@ -60,7 +56,7 @@
 
   }
   .pricing-middle-header-text{
-    font-size: 18px;
+    font-size: var(--main-font-size);
     color: var(--special-button-color);
     }
 
@@ -68,6 +64,7 @@
     padding: 5px 10px;
     background-color: var(--special-button-background);
     color: var(--special-button-color);
+    font-size: var(--smaller-font-size);
     border-radius: 20px;
   }
   .pricing-middle-descrption{
@@ -76,12 +73,12 @@
 
   }
   .pricing-middle-price{
-    font-size: 37px;
+    font-size: var(--x-largest-font-size);
     font-weight: 600;
     margin: 0 30px ;
   }
   .pricing-middle-price span{
-    font-size: 18px;
+    font-size: var(--main-font-size);
   }
   .pricing-side-items{
     margin: 30px ;
@@ -103,4 +100,19 @@
 }
 .dialog-p{
   line-height: 1.6;
+}
+@media screen and (max-width: 768px) {
+  .pricing-content{
+    flex-direction: column;
+    align-items:center;
+    gap: 10px;
+  }
+  .pricing-side{
+    width: 95%;
+    border-radius: 10px;
+  }
+  .pricing-middle{
+    width: 95%;
+    border-radius: 10px;
+  }
 }

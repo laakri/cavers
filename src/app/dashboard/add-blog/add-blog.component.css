@@ -15,6 +15,7 @@
     padding: 10px;
     border-radius: 10px;
   }
+
  .form-fullcontent{
   background-color: var(--soft-bgcolor);
   border-radius: 10px;
@@ -111,3 +112,14 @@
     margin-top: 20px;
     margin-bottom: 40px;
   }
+  @media screen and (max-width: 768px) {
+    .form-sections{
+      display: flex;
+      flex-direction: column;
+    }
+  .form-all-section{
+    width: 100%;
+  }
+  }
+  
+  

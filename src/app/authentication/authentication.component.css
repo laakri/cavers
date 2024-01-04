@@ -6,10 +6,13 @@
     gap: 10px;
     margin-bottom: 30px;
   }
-  .website-info i{
-      font-size: 50px;
+  .website-info img{
+      height: 65px;
   }
-  
+  .website-info span{
+    font-size: var(--largest-font-size);
+    font-weight: 600;
+}
   .login-container {
       max-width: 600px;
       margin: 60px auto;

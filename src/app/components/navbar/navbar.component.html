@@ -20,8 +20,8 @@
     <div class="toolbar-hole-left">
       <div class="left-toolbar">
         <a [routerLink]="['']">
-          <i class="pi pi-slack"></i>
-          <h3>Cavers</h3>
+          <img [src]="getImgSrc()" alt="Logo" />
+          <span>CAVERS</span>
         </a>
       </div>
       <p-divider layout="vertical" class="divider-vertical"></p-divider>
@@ -96,7 +96,7 @@
         class="p-button-text theme-mode"
       ></button>
       <button
-        *ngIf="!isAuth"
+        *ngIf="!isAuth && !isSmallScreen"
         pButton
         class="p-button-text login-button"
         routerLink="auth/login"
@@ -104,7 +104,7 @@
         Login
       </button>
       <button
-        *ngIf="!isAuth"
+        *ngIf="!isAuth && !isSmallScreen"
         pButton
         class="signup-button"
         routerLink="auth/signup"
@@ -112,10 +112,12 @@
         Sign up
       </button>
       <div class="profile-section" *ngIf="isAuth">
-        <div class="padge-icon">
+        <div class="padge-icon" *ngIf="!isSmallScreen">
           <i class="pi pi-verified"></i>
         </div>
-        <div class="profile-section-name">{{ userName }}</div>
+        <div *ngIf="!isSmallScreen" class="profile-section-name">
+          {{ userName }}
+        </div>
         <p-button
           (click)="Logout()"
           [link]="true"
@@ -135,15 +137,9 @@
         type="button"
         [ngClass]="{ 'menu-open': isMenuOpen }"
         [icon]="isMenuOpen ? 'pi pi-times' : 'pi pi-bars'"
-        (click)="toggleMenu()"
+        (click)="menu.toggle($event)"
       ></button>
     </div>
   </div>
 </div>
-<p-menu
-  class="menu"
-  *ngIf="isSmallScreen && isMenuOpen"
-  [model]="menuItems"
-  [styleClass]="'p-d-lg-none'"
-  [style]="{ display: isMenuOpen ? 'block' : 'none' }"
-></p-menu>
+<p-menu #menu [model]="menuItems" [popup]="true"></p-menu>

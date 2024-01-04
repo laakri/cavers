@@ -3,7 +3,6 @@
 }
  .banner-toolbar {
   background: var(--linnear-gardient);
-  
   color: var(--blackcolor);
   height: 40px;
   margin:  auto;
@@ -25,7 +24,6 @@
   height: 35px;
   width: 35px;
   border-radius: 5px;
-
 }
 .close-button:hover {
   color: var(--whitecolor) !important;
@@ -34,9 +32,7 @@
 .navbar-transparent {
     background-color: transparent;
   }
- 
 
-/* Toolbar */
 .toolbar {
   position: relative;
   background-color: var(--bgtransparentcolor); 
@@ -80,11 +76,13 @@
   align-items: center;
   gap: 10px;
 }
-.left-toolbar a i{
-  font-size: 20px;
-  color: #35d0d3;
+.left-toolbar a img{
+  height: 28px;
 }
-
+.left-toolbar a span{
+  font-size: var( --larger-font-size);
+  font-weight: 600;
+}
 .divider-vertical{
   height: 20px !important;
   overflow: hidden;
@@ -94,13 +92,12 @@
   justify-content: space-between;
   align-items: center;
   color: var(--whitecolor);
+  gap: 3px;
 }
 .middle-toolbar button {
   color: var(--whitecolor) !important;
   font-size: 15px;
-
 }
-
 
 .right-toolbar {
   display: flex;
@@ -112,9 +109,7 @@
 
 .login-button {
   color: var(--whitecolor) !important;
-
 }
-
 
 .padge-icon {
   color: var(--whitecolor) !important;

@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from './../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ConfirmationService {
-  private apiUrl = 'http://localhost:4401/api/confirm';
+  private apiUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) {}
 
@@ -19,6 +20,9 @@ export class ConfirmationService {
       email,
       confirmationCode,
     };
-    return this.http.post<any>(this.apiUrl + '/confirm-email', body);
+    return this.http.post<any>(
+      this.apiUrl + '/api/confirm/confirm-email',
+      body
+    );
   }
 }

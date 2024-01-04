@@ -1,13 +1,14 @@
 .container {
     max-width: 1200px;
     margin: auto;
+    padding: 5px 10px;
   }
 .additional-content {
     margin: 40px auto;
   }
   
   .additional-content h2 {
-    font-size: 28px;
+    font-size: var(--largest-font-size);
     margin-bottom: 20px;
     color: var(--special-button-color);
   }
@@ -44,7 +45,7 @@
   }
   
   .blog-plan h3 {
-    font-size: 24px;
+    font-size: var(--larger-font-size);
     color: var(--special-button-color);
     margin-bottom: 10px;
   }
