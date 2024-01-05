@@ -19,7 +19,7 @@ export class BlogService {
   updateBlog(blogId: string, formData: FormData): Observable<Blog> {
     const headers = new HttpHeaders();
     return this.http.post<Blog>(
-      `${this.apiUrl}/update-blog/${blogId}`,
+      `${this.apiUrl}/api/blogs/update-blog/${blogId}`,
       formData,
       { headers }
     );
