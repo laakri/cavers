@@ -118,7 +118,7 @@ export class EditBlogComponent implements OnInit {
     const url = prompt('Enter the image URL:');
     if (url) {
       this.trustedText += `
-      <img src="${url}" alt="jhon" width="560" height="350" >`;
+      <img src="${url}" alt="data" max-width="100%"max-height="100%" >`;
     }
   }
   /*************** Image Thumbnail  ******************/

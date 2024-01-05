@@ -11,6 +11,7 @@
 h2{
     color: var(--maincolor);
 }
+
 .categ{
     background-color: var(--special-button-background);
     padding: 5px 10px;
