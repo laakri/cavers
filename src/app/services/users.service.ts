@@ -9,7 +9,6 @@ import { environment } from './../../environments/environment';
 @Injectable({ providedIn: 'root' })
 export class UsersService {
   private isAuthenticated = false;
-  private isAdminAuthenticated = false;
   private isAdmin: any = false;
   private userId: any;
   private userName: any;
@@ -21,9 +20,7 @@ export class UsersService {
   private usernameListener = new Subject<any>();
   private authStatusListener = new Subject<boolean>();
   private authAdminStatusListener = new Subject<boolean>();
-  isAdminUser(): boolean {
-    return this.isAdminAuthenticated;
-  }
+
   private apiURL = environment.apiUrl;
 
   constructor(
@@ -79,8 +76,9 @@ export class UsersService {
   getIsAuth() {
     return this.isAuthenticated;
   }
+
   getAdminIsAuth() {
-    return this.isAdminAuthenticated;
+    return this.isAdmin;
   }
 
   getUserIdListener() {
@@ -130,7 +128,7 @@ export class UsersService {
             this.userRole = response.userRole;
             this.isAdmin = response.isAdmin;
             if (this.isAdmin) {
-              this.isAdminAuthenticated = true;
+              this.isAdmin = true;
               this.authAdminStatusListener.next(true);
             }
             this.authStatusListener.next(true);
@@ -188,7 +186,6 @@ export class UsersService {
       this.usernameListener.next(this.userName);
       this.useridListener.next(this.userId);
       if (this.isAdmin) {
-        this.isAdminAuthenticated = true;
         this.authAdminStatusListener.next(true);
       }
     }
@@ -196,7 +193,7 @@ export class UsersService {
   logout() {
     this.token = null;
     this.isAuthenticated = false;
-    this.isAdminAuthenticated = false;
+    this.isAdmin = false;
     this.usernameListener.next('');
     this.useridListener.next('');
     this.authStatusListener.next(false);
@@ -248,7 +245,6 @@ export class UsersService {
     const userName = localStorage.getItem('userName');
     const userRole = localStorage.getItem('userRole');
     const isAdmin = localStorage.getItem('isAdmin');
-
     if (!token || !expirationDate) {
       return;
     }

@@ -19,19 +19,20 @@ export class AdminAuthGuard implements CanActivate {
     private router: Router,
     private messageService: MessageService
   ) {}
-  isAuth = false;
-  private isAuthListenerSubs!: Subscription;
+  isAdmin = false;
+  private getAuthAdminStatusListener!: Subscription;
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
-    this.isAuth = this.userService.isAdminUser();
-    this.isAuthListenerSubs = this.userService
-      .getAuthStatusListener()
+    this.isAdmin = this.userService.getAdminIsAuth();
+    this.getAuthAdminStatusListener = this.userService
+      .getAuthAdminStatusListener()
       .subscribe((isAuthenticated) => {
-        this.isAuth = isAuthenticated;
+        this.isAdmin = isAuthenticated;
       });
-    if (this.isAuth) {
+    if (this.isAdmin == true) {
+      console.log(this.isAdmin);
       return true;
     } else {
       // Display PrimeNG Message Toast for unauthorized access
