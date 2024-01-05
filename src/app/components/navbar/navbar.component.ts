@@ -20,10 +20,10 @@ export class NavbarComponent implements OnInit {
   isAuthAdmin: boolean = false;
   private isAuthListenerSubs!: Subscription;
   private isAuthAdminListenerSubs!: Subscription;
+  private userNameListenerSubs!: Subscription;
   userName: any;
   firstLetter!: string;
   Search: string = '';
-  private userNameListenerSubs!: Subscription;
   ref: DynamicDialogRef | undefined;
   menuItems: MenuItem[] = [];
   isNavbarTransparent = true;
@@ -36,17 +36,18 @@ export class NavbarComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.isAuthAdmin = this.UsersService.isAdminUser();
-    this.isAuthAdminListenerSubs =
-      this.UsersService.getAuthStatusListener().subscribe((isAuthenticated) => {
-        this.isAuthAdmin = isAuthenticated;
-      });
     this.isAuth = this.UsersService.getIsAuth();
     this.isAuthListenerSubs =
       this.UsersService.getAuthStatusListener().subscribe((isAuthenticated) => {
         this.isAuth = isAuthenticated;
       });
-
+    this.isAuthAdmin = this.UsersService.getAdminIsAuth();
+    this.isAuthAdminListenerSubs =
+      this.UsersService.getAuthAdminStatusListener().subscribe(
+        (isAuthenticated) => {
+          this.isAuthAdmin = isAuthenticated;
+        }
+      );
     this.userName = this.UsersService.getUserName();
     this.userNameListenerSubs =
       this.UsersService.getUserNameListener().subscribe((userNames) => {
@@ -58,7 +59,6 @@ export class NavbarComponent implements OnInit {
     window.addEventListener('resize', () => {
       this.checkScreenSize();
     });
-
     this.menuItems = [
       {
         label: 'Blogs',
@@ -79,12 +79,12 @@ export class NavbarComponent implements OnInit {
       {
         label: 'Add Blog',
         routerLink: ['AddBlog'],
-        visible: this.isAuthAdmin,
+        visible: this.isAuthAdmin == true,
       },
       {
         label: 'Users',
         routerLink: ['Users'],
-        visible: this.isAuthAdmin,
+        visible: this.isAuthAdmin == true,
       },
       {
         label: 'Login',

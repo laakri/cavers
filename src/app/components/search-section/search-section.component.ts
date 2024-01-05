@@ -58,7 +58,6 @@ export class SearchSectionComponent implements OnInit {
     this.isDefault = true;
     this.blogService.getTopFreeBlogs().subscribe(
       (data) => {
-        console.log(data);
         this.isLoading = false;
         this.defaultBlog = data;
         this.checkForNoBlogs();
@@ -80,7 +79,6 @@ export class SearchSectionComponent implements OnInit {
     } else {
       this.blogService.getSearchBlogs(this.Search, this.userId).subscribe(
         (data) => {
-          console.log(data);
           this.defaultBlog = data.blogs;
           this.checkForNoBlogs();
           this.isLoading = false;
@@ -105,7 +103,6 @@ export class SearchSectionComponent implements OnInit {
   }
 
   onRowSelect(blog: any) {
-    console.log(this.userRole);
     const isUserSilver = this.userRole === 'silver';
     const isUserPlat = this.userRole === 'plat';
     if (
