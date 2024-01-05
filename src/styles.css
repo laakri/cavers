@@ -93,7 +93,9 @@ button {
 .fas {
   font-size: 27px;
 }
-
+img{
+  max-width: 100% !important;
+}
 textarea{
   background-color: var(--soft-bgcolor) !important;
   border: var(--bordercolor) solid 1px !important;
