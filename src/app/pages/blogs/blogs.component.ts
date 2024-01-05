@@ -31,6 +31,7 @@ export class BlogsComponent implements OnInit {
 
   blogs: Blogs[] = [];
   isLoading: boolean = true;
+  isTopBlogsLoading: boolean = true;
   userRole: any = 'free';
   isAuth: boolean = false;
   topFreeBlogs: any[] = [];
@@ -237,28 +238,33 @@ export class BlogsComponent implements OnInit {
     });
   }
   loadTopFreeThreeBlogs() {
-    this.isLoading = true;
+    this.isTopBlogsLoading = true;
     this.BlogService.getTopFreeBlogs().subscribe(
       (data) => {
         this.topFreeBlogs = data.slice(0, 3);
-        this.isLoading = false;
+        this.isTopBlogsLoading = false;
       },
       (error) => {
         console.error('Error fetching top free blogs:', error);
-        this.isLoading = false;
+        this.isTopBlogsLoading = false;
       }
     );
   }
 
   loadFourthBlog() {
     // Load the fourth blog and set showFourthBlog to true
+    this.isTopBlogsLoading = true;
     this.BlogService.getTopFreeBlogs().subscribe(
       (data) => {
         this.topFreeBlogs = data;
         this.showFourthBlog = true;
+        this.isTopBlogsLoading = false;
+        console.log(this.isTopBlogsLoading);
       },
       (error) => {
         console.error('Error fetching top free blogs:', error);
+        this.isTopBlogsLoading = false;
+        console.log(this.isTopBlogsLoading);
       }
     );
   }

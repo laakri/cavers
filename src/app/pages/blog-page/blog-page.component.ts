@@ -33,7 +33,7 @@ export class BlogPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.isLoading = true;
-    this.isAuthAdmin = this.usersService.isAdminUser();
+    this.isAuthAdmin = this.usersService.getAdminIsAuth();
     this.isAuthAdminListenerSubs = this.usersService
       .getAuthStatusListener()
       .subscribe((isAuthenticated) => {
