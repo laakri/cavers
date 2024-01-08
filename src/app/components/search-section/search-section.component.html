@@ -16,6 +16,13 @@
       icon="pi pi-search"
       class="Search-button"
     ></button>
+    <button
+      type="submit"
+      (click)="closeSearch()"
+      pButton
+      icon="pi pi-times"
+      class="Close-button"
+    ></button>
   </span>
 </div>
 <div *ngIf="isLoading; else content">

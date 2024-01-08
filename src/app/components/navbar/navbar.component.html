@@ -1,8 +1,10 @@
 <div class="banner-toolbar" *ngIf="banner" [ngClass]="bannerClass">
   <div>
-    Cavers 2024 Join us in Denver from June 1 – 30 to
+    <span *ngIf="!isSmallScreen"
+      >Cavers 2024 Join us in from June 1 – 30 to
+    </span>
     <a href="#" class="learn-more">
-      <span class="underline font-bold">see what’s coming next →</span>
+      <span class="underline font-bold">see what’s Best offres →</span>
     </a>
   </div>
   <div class="banner-right">
@@ -56,7 +58,7 @@
           pButton
         ></button>
         <button
-          *ngIf="isAuthAdmin == true"
+          *ngIf="isAuthAdmin"
           class="p-button-text"
           routerLinkActive="activebutton"
           [routerLink]="['AddBlog']"
@@ -65,7 +67,7 @@
         ></button>
 
         <button
-          *ngIf="isAuthAdmin == true"
+          *ngIf="isAuthAdmin"
           class="p-button-text"
           routerLinkActive="activebutton"
           [routerLink]="['Users']"

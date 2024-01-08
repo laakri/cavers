@@ -18,6 +18,7 @@ h2{
     border-radius: 5px;
     margin-right: 10px;
     max-width: max-content;
+    min-height: 10px;
 }
 .createAt{
     margin: 10px 0;

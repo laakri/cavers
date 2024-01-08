@@ -19,7 +19,7 @@ export class NavbarComponent implements OnInit {
   isAuth: boolean = false;
   isAuthAdmin: boolean = false;
   private isAuthListenerSubs!: Subscription;
-  private isAuthAdminListenerSubs!: Subscription;
+  private authAdminStatusListener!: Subscription;
   private userNameListenerSubs!: Subscription;
   userName: any;
   firstLetter!: string;
@@ -40,14 +40,89 @@ export class NavbarComponent implements OnInit {
     this.isAuthListenerSubs =
       this.UsersService.getAuthStatusListener().subscribe((isAuthenticated) => {
         this.isAuth = isAuthenticated;
+        this.menuItems = [
+          {
+            label: 'Blogs',
+            routerLink: ['Blogs'],
+          },
+          {
+            label: 'Pricing',
+            routerLink: ['Pricing'],
+          },
+          {
+            label: 'About',
+            routerLink: ['AboutUs'],
+          },
+          {
+            label: 'Contact',
+            routerLink: ['ContactUs'],
+          },
+          {
+            label: 'Add Blog',
+            routerLink: ['AddBlog'],
+            visible: this.isAuthAdmin,
+          },
+          {
+            label: 'Users',
+            routerLink: ['Users'],
+            visible: this.isAuthAdmin,
+          },
+          {
+            label: 'Login',
+            routerLink: ['auth/login'],
+            visible: this.isAuth === false,
+          },
+          {
+            label: 'Sign up',
+            routerLink: ['auth/signup'],
+            visible: this.isAuth === false,
+          },
+        ];
       });
     this.isAuthAdmin = this.UsersService.getAdminIsAuth();
-    this.isAuthAdminListenerSubs =
-      this.UsersService.getAuthAdminStatusListener().subscribe(
-        (isAuthenticated) => {
-          this.isAuthAdmin = isAuthenticated;
-        }
-      );
+    this.authAdminStatusListener =
+      this.UsersService.getAuthAdminStatusListener().subscribe((isAdmin) => {
+        this.isAuthAdmin = isAdmin;
+        this.menuItems = [
+          {
+            label: 'Blogs',
+            routerLink: ['Blogs'],
+          },
+          {
+            label: 'Pricing',
+            routerLink: ['Pricing'],
+          },
+          {
+            label: 'About',
+            routerLink: ['AboutUs'],
+          },
+          {
+            label: 'Contact',
+            routerLink: ['ContactUs'],
+          },
+          {
+            label: 'Add Blog',
+            routerLink: ['AddBlog'],
+            visible: this.isAuthAdmin,
+          },
+          {
+            label: 'Users',
+            routerLink: ['Users'],
+            visible: this.isAuthAdmin,
+          },
+          {
+            label: 'Login',
+            routerLink: ['auth/login'],
+            visible: this.isAuth === false,
+          },
+          {
+            label: 'Sign up',
+            routerLink: ['auth/signup'],
+            visible: this.isAuth === false,
+          },
+        ];
+      });
+
     this.userName = this.UsersService.getUserName();
     this.userNameListenerSubs =
       this.UsersService.getUserNameListener().subscribe((userNames) => {
@@ -79,22 +154,22 @@ export class NavbarComponent implements OnInit {
       {
         label: 'Add Blog',
         routerLink: ['AddBlog'],
-        visible: this.isAuthAdmin == true,
+        visible: this.isAuthAdmin,
       },
       {
         label: 'Users',
         routerLink: ['Users'],
-        visible: this.isAuthAdmin == true,
+        visible: this.isAuthAdmin,
       },
       {
         label: 'Login',
         routerLink: ['auth/login'],
-        visible: !this.isAuth,
+        visible: this.isAuth === false,
       },
       {
         label: 'Sign up',
         routerLink: ['auth/signup'],
-        visible: !this.isAuth,
+        visible: this.isAuth === false,
       },
     ];
   }

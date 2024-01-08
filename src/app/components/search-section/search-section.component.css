@@ -11,6 +11,13 @@
 .Search-button{
     border: none;
 }
+.Close-button{
+    margin-left: 5px;
+    border: var(--bordercolor) solid 1px;
+    border-radius: 5px;
+    background-color: transparent;
+    color: var(--graycolor);
+}
 .Search-button:hover{
     border: var(--special-button-border) solid 1px;
 }
