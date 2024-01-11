@@ -77,7 +77,7 @@
   gap: 10px;
 }
 .left-toolbar a img{
-  height: 28px;
+  height: 25px;
 }
 .left-toolbar a span{
   font-size: var( --larger-font-size);

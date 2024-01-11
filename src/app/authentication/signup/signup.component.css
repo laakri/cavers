@@ -45,3 +45,10 @@
     text-decoration: underline;
     color: var(--maincolor);
   }
+  .error-message {
+    color: red;
+    font-size: 12px;
+  }
+  
+  
+  

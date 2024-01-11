@@ -10,11 +10,9 @@ import { UsersService } from './services/users.service';
 export class AppComponent {
   title = 'cavers';
   isAuth = false;
-  isAdmin = false;
   isBrightTheme: any;
 
   private isAuthListenerSubs!: Subscription;
-  private authAdminStatusListener!: Subscription;
 
   constructor(private UsersService: UsersService) {}
 
@@ -29,11 +27,7 @@ export class AppComponent {
       this.UsersService.getAuthStatusListener().subscribe((isAuthenticated) => {
         this.isAuth = isAuthenticated;
       });
-    this.isAdmin = this.UsersService.getAdminIsAuth();
-    this.authAdminStatusListener =
-      this.UsersService.getAuthAdminStatusListener().subscribe((isAdmin) => {
-        this.isAdmin = isAdmin;
-      });
+
     this.UsersService.autoAuthUser();
   }
 }

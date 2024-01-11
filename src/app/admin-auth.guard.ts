@@ -31,8 +31,10 @@ export class AdminAuthGuard implements CanActivate {
       .subscribe((isAuthenticated) => {
         this.isAdmin = isAuthenticated;
       });
+    console.log('check one');
     if (this.isAdmin == true) {
-      console.log(this.isAdmin);
+      console.log('check two', this.isAdmin);
+
       return true;
     } else {
       // Display PrimeNG Message Toast for unauthorized access

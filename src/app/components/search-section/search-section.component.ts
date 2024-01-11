@@ -130,6 +130,7 @@ export class SearchSectionComponent implements OnInit {
   }
 
   private navigateToBlog(id: string) {
+    this.ref.close();
     this.router.navigate(['BlogPage/', id]);
   }
   private navigateToPricingPage() {

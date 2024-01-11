@@ -10,6 +10,12 @@
       ngModel
       required
     />
+    <div
+      *ngIf="loginForm.controls['gmailname'].hasError('required')"
+      class="error-message"
+    >
+      Email is required.
+    </div>
   </div>
   <div class="forget-password-div">
     <i class="pi pi-spin pi-spinner" *ngIf="loadingSendingConfirm"></i>
@@ -34,6 +40,12 @@
       ngModel
       required
     />
+    <div
+      *ngIf="loginForm.controls['password'].hasError('required')"
+      class="error-message"
+    >
+      Password is required.
+    </div>
   </div>
 
   <button

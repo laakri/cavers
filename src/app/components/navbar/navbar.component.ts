@@ -40,6 +40,7 @@ export class NavbarComponent implements OnInit {
     this.isAuthListenerSubs =
       this.UsersService.getAuthStatusListener().subscribe((isAuthenticated) => {
         this.isAuth = isAuthenticated;
+
         this.menuItems = [
           {
             label: 'Blogs',
@@ -122,6 +123,12 @@ export class NavbarComponent implements OnInit {
           },
         ];
       });
+
+    if (this.isAuthAdmin == true) {
+      this.isAuthAdmin = true;
+    } else {
+      this.isAuthAdmin = false;
+    }
 
     this.userName = this.UsersService.getUserName();
     this.userNameListenerSubs =
