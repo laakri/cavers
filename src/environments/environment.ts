@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://galaxia.blog:4401',
+  apiUrl: 'http://galaxia.blog:4401',
 };
