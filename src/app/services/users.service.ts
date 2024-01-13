@@ -9,7 +9,7 @@ import { environment } from './../../environments/environment';
 @Injectable({ providedIn: 'root' })
 export class UsersService {
   private isAuthenticated = false;
-  private isAdmin: any = false;
+  public isAdmin: any = false;
   private userId: any;
   private userName: any;
   private userRole: any = 'free';
@@ -19,7 +19,7 @@ export class UsersService {
   private useridListener = new Subject<any>();
   private usernameListener = new Subject<any>();
   private authStatusListener = new Subject<boolean>();
-  private authAdminStatusListener = new Subject<boolean>();
+  public authAdminStatusListener = new Subject<boolean>();
 
   private apiURL = environment.apiUrl;
 
@@ -38,6 +38,7 @@ export class UsersService {
       role: '',
       createdAt: '',
       updatedAt: '',
+      roleChangeDate: '',
       isAdmin: false,
     };
 
@@ -105,6 +106,7 @@ export class UsersService {
       role: '',
       createdAt: '',
       updatedAt: '',
+      roleChangeDate: '',
     };
     this.http
       .post<{
@@ -257,8 +259,16 @@ export class UsersService {
       isAdmin: isAdmin,
     };
   }
-  /*************************************************/
 
+  /*************************************************/
+  getUserAdminStatus(userId: string): Observable<{ isAdmin: boolean }> {
+    const url = `${this.apiURL}/api/users/isAdmin/${userId}`;
+    const result = this.http.get<{ isAdmin: boolean }>(url);
+    this.isAdmin = result;
+    return this.isAdmin;
+  }
+
+  /*************************************************/
   getUsers(
     first: number,
     page: number,

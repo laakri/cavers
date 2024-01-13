@@ -6,5 +6,6 @@ export interface User {
   role: string;
   createdAt: string;
   updatedAt: string;
+  roleChangeDate: string;
   isAdmin: boolean;
 }

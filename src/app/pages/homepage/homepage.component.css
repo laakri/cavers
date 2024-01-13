@@ -31,7 +31,7 @@
     padding: 10px 20px;
     border-radius: 20px;
     width: max-content;
-    font-size: var(--larger-font-size);
+    font-size: 18px;
     border :var(--special-button-border) solid 1px;
   }
   .header-content-first span:first-child  {

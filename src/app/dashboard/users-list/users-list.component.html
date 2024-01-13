@@ -32,7 +32,8 @@
       <ng-template pTemplate="header">
         <tr>
           <th>created At</th>
-          <th>updted At</th>
+          <th>updated At</th>
+          <th>Role Change Date</th>
           <th>email</th>
           <th>name</th>
           <th>roles</th>
@@ -43,6 +44,14 @@
         <tr>
           <td>{{ user.createdAt | date : "MMM d, y" }}</td>
           <td>{{ user.updatedAt | date : "MMM d, y" }}</td>
+          <td>
+            {{
+              user.roleChangeDate
+                ? (user.roleChangeDate | date : "MMM d, y")
+                : "Not available"
+            }}
+          </td>
+
           <td>{{ user.email }}</td>
           <td>{{ user.name }}</td>
 

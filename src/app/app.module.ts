@@ -55,6 +55,7 @@ import { DialogModule } from 'primeng/dialog';
 import { SkeletonModule } from 'primeng/skeleton';
 import { EditorModule } from 'primeng/editor';
 import { ToggleButtonModule } from 'primeng/togglebutton';
+import { ProgressBarModule } from 'primeng/progressbar';
 
 /**********  Component Imports *************** */
 
@@ -159,6 +160,7 @@ import { ContactPageComponent } from './pages/contact-page/contact-page.componen
     EditorModule,
     ToggleButtonModule,
     SpeedDialModule,
+    ProgressBarModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
