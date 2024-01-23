@@ -36,7 +36,12 @@
     <h2>{{ blog.title }}</h2>
     <div class="shortDescription">{{ blog.shortDescription }}</div>
     <p-divider></p-divider>
-    <p-image [src]="blog.chartImage" alt="Image" [preview]="true"></p-image>
+    <p-image
+      [src]="blog.chartImage"
+      alt="Image"
+      [preview]="true"
+      width="100%"
+    ></p-image>
     <div>
       <div class="blog-content" [innerHTML]="trustedText"></div>
     </div>
