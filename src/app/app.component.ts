@@ -21,7 +21,6 @@ export class AppComponent implements OnInit {
     this.isBrightTheme = document.body.classList.contains('light-theme');
     const savedTheme = localStorage.getItem('mode');
     if (savedTheme) {
-      console.log(savedTheme);
       document.body.classList.add(savedTheme);
       this.isBrightTheme = savedTheme === 'light-theme'; // Update isBrightTheme based on the stored theme
     }

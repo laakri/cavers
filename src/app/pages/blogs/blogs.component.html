@@ -114,11 +114,7 @@
         <h3>Top Blogs</h3>
         <div
           class="blogs"
-          *ngIf="
-            isTopBlogsLoading;
-            else topBlogs || topFreeBlogs.length > 0;
-            else: noTopBlogsFound
-          "
+          *ngIf="isTopBlogsLoading; else topBlogs || topFreeBlogs.length > 0"
         >
           <p-skeleton width="100%" height="40px" styleClass="mb-2"></p-skeleton>
           <p-skeleton width="100%" height="40px" styleClass="mb-2"></p-skeleton>
@@ -153,8 +149,8 @@
       </div>
 
       <div class="recommended">
-        <h3>Recommended topics</h3>
-        <div *ngIf="isLoading; else TopCateg">
+        <h3>Recommended tags</h3>
+        <div *ngIf="isLoading; else TopTags">
           <div class="blogs">
             <p-skeleton
               width="100%"
@@ -173,12 +169,12 @@
             ></p-skeleton>
           </div>
         </div>
-        <ng-template #TopCateg>
+        <ng-template #TopTags>
           <div class="recommended-tags">
             <div
               class="recommended-tag"
-              *ngFor="let cat of categoriesToShow"
-              (click)="navigateToCategory(cat.code)"
+              *ngFor="let cat of TagsToShow"
+              (click)="navigateToCategory(cat.name)"
             >
               {{ cat.name }}
             </div>

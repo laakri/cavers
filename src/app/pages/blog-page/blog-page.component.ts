@@ -47,8 +47,6 @@ export class BlogPageComponent implements OnInit {
       this.blogService.getBlogById(this.blogId).subscribe(
         (data: any) => {
           this.blog = data;
-
-          // Check if the user can access the blog
           if (
             this.canAccessBlog(userRole, this.blog.selectedMembershipLevels)
           ) {

@@ -24,6 +24,7 @@ export class BlogsComponent implements OnInit {
   page: number = 0;
   rows: number = 10;
   Categorys!: Category[];
+  TagsToShow!: any[];
   SortByDate!: SortByDate[];
   selectedCategory: Category = { name: 'Default Category', code: '' };
   selectedSortByDate: SortByDate = { name: 'Default Sort', code: 'newest' };
@@ -66,13 +67,19 @@ export class BlogsComponent implements OnInit {
     ];
     this.Categorys = [
       { name: 'Chose Category', code: '' },
-      { name: 'Cryptocurrency News', code: 'crypto-news' },
-      { name: 'Blockchain Technology', code: 'blockchain-tech' },
-      { name: 'Crypto Investing', code: 'crypto-investing' },
-      { name: 'Altcoins', code: 'altcoins' },
-      { name: 'Crypto Regulation', code: 'crypto-regulation' },
+      { name: 'Trading Ideas', code: 'trading-ideas' },
+      { name: 'Investment Ideas', code: 'investment-ideas' },
+      { name: 'Take Profit', code: 'take-profit' },
+      { name: 'Videos', code: 'videos' },
     ];
-
+    this.TagsToShow = [
+      { name: 'BTC' },
+      { name: 'ETH' },
+      { name: 'MAGIC' },
+      { name: 'SUI' },
+      { name: 'MATIC' },
+      { name: 'DOGE' },
+    ];
     this.route.queryParams.subscribe((params) => {
       // Retrieve and set the selected category, sort, and pagination options
       const categoryCode = params['category'];
@@ -252,7 +259,6 @@ export class BlogsComponent implements OnInit {
   }
 
   loadFourthBlog() {
-    // Load the fourth blog and set showFourthBlog to true
     this.isTopBlogsLoading = true;
     this.BlogService.getTopFreeBlogs().subscribe(
       (data) => {
@@ -270,14 +276,13 @@ export class BlogsComponent implements OnInit {
   }
   showMoreCategories() {
     // Show all categories excluding the first one when the button is clicked
-    this.categoriesToShow = this.Categorys.slice(1);
+    this.TagsToShow = this.TagsToShow.slice(1);
     this.showAllCategories = true;
   }
 
-  navigateToCategory(categoryCode: string) {
-    // Navigate to the specified route when a category is clicked
+  navigateToCategory(Tag: string) {
     this.router.navigate(['/Blogs'], {
-      queryParams: { category: categoryCode },
+      queryParams: { search: Tag },
     });
   }
 }

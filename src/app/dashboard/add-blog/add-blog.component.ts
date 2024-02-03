@@ -49,11 +49,11 @@ export class AddBlogComponent implements OnInit {
 
   ngOnInit() {
     this.categorys = [
-      { name: 'Cryptocurrency News', code: 'crypto-news' },
-      { name: 'Blockchain Technology', code: 'blockchain-tech' },
-      { name: 'Crypto Investing', code: 'crypto-investing' },
-      { name: 'Altcoins', code: 'altcoins' },
-      { name: 'Crypto Regulation', code: 'crypto-regulation' },
+      { name: 'Chose Category', code: '' },
+      { name: 'Trading Ideas', code: 'trading-ideas' },
+      { name: 'Investment Ideas', code: 'investment-ideas' },
+      { name: 'Take Profit', code: 'take-profit' },
+      { name: 'Videos', code: 'videos' },
     ];
   }
   /*************** initializeQuill  ******************/

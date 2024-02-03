@@ -45,6 +45,14 @@
     <div>
       <div class="blog-content" [innerHTML]="trustedText"></div>
     </div>
+    <p-divider></p-divider>
+
+    <div>
+      <span>Tags </span>
+      <span class="categ" *ngFor="let cat of blog.tags">
+        {{ cat }}
+      </span>
+    </div>
   </ng-template>
 </div>
 <p-confirmDialog></p-confirmDialog>
