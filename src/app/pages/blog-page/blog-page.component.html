@@ -49,8 +49,12 @@
 
     <div>
       <span>Tags </span>
-      <span class="categ" *ngFor="let cat of blog.tags">
-        {{ cat }}
+      <span
+        class="tag"
+        *ngFor="let tag of blog.tags"
+        (click)="navigateToTag(tag)"
+      >
+        {{ tag }}
       </span>
     </div>
   </ng-template>

@@ -136,4 +136,9 @@ export class BlogPageComponent implements OnInit {
       }
     );
   }
+  navigateToTag(Tag: string) {
+    this.router.navigate(['/Blogs'], {
+      queryParams: { search: Tag },
+    });
+  }
 }

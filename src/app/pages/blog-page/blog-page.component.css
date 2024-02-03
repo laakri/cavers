@@ -20,6 +20,20 @@ h2{
     max-width: max-content;
     min-height: 10px;
 }
+.tag{
+    border: 1px solid var(--special-button-border);
+    background-color: var(--special-button-background);
+    color: var(--special-button-color);
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-right: 10px;
+    max-width: max-content;
+    min-height: 10px;
+}
+.tag:hover{
+    background-color: var(--special-button-background);
+    cursor: pointer;
+}
 .createAt{
     margin: 10px 0;
     color: var(--graycolor);

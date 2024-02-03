@@ -75,7 +75,8 @@ export class BlogsComponent implements OnInit {
     this.TagsToShow = [
       { name: 'BTC' },
       { name: 'ETH' },
-      { name: 'MAGIC' },
+      { name: 'OP' },
+      { name: 'SOL' },
       { name: 'SUI' },
       { name: 'MATIC' },
       { name: 'DOGE' },
@@ -276,11 +277,10 @@ export class BlogsComponent implements OnInit {
   }
   showMoreCategories() {
     // Show all categories excluding the first one when the button is clicked
-    this.TagsToShow = this.TagsToShow.slice(1);
     this.showAllCategories = true;
   }
 
-  navigateToCategory(Tag: string) {
+  navigateToTag(Tag: string) {
     this.router.navigate(['/Blogs'], {
       queryParams: { search: Tag },
     });

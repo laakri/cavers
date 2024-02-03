@@ -53,6 +53,7 @@ export class UsersService {
             summary: 'Success Message',
             detail: successMessage,
           });
+          this.router.navigate(['/auth/login']);
         },
         (error) => {
           console.log(error);
